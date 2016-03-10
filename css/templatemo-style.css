@@ -354,6 +354,57 @@ img
     }
 /* end download */
 
+
+/* Cadastro */
+
+
+#cadastro
+    {
+        background: url('../images/credit-card.jpg') no-repeat;
+        /*opacity:0.6;
+        filter:alpha(opacity=60);*/
+        background-size: cover;
+        /*color: black;*/
+        text-align: center;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+#cadastro h2
+    {
+        padding-bottom: 40px;
+    }
+
+#cadastro .contact-form
+    {
+        padding-top: 20px;
+    }
+#cadastro .form-control
+    {
+        border: none;
+        border-radius: 0px;
+        box-shadow: none;
+        margin-bottom: 20px;
+    }
+#cadastro input
+    {
+        height: 50px;
+    }
+#cadastro input[type="submit"]
+    {
+        background: #28a7e9;
+        color: #fff;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+#cadastro input[type="submit"]:hover {
+    background: #107DB6;
+}
+/* end contact */
+
+/* End Cadastro */
+
+
+
 /* start contact */
 #contact
     {
