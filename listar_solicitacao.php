@@ -3,6 +3,17 @@
     $id_cliente = $_GET['id'];
 ?>
 <html lang="en">
+<style> 
+th, td { line-height: 3; }
+
+th{
+    background: #F0F0F0;
+} 
+
+tr:hover {
+    background: #F0F0F0;
+} 
+</style>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -145,19 +156,19 @@ if (!$link) {
     die('Não foi possível conectar: ' . mysql_error());
 }
 
-$sql = "SELECT id_cliente, nome, cpf, email, convite, data_cadastro FROM Cliente ORDER BY convite desc, data_cadastro";
+$sql = "SELECT id_cliente, nome, cpf, email, convite, dt_solicitacao FROM Cliente WHERE solicitacao='0' ORDER BY convite desc, dt_solicitacao";
 $result = $link->query($sql);
 
 
 echo "<table align='center' rules=rows width=1000><tr>
-        <td><h4><b> *** </b></h4></td>
-		<td><h4><b> ID </b></h4></td>
-		<td><h4><b> NOME </b></h4</td>
-		<td><h4><b> CPF </b></h4</td>
-		<td><h4><b> EMAIL </b></h4</td>
-		<td><h4><b> CONVIDADO </b></h4</td>
-		<td><h4><b> DATA SOLICITAÇÃO </b></h4</td>
-		<td><h4><b></b></h4</td></tr>";
+      <th><h4><b> *** </b></h4></th>
+      <th><h4><b> ID </b></h4></th>
+      <th><h4><b> NOME </b></h4></th>
+      <th><h4><b> CPF </b></h4></th>
+      <th><h4><b> EMAIL </b></h4></th>
+      <th><h4><b> CONVIDADO </b></h4></th>
+		  <th><h4><b> ENTRADA </b></h4></th>
+		  <th><h4><b></b></h4></th></tr>";
 $i = 1;
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) { 
@@ -167,9 +178,9 @@ if ($result->num_rows > 0) {
     			  <td>" . $row["cpf"]. "</td>
     			  <td>" . $row["email"]. "</td>";
 
-      if($row["convite"]==1){ echo "<td style='color:blue'> SIM </td>";}else{ echo"<td style='color:red'> NÃO </td>";}
+      if($row["convite"]==1){ echo "<td style='color:green'> SIM </td>";}else{ echo"<td > NÃO </td>";}
 
-    	echo  "<td>" . $row["data_cadastro"]. "</td>
+    	echo  "<td>" . $row["dt_solicitacao"]. "</td>
     			  <td align='right'><button class='btn btn-primary' type='submit'>Aceitar</button><button class='btn btn-danger' type='button'>Rejeitar</button></td></tr>";
     			  $i++;
 

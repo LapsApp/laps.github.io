@@ -129,14 +129,14 @@
 				<div class="col-lg-12">
 					<h3 class="page-header"><i class="fa fa-laptop"></i>MENU ADMINISTRADOR</h3>
 					<ol class="breadcrumb">
-						<li><i class="fa fa-home"></i><a href="index.html">INICIO</a></li>
+						<li><i class="fa fa-home"></i><a href="menu_adm.php">INICIO</a></li>
 						<li><i class="fa fa-laptop"></i>MENU</li>						  	
 					</ol>
 				</div>
 			</div>
               
             <div class="row">
-				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="listar_cadastros.php">
 					<div class="info-box blue-bg">
 						
 						<div class="count">
@@ -147,7 +147,7 @@ if (!$link) {
     die('Não foi possível conectar: ' . mysql_error());
 }
 
-$result=mysqli_query($link,"SELECT count(*) as total FROM Cliente");
+$result=mysqli_query($link,"SELECT count(*) as total FROM Cliente WHERE solicitacao='1'");
 $data=mysqli_fetch_assoc($result);
 
 if($data['total']>0){
@@ -156,11 +156,11 @@ echo $data['total'];
 else{ echo "0";}
 ?>
                         </div>
-						<div class="title">CADASTROS</div>						
-					</div><!--/.info-box-->			
+						<div class="title">VERIFICAR CADASTROS</div>						
+					</div></a><!--/.info-box-->			
 				</div><!--/.col-->
 				
-				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="listar_solicitacao.php">
 					<div class="info-box brown-bg">
 						<div class="count">
 <?php
@@ -170,7 +170,7 @@ if (!$link) {
     die('Não foi possível conectar: ' . mysql_error());
 }
 
-$result=mysqli_query($link,"SELECT count(*) as total FROM Cliente");
+$result=mysqli_query($link,"SELECT count(*) as total FROM Cliente WHERE solicitacao='0'");
 $data=mysqli_fetch_assoc($result);
 
 if($data['total']>0){
@@ -180,18 +180,18 @@ else{ echo "0";}
 
 ?>          
                         </div>
-						<div class="title">SOLICITAÇÕES</div>						
-					</div><!--/.info-box-->			
+						<div class="title">VERIFICAR SOLICITAÇÕES</div>						
+					</div></a><!--/.info-box-->				
 				</div><!--/.col-->	
 				
-				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="">
 					<div class="info-box dark-bg">
 						<div class="count">4.362</div>
 						<div class="title">OUTRO</div>						
 					</div><!--/.info-box-->			
 				</div><!--/.col-->
 				
-				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="">
 					<div class="info-box green-bg">
 						<div class="count">1.426</div>
 						<div class="title">OUTRO</div>						
