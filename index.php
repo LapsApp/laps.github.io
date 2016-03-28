@@ -26,6 +26,12 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="css/templatemo-style.css">
+    <script>
+        document.getElementById("login").onclick = function () {
+        location.href = "login.php";
+        window.location='login.php';
+    </script>
+};
 </head>
 
 <body ng-controller="App.IndexController">
@@ -44,17 +50,23 @@
                     <span class="icon icon-bar"></span>
                 </button>
                 <h2 class="brand brand-name navbar-left">
-                    <a href="index.php" ><img class="img-responsive2" src="images/laps.png" width="20px">LAPS</a>
+                    <a href="#home" ><img class="img-responsive2" src="images/laps.png" width="20px">LAPS</a>
                 </h2>
             </div>
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right text-uppercase">
+                <ul class="nav navbar-nav text-uppercase">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#feature">Como Funciona</a></li>
                     <li><a href="#pricing">Quem Somos</a></li>
                     <li><a href="#contact">Contato</a></li>
                     <li><a href="#cadastro">Solicitar Parciticação</a></li>
-                    <li><a href="login.php">Login</a></li>
+                </ul>
+                 <ul class="nav navbar-nav navbar-right">
+                       <li>
+                           <button type="button" class="btn btn-primary" onclick="window.location='login.php';">
+                               Entrar  <i class="fa fa-sign-in"></i>
+                            </button>
+                       </li>
                 </ul>
             </div>
         </div>
@@ -256,11 +268,11 @@
     <!-- end footer -->
 
     <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/wow.min.js"></script>
     <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="js/wow.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
