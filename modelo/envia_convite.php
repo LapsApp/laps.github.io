@@ -78,7 +78,9 @@ Acesse:
 
 
  if (smtpmailer($mail, $from, 'LAPS', 'Convite Enviado', $msg)) {
-	echo "Enviado!";
+    $volta = $_SERVER['HTTP_REFERER'];
+    echo "<script>window.location='$volta';alert('Convite enviado com sucesso para $mail');</script>";
+
 }
 if (!empty($error)) echo $error;
 ?>

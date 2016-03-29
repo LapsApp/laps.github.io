@@ -140,55 +140,55 @@
                                       <div class="form-group ">
                                           <input type="hidden" name='id_cliente' value="<?php echo  $_GET['id'];?>">
                                           <label for="cname" class="control-label col-lg-2">RG<span class="required">*</span></label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-2">
                                               <input class="form-control" id="subject" name="rg" maxlength="10" type="text" required />
                                           </div>
                                       </div> 
                                       <div class="form-group ">
                                           <label for="cname" class="control-label col-lg-2">Telefone<span class="required">*</span></label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-2">
                                               <input class="form-control" id="subject" name="cel" maxlength="9" type="text" required />
                                           </div>
                                       </div> 
                                       <div class="form-group ">
                                           <label for="cname" class="control-label col-lg-2">Rua<span class="required">*</span></label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-4">
                                               <input class="form-control" id="subject" name="rua" maxlength="20" type="text" required />
                                           </div>
-                                      </div> 
-                                      <div class="form-group ">
+                                          
                                           <label for="cname" class="control-label col-lg-2">Numero<span class="required">*</span></label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-2">
                                               <input class="form-control" id="subject" name="numero" maxlength="8" type="text" required />
                                           </div>
                                       </div> 
+                                      
                                       <div class="form-group ">
                                           <label for="cname" class="control-label col-lg-2">Complemento<span class="required">*</span></label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-4">
                                               <input class="form-control" id="subject" name="complemento" maxlength="20" type="text"/>
                                           </div>
-                                      </div> 
-                                      <div class="form-group ">
+                                          
                                           <label for="cname" class="control-label col-lg-2">Cep<span class="required">*</span></label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-2">
                                               <input class="form-control" id="subject" name="cep" maxlength="8" type="text" required />
                                           </div>
                                       </div> 
+                                      
                                       <div class="form-group ">
                                           <label for="cname" class="control-label col-lg-2">Cidade <span class="required">*</span></label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-4">
                                               <input class="form-control" id="subject" name="cidade" type="text" required />
                                           </div>
-                                      </div> 
-                                      <div class="form-group ">
+                                          
                                           <label for="cname" class="control-label col-lg-2">Estado <span class="required">*</span></label>
-                                          <div class="col-lg-10">
+                                          <div class="col-lg-2">
                                               <input class="form-control" id="subject" name="estado" maxlength="2" type="text" required />
                                           </div>
-                                      </div>                                      
+                                      </div> 
+                                                                          
                                       <div class="form-group ">
-                                          <label for="cname" class="control-label col-lg-2">Renda <span class="required">*</span></label>
-                                          <div class="col-lg-10">
+                                          <label for="cname" class="control-label col-lg-2">Renda R$<span class="required">*</span></label>
+                                          <div class="col-lg-2">
                                               <input class="form-control" id="subject" name="renda" type="text" required />
                                           </div>
                                       </div>  
@@ -202,13 +202,15 @@
                                       <div class="form-group ">
                                           <label for="ccomment" class="control-label col-lg-2">Doc. Frente</label>
                                           <div class="col-lg-10">
-                                              <input type='file' name='frente' required></textarea>
+                                              <input type='file' name='frente' required>
                                           </div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="ccomment" class="control-label col-lg-2">Doc. Verso</label>
                                           <div class="col-lg-10">
-                                              <input type='file' name='verso' required></textarea>
+                                              <input name="foto1_<%= cnt1 %>" type="file" id="foto1" onChange="img1()" size="32" />
+                                              <img border="0" src="img/Germany.png" name="capa">
+                                              <!--<input type='file' name='verso' required>-->
                                           </div>
                                       </div>
 
@@ -248,6 +250,15 @@
     <!--custome script for all page-->
     <script src="js/scripts.js"></script>    
 
+<script language="JavaScript" type="text/javascript"> 
+
+function img1(obj) { 
+    var img1 = "";
+    alert(document.feedback_form.foto1.value);
+    img1 = document.feedback_form.foto1.value; 
+    document.feedback_form.capa.src=img1;
+} 
+</script> 
 
   </body>
 </html>

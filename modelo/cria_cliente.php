@@ -4,7 +4,7 @@
 	$email = $_POST['email'];
 	$cpf = $_POST['cpf'];
 	$convite = $_POST['convite'];
-	echo $nome;
+	//echo $nome;
 	$link = mysqli_connect("localhost", "root", "", "laps");
 if (!$link) {
     die('Não foi possível conectar: ' . mysql_error());
@@ -19,7 +19,8 @@ $sql =	"INSERT into Cliente(nome, email, cpf,convite)values('".$nome."',
 
 //mysqli_query($link, $sql);
 if(mysqli_query($link, $sql))
-	{echo "inserido";}
+	{//echo "inserido";
+    }
 
 
 $from = 'lapsuvv@gmail.com';
@@ -50,7 +51,7 @@ function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
 		$error = 'Mail error: '.$mail->ErrorInfo; 
 		return false;
 	} else {
-		$error = 'Mensagem enviada!';
+		//$error = 'Mensagem enviada!';
 		return true;
 	}
 }
@@ -98,8 +99,9 @@ $msg = '<html>
 </body>
 </html>';
 
- if (smtpmailer($mail, $from, 'LAPS', 'Convite Enviado', $msg)) { 
-  echo "Enviado!" ;
-}
+    if (smtpmailer($mail, $from, 'LAPS', 'Convite Enviado', $msg)) { 
+         $volta = $_SERVER['HTTP_REFERER'];
+         echo "<script>window.location='$volta';alert('$nome, Seu cadastro foi realizado com sucesso! Uma mensagem de confirmação será enviada para seu e-mail');</script>";
+    }
 if (!empty($error)) echo $error;
 ?>

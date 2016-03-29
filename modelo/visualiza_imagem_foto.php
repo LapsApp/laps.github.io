@@ -1,8 +1,8 @@
 <?
-// Inclui o arquivo de conexão
+// Inclui o arquivo de conexï¿½o
 	$link = mysqli_connect("localhost", "root", "", "laps");
 if (!$link) {
-    die('Não foi possível conectar: ' . mysql_error());
+    die('NÃ£o foi possÃ­vel conectar: ' . mysql_error());
 }
 $id = $_GET['id'];
 $tipo = $_GET['tipo'];
