@@ -37,8 +37,6 @@ renda = ".$renda."
 where id_cliente = ".$id_cliente;
 mysqli_query($link, $sql);
 
-//echo $sql;
-
 $sql =	"INSERT into Endereco(id_cliente, rua, num, complemento, cep, cidade, estado) values(".$id_cliente.", 
 		'".$rua."', 
 		".$numero.",
@@ -47,44 +45,18 @@ $sql =	"INSERT into Endereco(id_cliente, rua, num, complemento, cep, cidade, est
 		'".$cidade."',
 		'".$estado."')";
 mysqli_query($link, $sql);
-//echo $sql;
-
 
 $sql =	"INSERT into Conta(id_cliente, renda) values(".$id_cliente.", ".$renda.")";
 mysqli_query($link, $sql);
-//echo $sql;
 
-
-/*$sql =	"INSERT into Documentacao(id_cliente, foto, doc_frente, doc_verso) values('".$id_cliente."', 
-		'".$foto."',
-		'".$frente."',
-		'".$verso."')";*/
 $sql =	"INSERT into Documentacao(id_cliente, foto) values('".$id_cliente."', 
 		'../img/".$nome_correto."')";
 mysqli_query($link, $sql);
 
-//echo $sql;
 
 $upload = move_uploaded_file($file_tmp, "../img/live.jpg");
 echo "<img src='../img/$nome_correto' border='1'><br><br>";
 
-
-/*
-$query = "SELECT id_doc, foto FROM documentacao";
-$resultado = mysqli_query($link, $query);
-
-if($resultado){
-
-while ($campo = mysqli_fetch_array($resultado)){
-  $id   = $campo['0']; 
-  $foto   = $campo['1'];
-
-  echo "tipo__:".$file_type;
-echo "<img src='modelo/visualiza_imagem_foto.php?id=$id&tipo=$file_type' border='1'><br><br>";
-}  // Fecha if($resultado){
-}
-
-*/
 
 ?>
 <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">alert ("cadastro efetuado com sucesso!")</SCRIPT>
