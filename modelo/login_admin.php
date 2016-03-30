@@ -1,11 +1,11 @@
-﻿<?php 
+﻿<?php
 
 $login = $_POST['login'];
 $senha = $_POST['senha'];
 $entrar = $_POST['entrar'];
 
-// $sql = "SELECT * FROM  into Cliente(nome, email, cpf,convite)values('".$nome."', 
-//     '".$email."', 
+// $sql = "SELECT * FROM  into Cliente(nome, email, cpf,convite)values('".$nome."',
+//     '".$email."',
 //     '".$cpf."',
 //     ".$convite.")";
 
@@ -17,8 +17,8 @@ if (isset($entrar)) {
         echo "<script>window.location='$volta';alert('Login e/ou senha incorretos');</script>";
         die();
     } else {
-        setcookie("login", $login);
-        header("Location:../convites.php");
+        setcookie("login-admin", $login);
+        header("Location:../menu_adm.php");
     }
 }
 ?>
