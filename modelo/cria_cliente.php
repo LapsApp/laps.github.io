@@ -51,7 +51,7 @@ function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
 		$error = 'Mail error: '.$mail->ErrorInfo; 
 		return false;
 	} else {
-		//$error = 'Mensagem enviada!';
+		$error = 'Mensagem enviada!';
 		return true;
 	}
 }
@@ -102,6 +102,12 @@ $msg = '<html>
     if (smtpmailer($mail, $from, 'LAPS', 'Convite Enviado', $msg)) { 
          $volta = $_SERVER['HTTP_REFERER'];
          echo "<script>window.location='$volta';alert('$nome, Seu cadastro foi realizado com sucesso! Uma mensagem de confirmação será enviada para seu e-mail');</script>";
+    }else{
+        $volta = $_SERVER['HTTP_REFERER'];
+        echo "<script>window.location='$volta';alert('$nome, Ocorreu um erro ao enviar o email. Por favor tente novamente');</script>";      
     }
-if (!empty($error)) echo $error;
+if (!empty($error)) {
+$volta = $_SERVER['HTTP_REFERER'];
+echo "<script>window.location='$volta';alert('$nome, Ocorreu um erro ao enviar o email. Por favor tente novamente');</script>";      
+}
 ?>

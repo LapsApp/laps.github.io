@@ -8,7 +8,7 @@
 
 ?>
 
-<!DOCTYPE html ng-app="app">
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -26,15 +26,15 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="css/templatemo-style.css">
-    <script>
+    <!--<script>
         document.getElementById("login").onclick = function () {
         location.href = "login.php";
         window.location='login.php';
-    </script>
+    </script>-->
 };
 </head>
 
-<body ng-controller="App.IndexController">
+<body>
     <!-- start preloader -->
     <div class="preloader">
         <div class="sk-spinner sk-spinner-rotating-plane"></div>
@@ -233,16 +233,16 @@
                 </div>
                 <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="contact-form">
-                        <form action="modelo/cria_cliente.php" method="post" ng-submit="addPreCadastro(e)">
+                        <form action="modelo/cria_cliente.php" method="post">
                             <div class="col-md-offset-2 col-md-8">
-                                <input type="text" class="form-control" name ='nome' ng-model="precadastro.nome" required placeholder="Nome">
+                                <input type="text" class="form-control" name ='nome' required placeholder="Nome">
                             </div>
                             <div class="col-md-offset-2 col-md-4">
-                                <input type="email" class="form-control" name ='email' ng-model="precadastro.email" required placeholder="Email">
+                                <input type="email" class="form-control" name ='email' required placeholder="Email">
                             </div>
                             <div class=" col-md-4">
                                 <input type="hidden" name="convite" value="<?php echo $convida; ?>">
-                                <input type="text" class="form-control" name ='cpf' ng-model="precadastro.cpf" minlength="11" maxlength="11" required placeholder="CPF">
+                                <input type="text" class="form-control" name ='cpf' minlength="11" maxlength="11" required placeholder="CPF">
                             </div>
                             <div class="col-md-offset-2 col-md-8">
                                 <input type="submit" class="form-control text-uppercase" value="SOLICITAR">

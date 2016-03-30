@@ -21,25 +21,25 @@
 <body class="login-img3-body" ng-controller="LoginController">
 
     <div class="container">
-        <form class="login-form" action="menu_adm.php">
+        <form class="login-form" action="modelo/login_usuario.php" method="post">
             <div class="login-wrap">
                 <p class="login-img">LAPS <i class="icon_lock_alt"></i></p>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="icon_profile"></i></span>
-                    <input type="text" class="form-control" placeholder="CPF" autofocus>
+                    <input type="text" class="form-control" name="login" id="login" placeholder="CPF" autofocus>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                    <input type="password" class="form-control" placeholder="Senha">
+                    <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
                 </div>
                 <label class="checkbox">
                     <input type="checkbox" value="remember-me"> Relembrar
                     <span class="pull-right"> <a href="#"> Esqueceu?</a></span>
                 </label>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-                <br>       
-                <a class="" href="listar_cadastros.php">
-                          <input class="btn btn-info btn-lg btn-block" type="button" ng-click="pageindex()" value="Cadastre-se">
+                <input class="btn btn-primary btn-lg btn-block"  name="entrar" id="entrar" type="submit" value = 'Login'>
+               <br>       
+                <!--<a class="" href="listar_cadastros.php">-->
+                <input class="btn btn-info btn-lg btn-block" type="button" ng-click="pageindex()" value="Cadastre-se">
                 </a>
 
             </div>
