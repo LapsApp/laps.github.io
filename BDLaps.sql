@@ -33,7 +33,8 @@ CREATE TABLE `cartao` (
   `criacao` date NOT NULL,
   `codigo` int(3) NOT NULL,
   `nome_cliente` varchar(15) NOT NULL,
-  `bandeira` varchar(15) NOT NULL
+  `bandeira` varchar(15) NOT NULL,
+  `id_conta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -130,6 +131,8 @@ CREATE TABLE `endereco` (
 ALTER TABLE `cartao`
   ADD PRIMARY KEY (`id_cartao`);
 
+ALTER TABLE `cartao`  ADD FOREIGN KEY (id_conta) REFERENCES Conta(id_conta);
+
 --
 -- Indexes for table `cliente`
 --
@@ -141,7 +144,7 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `conta`
   ADD PRIMARY KEY (`id_conta`);
-
+  
 --
 -- Indexes for table `documentacao`
 --
