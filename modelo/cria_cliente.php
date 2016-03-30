@@ -1,26 +1,24 @@
-<?php
+<?php 
 
-	$nome = $_POST['nome'];
-	$email = $_POST['email'];
-	$cpf = $_POST['cpf'];
-	$convite = $_POST['convite'];
-	//echo $nome;
-	$link = mysqli_connect("localhost", "root", "", "laps");
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+$cpf = $_POST['cpf'];
+$convite = $_POST['convite'];
+$link = mysqli_connect("localhost", "root", "", "laps");
 if (!$link) {
-    die('Não foi possível conectar: ' . mysql_error());
+    die('Não foi possível conectar: '.mysql_error());
 }
 
 
-$sql =	"INSERT into Cliente(nome, email, cpf,convite)values('".$nome."', 
-		'".$email."', 
-		'".$cpf."',
-		".$convite.")";
+$sql = "INSERT into Cliente(nome, email, cpf,convite)values('".$nome."', 
+    '".$email."', 
+    '".$cpf."',
+    ".$convite.")";
 
 
 //mysqli_query($link, $sql);
-if(mysqli_query($link, $sql))
-	{//echo "inserido";
-    }
+if (mysqli_query($link, $sql)) { //echo "inserido";
+}
 
 
 $from = 'lapsuvv@gmail.com';
@@ -28,32 +26,32 @@ $mail = $_POST['email'];
 
 require_once("../phpmailer/class.phpmailer.php");
 
-define('GUSER', $from);	// <-- Insira aqui o seu GMail
-define('GPWD', 'lapsuvv2016');		// <-- Insira aqui a senha do seu GMail
+define('GUSER', $from); // <-- Insira aqui o seu GMail
+define('GPWD', 'lapsuvv2016'); // <-- Insira aqui a senha do seu GMail
 
-function smtpmailer($para, $de, $de_nome, $assunto, $corpo) { 
-	global $error;
-	$mail = new PHPMailer();
-	$mail->IsHTML(true);
-	$mail->IsSMTP();		// Ativar SMTP
-	$mail->SMTPDebug = 0;		// Debugar: 1 = erros e mensagens, 2 = mensagens apenas
-	$mail->SMTPAuth = true;		// Autenticação ativada
-	$mail->SMTPSecure = 'ssl';	// SSL REQUERIDO pelo GMail
-	$mail->Host = 'smtp.gmail.com';	// SMTP utilizado
-	$mail->Port = 465;  		// A porta 465 deverá estar aberta em seu servidor
-	$mail->Username = GUSER;
-	$mail->Password = GPWD;
-	$mail->SetFrom($de, $de_nome);
-	$mail->Subject = $assunto;
-	$mail->Body = $corpo;
-	$mail->AddAddress($para);
-	if(!$mail->Send()) {
-		$error = 'Mail error: '.$mail->ErrorInfo; 
-		return false;
-	} else {
-		$error = 'Mensagem enviada!';
-		return true;
-	}
+function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
+    global $error;
+    $mail = new PHPMailer();
+    $mail->IsHTML(true);
+    $mail->IsSMTP(); // Ativar SMTP
+    $mail->SMTPDebug = 0; // Debugar: 1 = erros e mensagens, 2 = mensagens apenas
+    $mail->SMTPAuth = true; // Autenticação ativada
+    $mail->SMTPSecure = 'ssl'; // SSL REQUERIDO pelo GMail
+    $mail->Host = 'smtp.gmail.com'; // SMTP utilizado
+    $mail->Port = 465; // A porta 465 deverá estar aberta em seu servidor
+    $mail->Username = GUSER;
+    $mail->Password = GPWD;
+    $mail->SetFrom($de, $de_nome);
+    $mail->Subject = $assunto;
+    $mail->Body = $corpo;
+    $mail->AddAddress($para);
+    if (!$mail->Send()) {
+        $error = 'Mail error: '.$mail->ErrorInfo;
+        return false;
+    } else {
+        $error = 'Mensagem enviada!';
+        return true;
+    }
 }
 
 $msg = '<html>
@@ -79,7 +77,7 @@ $msg = '<html>
 <table id="t2" width="800"> 
 <tr>
 <td width="500">
-  <p align="Justify"><b>Prezado(a) ' . $nome . '! </b>
+  <p align="Justify"><b>Prezado(a) '.$nome.'! </b>
   <p align="Justify">Seja muito bem-vindo! <br><br> 
   <p align="Justify">Agradecemos seu interesse em fazer parte da nossa rede.</td>
 <td width="300" align="center"><img src="http://lapsapp.github.io/images/laps.png" width="140" height="160">
@@ -99,15 +97,15 @@ $msg = '<html>
 </body>
 </html>';
 
-    if (smtpmailer($mail, $from, 'LAPS', 'Convite Enviado', $msg)) { 
-         $volta = $_SERVER['HTTP_REFERER'];
-         echo "<script>window.location='$volta';alert('$nome, Seu cadastro foi realizado com sucesso! Uma mensagem de confirmação será enviada para seu e-mail');</script>";
-    }else{
-        $volta = $_SERVER['HTTP_REFERER'];
-        echo "<script>window.location='$volta';alert('$nome, Ocorreu um erro ao enviar o email. Por favor tente novamente');</script>";      
-    }
+if (smtpmailer($mail, $from, 'LAPS', 'Convite Enviado', $msg)) {
+    $volta = $_SERVER['HTTP_REFERER'];
+    echo "<script>window.location='$volta';alert('$nome, Seu cadastro foi realizado com sucesso! Uma mensagem de confirmação será enviada para seu e-mail');</script>";
+} else {
+    $volta = $_SERVER['HTTP_REFERER'];
+    echo "<script>window.location='$volta';alert('$nome, Ocorreu um erro ao enviar o email. Por favor tente novamente');</script>";
+}
 if (!empty($error)) {
-$volta = $_SERVER['HTTP_REFERER'];
-echo "<script>window.location='$volta';alert('$nome, Ocorreu um erro ao enviar o email. Por favor tente novamente');</script>";      
+    $volta = $_SERVER['HTTP_REFERER'];
+    echo "<script>window.location='$volta';alert('$nome, Ocorreu um erro ao enviar o email. Por favor tente novamente');</script>";
 }
 ?>

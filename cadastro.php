@@ -24,13 +24,6 @@
     <!-- Custom styles -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-      <script src="js/lte-ie7.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -195,25 +188,25 @@
 
                                       <div class="form-group ">
                                           <label for="ccomment" class="control-label col-lg-2">Foto</label>
-                                          <div class="col-lg-10">
-                                              <input type='file' name='foto' required>
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="ccomment" class="control-label col-lg-2">Doc. Frente</label>
-                                          <div class="col-lg-10">
-                                              <input type='file' name='frente' required>
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="ccomment" class="control-label col-lg-2">Doc. Verso</label>
-                                          <div class="col-lg-10">
-                                              <input name="foto1_<%= cnt1 %>" type="file" id="foto1" onChange="img1()" size="32" />
-                                              <img border="0" src="img/Germany.png" name="capa">
-                                              <!--<input type='file' name='verso' required>-->
+                                          <div class="col-lg-4">
+                                              <input name="foto" type="file" id="foto" onchange="readURL(this,'fotoimg');" required />
+                                              <img border="0" src="images/user_.png" name="frente" id="fotoimg" height="100" width="100" alt="Frente">
                                           </div>
                                       </div>
 
+                                      <div class="form-group">
+                                          <label for="ccomment" class="control-label col-lg-2">Doc. Frente</label>
+                                          <div class="col-lg-4">
+                                              <input name="frente" type="file" id="frente" onchange="readURL(this,'frenteimg');" required />
+                                              <img border="0" src="images/card_user.png" name="frente" id="frenteimg" height="100" width="100" alt="Frente">
+                                          </div>
+
+                                           <label for="ccomment" class="control-label col-lg-2">Doc. Verso</label>
+                                          <div class="col-lg-4">
+                                              <input name="verso" type="file" id="verso" onchange="readURL(this,'versoimg');" required />
+                                              <img border="0" src="images/card_user.png" name="verso" id="versoimg" height="100" width="100" alt="Verso">
+                                          </div>
+                                      </div>
 
                                       <div class="form-group">
                                           <div class="col-lg-offset-2 col-lg-10">
@@ -254,10 +247,23 @@
 
 function img1(obj) { 
     var img1 = "";
-    alert(document.feedback_form.foto1.value);
-    img1 = document.feedback_form.foto1.value; 
-    document.feedback_form.capa.src=img1;
+    alert(document.getElementById('foto1').value);
+    img1 = document.getElementById('foto1').value; 
+    document.getElementById('capa').src = img1;
 } 
+
+function readURL(input, id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#'+id)
+      .attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+      }
 </script> 
 
   </body>

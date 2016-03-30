@@ -1,5 +1,4 @@
 <?
-// Inclui o arquivo de conex�o
 	$link = mysqli_connect("localhost", "root", "", "laps");
 if (!$link) {
     die('Não foi possível conectar: ' . mysql_error());
@@ -17,4 +16,3 @@ header("Content-type: image/jpeg");
 print $foto;
 
 ?>
-
