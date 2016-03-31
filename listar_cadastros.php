@@ -139,7 +139,7 @@ tr:hover {
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
 
-                                    $sql = "SELECT id_cliente, nome, cpf, email, convite, cadastro, dt_solicitacao FROM Cliente WHERE solicitacao='1' ORDER BY convite desc, dt_solicitacao";
+                                    $sql = "SELECT id_cliente, nome, cpf, email, convite, cadastro, dt_solicitacao FROM Cliente WHERE cadastro='2' OR cadastro='3' OR cadastro='4' ORDER BY convite desc, dt_solicitacao";
                                     $result = $link->query($sql);
 
 
@@ -162,8 +162,8 @@ tr:hover {
                                           <td>" . $row["cpf"]. "</td>
                                           <td>" . $row["email"]. "</td>";
 
-                                          if($row["convite"]==1){ echo "<td style='color:green' > SIM </td>";}else{ echo"<td> NÃO </td>";}
-                                          if($row["cadastro"]==1){ echo "<td style='color:blue' > COMPLETO </td>";}else{ echo"<td style='color:red' > INCOMPLETO </td>";}
+                                          if($row["convite"]==1){ echo "<td style='color:black' > <b>SIM</b> </td>";}else{ echo"<td> NÃO </td>";}
+                                          if($row["cadastro"]==4){ echo "<td style='color:blue' > COMPLETO </td>";}else if($row["cadastro"]==3){ echo"<td style='color:orange' > PENDENTE </td>";}else if($row["cadastro"]==2){ echo"<td style='color:red' > INCOMPLETO </td>";}else {}
 
                                           echo  "<td>" . $row["dt_solicitacao"]. "</td>
                                           <td align='right'><button class='btn btn-warning' type='button'>VERIFICAR</button></td></tr>";

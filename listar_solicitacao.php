@@ -134,7 +134,7 @@ tr:hover {
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
 
-                                    $sql = "SELECT id_cliente, nome, cpf, email, convite, dt_solicitacao FROM Cliente WHERE solicitacao='0' ORDER BY convite desc, dt_solicitacao";
+                                    $sql = "SELECT id_cliente, nome, cpf, email, convite, cadastro, dt_solicitacao FROM Cliente WHERE cadastro='0' OR cadastro='1' ORDER BY convite desc, dt_solicitacao";
                                     $result = $link->query($sql);
 
                                     echo "<table align='center' rules=rows width=1000><tr>
@@ -144,6 +144,7 @@ tr:hover {
                                     <th><h4><b> CPF </b></h4></th>
                                     <th><h4><b> EMAIL </b></h4></th>
                                     <th><h4><b> CONVIDADO </b></h4></th>
+                                    <th><h4><b> CADASTRO </b></h4></th>
                                     <th><h4><b> ENTRADA </b></h4></th>
                                     <th><h4><b></b></h4></th></tr>";
                                     $i = 1;
@@ -155,7 +156,8 @@ tr:hover {
                                           <td>" . $row["cpf"]. "</td>
                                           <td>" . $row["email"]. "</td>";
 
-                                          if($row["convite"]==1){ echo "<td style='color:green'> SIM </td>";}else{ echo"<td > NÃO </td>";}
+                                          if($row["convite"]==1){ echo "<td style='color:black'> <b>SIM</b> </td>";}else{ echo"<td > NÃO </td>";}
+                                          if($row["cadastro"]==0){ echo"<td style='color:orange' > PENDENTE </td>";}else if($row["cadastro"]==1){ echo"<td style='color:red' > REJEITADO </td>";}else{}
 
                                           echo  "<td>" . $row["dt_solicitacao"]. "</td>
                                           <td align='right'><button class='btn btn-primary' type='submit'>Aceitar</button><button class='btn btn-danger' type='button'>Rejeitar</button></td></tr>";
