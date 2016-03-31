@@ -18,99 +18,19 @@ $id_cliente = $_GET['id'];
 </head>
 
 <body>
-   <!-- container section start -->
-   <section id="container" class="">
-      <!--header start-->
-      <header class="header dark-bg">
-         <div class="toggle-nav">
-            <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
-         </div>
-
-         <!--logo start-->
-         <a href="index.html" class="logo">L<span class="lite">APS</span></a>
-         <!--logo end-->
-
-         <div class="nav search-row" id="top_menu">
-            <ul class="nav top-menu">
-               <li>
-                  <form class="navbar-form">
-                     <input class="form-control" placeholder="Search" type="text">
-                  </form>
-               </li>
-            </ul>
-         </div>
-      </header>
-      <!--header end-->
-
-      <!--sidebar start-->
-      <aside>
-         <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu">
-               <li class="active">
-                  <a class="" href="index.html">
-                     <i class="icon_house_alt"></i>
-                     <span>INICIO</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="" href="cadastro.php?id=0">
-                     <i class="icon_document_alt"></i>
-                     <span>MEUS DADOS</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="" href="convites.php">
-                     <i class="icon_genius"></i>
-                     <span>INDICADOS</span>
-                  </a>
-               </li>
-               <li class="" >
-                  <a class="">
-                     <i class="icon_desktop"></i>
-                     <span>XXXXX</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="">
-                     <i class="icon_piechart"></i>
-                     <span>XXXXX</span>
-                  </a>
-               </li>
-               <li class="" >
-                  <a class="">
-                     <i class="icon_table"></i>
-                     <span>XXXXX</span>
-                  </a>
-               </li>
-               <li class="" >
-                  <a class="">
-                     <i class="icon_documents_alt"></i>
-                     <span>XXXXX</span>
-                  </a>
-               </li>
-            </ul>
-            <!-- sidebar menu end-->
-         </div>
-      </aside>
-      <!--sidebar end-->
-
-      <!--main content start-->
-      <section id="main-content">
+<section id="main-content">
          <section class="wrapper">
             <div class="row">
-               <div class="col-lg-12">
-                  <h3 class="page-header"><i class="fa fa-files-o"></i> CADASTRO</h3>
+               <div class="col-lg-10">
+                  <h3 class="page-header"><i class="fa fa-files-o"></i> CADASTRO INICIAL</h3>
                   <ol class="breadcrumb">
-                     <li><i class="fa fa-home"></i><a href="index.html">INÍCIO</a></li>
-                     <li><i class="icon_document_alt"></i>MEUS DADOS</li>
-                     <li><i class="fa fa-files-o"></i>CADASTRO</li>
+                     <li><i class="fa fa-files-o"></i>CADASTRO INICIAL</li>
                   </ol>
                </div>
             </div>
             <!-- Form validations -->
             <div class="row">
-               <div class="col-lg-12">
+               <div class="col-lg-10">
                   <section class="panel">
                      <header class="panel-heading">
                         CADASTRO
