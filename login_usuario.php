@@ -12,7 +12,7 @@
 </head>
 <body class="login-img3-body">
    <div class="container">
-      <form class="login-form" action="modelo/login.php" method="post">
+      <form class="login-form" action="modelo/login_usuario.php" method="post">
          <div class="login-wrap">
             <p class="login-img">LAPS <i class="icon_lock_alt"></i></p>
             <div class="input-group">

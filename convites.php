@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<?php
-$id_cliente = $_GET['id'];
-?>
 <html lang="pt-br">
 <head>
    <meta charset="utf-8">
@@ -27,7 +24,7 @@ $id_cliente = $_GET['id'];
          </div>
 
          <!--logo start-->
-         <a href="index.html" class="logo">L<span class="lite">APS</span></a>
+         <a href="index.php" class="logo">L<span class="lite">APS</span></a>
          <!--logo end-->
 
          <div class="nav search-row" id="top_menu">
@@ -118,7 +115,7 @@ $id_cliente = $_GET['id'];
                      </header>
                      <div class="panel-body">
                         <div class="form">
-                           <form class="form-validate form-horizontal" id="feedback_form" method="post" action="modelo/envia_convite.php">
+                           <form class="form-validate form-horizontal" method="post" action="modelo/envia_convite.php">
                               <div class="form-group ">
 
                                  <label for="cname" class="control-label col-lg-2">Email indicado <span class="required">*</span></label>

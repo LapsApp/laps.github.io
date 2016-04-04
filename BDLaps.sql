@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 31-Mar-2016 às 07:00
+-- Generation Time: 04-Abr-2016 às 18:16
 -- Versão do servidor: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -54,6 +54,7 @@ CREATE TABLE `cliente` (
   `convite` int(1) DEFAULT '0',
   `cadastro` int(11) NOT NULL DEFAULT '0',
   `senha` varchar(8) DEFAULT NULL,
+  `tipo` int(11) NOT NULL DEFAULT '0',
   `dt_solicitacao` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -61,18 +62,24 @@ CREATE TABLE `cliente` (
 -- Extraindo dados da tabela `cliente`
 --
 
-INSERT INTO `cliente` (`id_cliente`, `nome`, `id_endereco`, `cpf`, `rg`, `id_doc`, `email`, `cel`, `convite`, `cadastro`, `senha`, `dt_solicitacao`) VALUES
-(1, 'FELIPE VOGEL', NULL, 11111111111, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 4, NULL, '2016-03-23'),
-(2, 'CONVITE 1', NULL, 11111111111, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 0, NULL, '2016-03-24'),
-(3, 'CONVITE 2', NULL, 22222222222, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 2, NULL, '2016-03-24'),
-(4, 'CONVITE 3', NULL, 33333333333, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 1, NULL, '2016-03-25'),
-(5, 'TESTE1', NULL, 11111111111, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 3, NULL, '2016-03-25'),
-(6, 'TESTE2', NULL, 22222222222, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 4, NULL, '2016-03-26'),
-(7, 'TESTE3', NULL, 33333333333, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 1, NULL, '2016-03-24'),
-(8, 'CONVITE4', NULL, 44444444444, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 2, NULL, '2016-03-26'),
-(9, 'CONVITE5', NULL, 55555555555, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 3, NULL, '2016-03-24'),
-(10, 'TESTE4', NULL, 44444444444, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 0, NULL, '2016-03-24'),
-(11, 'CONVITE6', NULL, 66666666666, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 4, NULL, '2016-03-25');
+INSERT INTO `cliente` (`id_cliente`, `nome`, `id_endereco`, `cpf`, `rg`, `id_doc`, `email`, `cel`, `convite`, `cadastro`, `senha`, `tipo`, `dt_solicitacao`) VALUES
+(1, 'FELIPE VOGEL', NULL, 11111111111, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 4, 'senha1', 1, '2016-03-23'),
+(2, 'CONVITE 1', NULL, 11111111111, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 2, NULL, 0, '2016-03-24'),
+(3, 'CONVITE 2', NULL, 22222222222, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 2, NULL, 0, '2016-03-24'),
+(4, 'CONVITE 3', NULL, 33333333333, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 1, NULL, 0, '2016-03-25'),
+(5, 'TESTE1', NULL, 11111111111, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 3, NULL, 0, '2016-03-25'),
+(6, 'usuario', NULL, 22222222222, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 4, 'senha2', 0, '2016-03-26'),
+(7, 'TESTE3', NULL, 33333333333, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 1, NULL, 0, '2016-03-24'),
+(8, 'CONVITE4', NULL, 44444444444, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 0, NULL, 0, '2016-03-26'),
+(9, 'CONVITE5', NULL, 55555555555, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 3, NULL, 0, '2016-03-24'),
+(10, 'TESTE4', NULL, 44444444444, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 1, NULL, 0, '2016-03-24'),
+(11, 'CONVITE6', NULL, 66666666666, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 4, NULL, 0, '2016-03-25'),
+(12, 'TESTE2', NULL, 22222222222, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 0, NULL, 0, '2016-04-01'),
+(13, 'CONVITE7', NULL, 77777777777, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 0, NULL, 0, '2016-04-02'),
+(14, 'TESTE5', NULL, 55555555555, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 0, NULL, 0, '2016-03-30'),
+(15, 'TESTE6', NULL, 66666666666, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 0, NULL, 0, '2016-04-03'),
+(17, 'TESTE7', NULL, 77777777777, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 2, NULL, 0, '2016-04-04'),
+(18, 'CONVITE8', NULL, 88888888888, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 0, NULL, 0, '2016-04-04');
 
 -- --------------------------------------------------------
 
@@ -180,7 +187,7 @@ ALTER TABLE `cartao`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `conta`
 --

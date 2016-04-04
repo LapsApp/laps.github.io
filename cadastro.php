@@ -27,7 +27,7 @@ $id_cliente = $_GET['id'];
          </div>
 
          <!--logo start-->
-         <a href="index.html" class="logo">L<span class="lite">APS</span></a>
+         <a href="index.php" class="logo">L<span class="lite">APS</span></a>
          <!--logo end-->
 
          <div class="nav search-row" id="top_menu">

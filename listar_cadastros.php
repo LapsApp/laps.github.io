@@ -38,7 +38,7 @@ tr:hover {
          </div>
 
          <!--logo start-->
-         <a href="index.html" class="logo">L<span class="lite">APS </span></a>
+         <a href="index.php" class="logo">L<span class="lite">APS </span></a>
          <!--logo end-->
 
          <div class="nav search-row" id="top_menu"><!--  search form start -->
@@ -114,7 +114,7 @@ tr:hover {
                <div class="col-lg-12">
                   <h3 class="page-header"><i class="fa fa-files-o"></i>VERIFICAR CADASTROS</h3>
                   <ol class="breadcrumb">
-                     <li><i class="fa fa-home"></i><a href="index.html">INÍCIO</a></li>
+                     <li><i class="fa fa-home"></i><a href="menu_adm.php">INÍCIO</a></li>
                      <li><i class="icon_document_alt"></i>VERIFICAR CADASTROS</li>
                   </ol>
                </div>
@@ -147,8 +147,8 @@ tr:hover {
                                     <th><h4><b> *** </b></h4></th>
                                     <th><h4><b> ID </b></h4></th>
                                     <th><h4><b> NOME </b></h4></th>
-                                    <th><h4><b> CPF </b></h4></th>
                                     <th><h4><b> EMAIL </b></h4></th>
+                                    <th><h4><b> CPF </b></h4></th>
                                     <th><h4><b> CONVIDADO </b></h4></th>
                                     <th><h4><b> CADASTRO </b></h4></th>
                                     <th><h4><b> ENTRADA </b></h4></th>
@@ -159,8 +159,8 @@ tr:hover {
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["id_cliente"]. "</td>
                                           <td>" . $row["nome"]. "</td>
-                                          <td>" . $row["cpf"]. "</td>
-                                          <td>" . $row["email"]. "</td>";
+                                          <td>" . $row["email"]. "</td>
+                                          <td>" . $row["cpf"]. "</td>";
 
                                           if($row["convite"]==1){ echo "<td style='color:black' > <b>SIM</b> </td>";}else{ echo"<td> NÃO </td>";}
                                           if($row["cadastro"]==4){ echo "<td style='color:blue' > COMPLETO </td>";}else if($row["cadastro"]==3){ echo"<td style='color:orange' > PENDENTE </td>";}else if($row["cadastro"]==2){ echo"<td style='color:red' > INCOMPLETO </td>";}else {}

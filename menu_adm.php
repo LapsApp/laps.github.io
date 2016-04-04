@@ -33,7 +33,7 @@
          </div>
 
          <!--logo start-->
-         <a href="index.html" class="logo">L<span class="lite">APS </span></a>
+         <a href="index.php" class="logo">L<span class="lite">APS </span></a>
          <!--logo end-->
 
          <div class="nav search-row" id="top_menu"><!--  search form start -->
@@ -124,7 +124,7 @@
                            die('Não foi possível conectar: ' . mysql_error());
                         }
 
-                        $result=mysqli_query($link,"SELECT count(*) as total FROM Cliente WHERE solicitacao='1'");
+                        $result=mysqli_query($link,"SELECT count(*) as total FROM Cliente WHERE cadastro='2' OR cadastro='3' OR cadastro='4'");
                         $data=mysqli_fetch_assoc($result);
 
                         if($data['total']>0){
@@ -145,7 +145,7 @@
                            die('Não foi possível conectar: ' . mysql_error());
                         }
 
-                        $result=mysqli_query($link,"SELECT count(*) as total FROM Cliente WHERE solicitacao='0'");
+                        $result=mysqli_query($link,"SELECT count(*) as total FROM Cliente WHERE cadastro='0' OR cadastro='1'");
                         $data=mysqli_fetch_assoc($result);
 
                         if($data['total']>0){
