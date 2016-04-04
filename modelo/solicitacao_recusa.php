@@ -1,6 +1,6 @@
 <?php
+
 $from = 'lapsuvv@gmail.com';
-$mail = $_POST['email'];
 
 require_once("../phpmailer/class.phpmailer.php");
 
@@ -31,7 +31,8 @@ function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
 		return true;
 	}
 }
-$msg = '<html>
+$msg = '
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
@@ -54,16 +55,16 @@ $msg = '<html>
 <table id="t2" width="800"> 
 <tr>
 <td width="500">
-  <p align="Justify"><b>LAPS - O Cartão de Crédito que VOCÊ controla!! </b>
+  <p align="Justify"><b>Prezado(a) usuário! </b>
   <p align="Justify">Seja muito bem-vindo!<br><br> 
-  <p align="Justify">Você foi indicado para poder participar.<br> 
-Acesse:
+  <p align="Justify">Infelizmente, sua solicitação de cadastro foi recusada.<br> 
+Você possui pendências em seu nome, tente futuramente.
 </td>
 <td width="300" align="center"><img src="http://lapsapp.github.io/images/laps.png" width="140" height="160">
 </td>
 </tr>
 </table>
-<p align="center"><a href="http://localhost/LAPS/index.php?convite=1#cadastro"><b>LAPSAPP.GITHUB.IO</b></a><br><br>
+<p align="Justify">A Equipe LAPS realizará todos os procedimentos para que a validação de sua solicitação de participação ocorra em apenas alguns dias.<br><br>
 <p align="Justify">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online. 
 <br><br>
 <p align="center">Atenciosamente,</p>
@@ -75,11 +76,9 @@ Acesse:
 </body>
 </html>';
 
-
-
- if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Convite', $msg)) {
+if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Recusado', $msg)) {
     $volta = $_SERVER['HTTP_REFERER'];
-    echo "<script>window.location='$volta';alert('Convite enviado com sucesso para $mail');</script>";
+    echo "<script>window.location='$volta';alert('Recusa enviada com sucesso para $mail');</script>";
 
 }
 if (!empty($error)) echo $error;

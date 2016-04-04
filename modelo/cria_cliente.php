@@ -4,16 +4,19 @@ $nome = $_POST['nome'];
 $email = $_POST['email'];
 $cpf = $_POST['cpf'];
 $convite = $_POST['convite'];
+date_default_timezone_set('America/Sao_Paulo');
+$date = date('Y-m-d');
 $link = mysqli_connect("localhost", "root", "", "laps");
 if (!$link) {
     die('Não foi possível conectar: '.mysql_error());
 }
 
 
-$sql = "INSERT into Cliente(nome, email, cpf,convite)values('".$nome."', 
+$sql = "INSERT into Cliente(nome, email, cpf,convite,dt_solicitacao)values('".$nome."', 
     '".$email."', 
     '".$cpf."',
-    ".$convite.")";
+    ".$convite.",
+    '".$date."')";
 
 
 //mysqli_query($link, $sql);
@@ -97,7 +100,7 @@ $msg = '<html>
 </body>
 </html>';
 
-if (smtpmailer($mail, $from, 'LAPS', 'Convite Enviado', $msg)) {
+if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Bem Vindo', $msg)) {
     $volta = $_SERVER['HTTP_REFERER'];
     echo "<script>window.location='$volta';alert('$nome, Seu cadastro foi realizado com sucesso! Uma mensagem de confirmação será enviada para seu e-mail');</script>";
 } else {
