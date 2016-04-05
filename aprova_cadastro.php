@@ -22,7 +22,8 @@ if (!$link) {
         		d.foto,
         		d.doc_frente,
         		d.doc_verso,
-        		c.dt_solicitacao
+        		c.dt_solicitacao,
+        		ct.id_conta
         	FROM cliente c 
 				join conta ct on ct.id_cliente = c.id_cliente 
 				join documentacao d on d.id_cliente = c.id_cliente 
@@ -50,6 +51,7 @@ $result = $link->query($sql);
         $doc_frente =  $row["doc_frente"];
         $doc_verso =  $row["doc_verso"];
         $dt_solicitacao = $row["dt_solicitacao"];
+        $id_conta = $row["id_conta"];
        }
 
        $data = explode('-', $dt_solicitacao);
@@ -209,7 +211,9 @@ $result = $link->query($sql);
                               <div class="form">
                                   <form class="form-validate form-horizontal" id="feedback_form" method="post" action="modelo/completa_cadastro.php" enctype="multipart/form-data">
                                       <div class="form-group ">
-                                          <input type="hidden" name='id_cliente' value="<?php echo  $_GET['id'];?>">
+                                          <input type="hidden" name='id_conta' value="<?php echo $id_conta;?>">
+                                           <input type="hidden" name='email' value="<?php echo $email;?>">
+                                            <input type="hidden" name='nome' value="<?php echo $nome;?>">
                                           <label for="cname" class="control-label col-lg-2">Nome<span class="required">*</span></label>
                                           <div class="col-lg-2">
                                               <label class="form-control" id="subject"><?php echo $nome;?> </label>
@@ -326,7 +330,7 @@ $result = $link->query($sql);
 
                                       <div class="form-group">
                                           <div class="col-lg-offset-2 col-lg-10">
-                                              <button class="btn btn-primary" type="submit">Aprovar</button>
+                                              <input class="btn btn-primary" type="submit" value="Aceitar" />
                                               <button class="btn btn-default" type="button">Recusar</button>
                                           </div>
                                       </div>
