@@ -166,7 +166,7 @@ tr:hover {
                                           if($row["cadastro"]==4){ echo "<td style='color:blue' > COMPLETO </td>";}else if($row["cadastro"]==3){ echo"<td style='color:orange' > PENDENTE </td>";}else if($row["cadastro"]==2){ echo"<td style='color:red' > INCOMPLETO </td>";}else {}
 
                                           echo  "<td>" . $row["dt_solicitacao"]. "</td>
-                                          <td align='right'><button class='btn btn-warning' type='button'>VERIFICAR</button></td></tr>";
+                                          <td align='right'><a href='aprova_cadastro.php?id_cliente=".$row["id_cliente"]."' class='btn btn-info' role='button'>VERIFICAR</a></td></tr>";
                                           $i++;
 
                                        } echo "</table>";
