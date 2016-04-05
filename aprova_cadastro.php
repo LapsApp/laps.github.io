@@ -57,7 +57,7 @@ $result = $link->query($sql);
        $data = explode('-', $dt_solicitacao);
        $dt = $data[1].'/'.($data[0]+2);
 
-  	$num = mt_rand(0001, 9999).'-'.mt_rand(0001, 9999).'-'.mt_rand(0001, 9999).'-'.mt_rand(0001, 9999);
+  	$numero = mt_rand(0001, 9999).mt_rand(0001, 9999).mt_rand(0001, 9999)	.mt_rand(0001, 9999);
   	$codseg = mt_rand(001, 999);
 
   	$sal = $renda / 880;
@@ -209,11 +209,12 @@ $result = $link->query($sql);
                           </header>
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="modelo/completa_cadastro.php" enctype="multipart/form-data">
+                                  <form class="form-validate form-horizontal" method="post" action="modelo/completa_cadastro.php" enctype="multipart/form-data">
                                       <div class="form-group ">
                                           <input type="hidden" name='id_conta' value="<?php echo $id_conta;?>">
                                            <input type="hidden" name='email' value="<?php echo $email;?>">
                                             <input type="hidden" name='nome' value="<?php echo $nome;?>">
+                                            <input type="hidden" name='nome' value="<?php echo $id_cliente;?>">
                                           <label for="cname" class="control-label col-lg-2">Nome<span class="required">*</span></label>
                                           <div class="col-lg-2">
                                               <label class="form-control" id="subject"><?php echo $nome;?> </label>
@@ -304,7 +305,7 @@ $result = $link->query($sql);
                                           <input type="hidden" name='id_cliente' value="<?php echo  $_GET['id'];?>">
                                           <label for="cname" class="control-label col-lg-2">Número do Cartão<span class="required">*</span></label>
                                           <div class="col-lg-2">
-                                              <input class="form-control" id="subject" name="numeroCartao" maxlength="19" type="text" required  value = "<?php echo $num; ?>"   />
+                                              <input class="form-control" id="subject" name="numeroCartao" maxlength="19" type="text" required  value = "<?php echo $numero; ?>"   />
                                           </div>
                                       </div> 
                                       <div class="form-group ">
@@ -331,7 +332,7 @@ $result = $link->query($sql);
                                       <div class="form-group">
                                           <div class="col-lg-offset-2 col-lg-10">
                                               <input class="btn btn-primary" type="submit" value="Aceitar" />
-                                              <button class="btn btn-default" type="button">Recusar</button>
+                                              <a href="modelo/completa_cadastro.php?id_cliente=<?php echo $id_cliente; ?>&recusa=1&email=<?php echo $email; ?>"><button class="btn btn-default" type="button">Recusar</button></a>
                                           </div>
                                       </div>
                                   </form>
