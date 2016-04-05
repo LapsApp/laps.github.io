@@ -6,6 +6,9 @@
 	$codseg = $_POST['codseg'];
 	$id_conta = $_POST['id_conta'];
 	$link = mysqli_connect("localhost", "root", "", "laps");
+	$para = $_POST['email'];
+	$nome = $_POST['nome'];
+
 	if (!$link) {
 	    die('Não foi possível conectar: '.mysql_error());
 	}
@@ -83,13 +86,18 @@
 	<td width="500">
 	  <p align="Justify"><b>Prezado(a) '.$nome.'! </b>
 	  <p align="Justify">Seja muito bem-vindo! <br><br> 
-	  <p align="Justify">Agradecemos seu interesse em fazer parte da nossa rede.</td>
+	  <p align="Justify">Você já faz parte da nossa rede.</td>
 	<td width="300" align="center"><img src="http://lapsapp.github.io/images/laps.png" width="140" height="160">
 	</td>
 	</tr>
 	</table>
 	  
-	  <p align="Justify">A Equipe LAPS realizará todos os procedimentos para que a validação de sua solicitação de participação ocorra em apenas alguns dias.<br><br>
+	  <p align="Justify">Cartão : $cartão.<br>
+	  					Nome: $Nome<br>
+	  					Limite: $limite<br>
+	  					Nome: $Nome<br>
+	  					Código de Segurança: $codseg<br>
+	  					<br>
 	  <p align="Justify">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online. 
 	<br><br>
 	<p align="center">Atenciosamente,</p>
