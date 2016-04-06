@@ -56,7 +56,6 @@ $msg = '
 <tr>
 <td width="500">
   <p align="Justify"><b>Prezado(a) usuário! </b>
-  <p align="Justify">Seja muito bem-vindo!<br><br> 
   <p align="Justify">Infelizmente, sua solicitação de cadastro foi recusada.<br> 
 Você possui pendências em seu nome, tente futuramente.
 </td>
@@ -64,8 +63,6 @@ Você possui pendências em seu nome, tente futuramente.
 </td>
 </tr>
 </table>
-<p align="Justify">A Equipe LAPS realizará todos os procedimentos para que a validação de sua solicitação de participação ocorra em apenas alguns dias.<br><br>
-<p align="Justify">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online. 
 <br><br>
 <p align="center">Atenciosamente,</p>
 <p align="center"><b>EQUIPE LAPS</b><br><br></p>

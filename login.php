@@ -17,7 +17,7 @@
             <p class="login-img">LAPS <i class="icon_lock_alt"></i></p>
             <div class="input-group">
                <span class="input-group-addon"><i class="icon_profile"></i></span>
-               <input type="text" class="form-control" name="login" id="login" placeholder="CPF" minlength="11" maxlength="11" required autofocus>
+               <input type="text" class="form-control" name="login" id="login" placeholder="CPF" minlength="11" maxlength="11" onkeypress="return SomenteNumero(event);" required autofocus>
             </div>
             <div class="input-group">
                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
@@ -33,5 +33,16 @@
          </div>
       </form>
    </div>
+
+   <script language='JavaScript'>
+   function SomenteNumero(e){
+      var tecla=(window.event)?event.keyCode:e.which;
+      if((tecla>47 && tecla<58)) return true;
+      else{
+         if (tecla==8 || tecla==0) return true;
+         else  return false;
+      }
+   }
+   </script>
 </body>
 </html>

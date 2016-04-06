@@ -7,7 +7,7 @@ require_once("../phpmailer/class.phpmailer.php");
 define('GUSER', $from);	// <-- Insira aqui o seu GMail
 define('GPWD', 'lapsuvv2016');		// <-- Insira aqui a senha do seu GMail
 
-function smtpmailer($para, $de, $de_nome, $assunto, $corpo) { 
+function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
 	global $error;
 	$mail = new PHPMailer();
 	$mail->IsHTML(true);
@@ -24,7 +24,7 @@ function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
 	$mail->Body = $corpo;
 	$mail->AddAddress($para);
 	if(!$mail->Send()) {
-		$error = 'Mail error: '.$mail->ErrorInfo; 
+		$error = 'Mail error: '.$mail->ErrorInfo;
 		return false;
 	} else {
 		$error = 'Mensagem enviada!';
@@ -33,30 +33,30 @@ function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
 }
 $msg = '<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>SOLICITAR PARTICIPAÇÃO</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>SOLICITAR PARTICIPAÇÃO</title>
 <style id="jsbin-css">
 #t1{
-  background: #FFFFFF;
-  border: 2px solid;
-  font-family: calibri;
-  font-size: 20px; 
+	background: #FFFFFF;
+	border: 2px solid;
+	font-family: calibri;
+	font-size: 20px;
 
 }
 </style>
 </head>
 <body>
-<table id="t1" width="800"> 
+<table id="t1" width="800">
 <tr>
 <td>
-  <img src="http://lapsapp.github.io/images/assign1.jpg"><br>
+<img src="http://lapsapp.github.io/images/assign1.jpg"><br>
 <table id="t2" width="800"> 
 <tr>
 <td width="500">
-  <p align="Justify"><b>LAPS - O Cartão de Crédito que VOCÊ controla!! </b>
-  <p align="Justify">Seja muito bem-vindo!<br><br> 
-  <p align="Justify">Você foi indicado para poder participar.<br> 
+<p align="Justify"><b>LAPS - O Cartão de Crédito que VOCÊ controla!! </b>
+<p align="Justify">Seja muito bem-vindo!<br><br>
+<p align="Justify">Você foi indicado para poder participar.<br>
 Acesse:
 </td>
 <td width="300" align="center"><img src="http://lapsapp.github.io/images/laps.png" width="140" height="160">
@@ -64,11 +64,11 @@ Acesse:
 </tr>
 </table>
 <p align="center"><a href="http://localhost/LAPS/index.php?convite=1#cadastro"><b>LAPSAPP.GITHUB.IO</b></a><br><br>
-<p align="Justify">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online. 
+<p align="Justify">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online.
 <br><br>
 <p align="center">Atenciosamente,</p>
 <p align="center"><b>EQUIPE LAPS</b><br><br></p>
-  <img src="http://lapsapp.github.io/images/assign2.jpg">
+<img src="http://lapsapp.github.io/images/assign2.jpg">
 </td>
 </tr>
 </table>
@@ -77,9 +77,9 @@ Acesse:
 
 
 
- if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Convite', $msg)) {
-    $volta = $_SERVER['HTTP_REFERER'];
-    echo "<script>window.location='$volta';alert('Convite enviado com sucesso para $mail');</script>";
+if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Convite', $msg)) {
+	$volta = $_SERVER['HTTP_REFERER'];
+	echo "<script>window.location='$volta';alert('Convite enviado com sucesso para $mail');</script>";
 
 }
 if (!empty($error)) echo $error;

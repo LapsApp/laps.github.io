@@ -139,7 +139,7 @@ tr:hover {
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
 
-                                    $sql = "SELECT id_cliente, nome, cpf, email, convite, cadastro, dt_solicitacao FROM Cliente WHERE cadastro='2' OR cadastro='3' OR cadastro='4' ORDER BY convite desc, dt_solicitacao";
+                                    $sql = "SELECT id_cliente, nome, cpf, email, convite, cadastro, dt_solicitacao FROM Cliente WHERE cadastro='3' OR cadastro='4' ORDER BY convite desc, dt_solicitacao";
                                     $result = $link->query($sql);
 
 

@@ -156,7 +156,7 @@ if (!$link) {
     die('Não foi possível conectar: ' . mysql_error());
 }
 
-$sql = "SELECT id_cliente, nome, cpf, email, convite, cadastro, dt_solicitacao FROM Cliente WHERE cadastro='0' OR cadastro='1' ORDER BY convite desc, dt_solicitacao";
+$sql = "SELECT id_cliente, nome, cpf, email, convite, cadastro, dt_solicitacao FROM Cliente WHERE cadastro='1' ORDER BY convite desc, dt_solicitacao";
 $result = $link->query($sql);
 
 
