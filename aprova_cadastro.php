@@ -24,6 +24,7 @@ d.foto,
 d.doc_frente,
 d.doc_verso,
 c.dt_solicitacao,
+ct.comentario,
 ct.id_conta
 FROM cliente c
 join conta ct on ct.id_cliente = c.id_cliente
@@ -54,6 +55,7 @@ while($row = $result->fetch_assoc()) {
 	$doc_frente =  $row["doc_frente"];
 	$doc_verso =  $row["doc_verso"];
 	$dt_solicitacao = $row["dt_solicitacao"];
+	$comentario = $row["comentario"];
 	$id_conta = $row["id_conta"];
 }
 
@@ -63,11 +65,13 @@ if($cadastro == 4){
 	ct.validade,
 	ct.criacao,
 	ct.codigo,
+	ct.validade,
 	ct.nome_cliente,
 	ct.bandeira,
 	ct.id_conta,
 	c.limite,
-	c.renda
+	c.renda,
+	c.comentario
 	FROM cartao ct
 	join conta c on ct.id_conta = c.id_conta
 	join cliente cl on cl.id_cliente = c.id_cliente
@@ -81,12 +85,14 @@ if($cadastro == 4){
 		$numero =  $row["numero"];
 		$validade =  $row["validade"];
 		$criacao =  $row["criacao"];
-		$codigo =  $row["codigo"];
+		$codseg =  $row["codigo"];
+		$dt =  $row["validade"];
 		$nome_cliente =  $row["nome_cliente"];
 		$bandeira =  $row["bandeira"];
 		$id_conta =  $row["id_conta"];
 		$limite = $row["limite"];
 		$renda = $row["renda"];
+		$comentario = $row["comentario"];
 	}
 	//$codseg = $codigo;
 	//$dt = $validade;
@@ -112,6 +118,17 @@ if($cadastro == 4){
 }
 ?>
 <html lang="pt-br">
+<style>
+#img1:hover {
+    transform: scale(2,2);
+}
+#img2:hover {
+    transform: scale(2,2);
+}
+#img3:hover {
+    transform: scale(2,2);
+}
+</style>
 <head>
 	<meta charset="utf-8">
 	<title>LAPS</title>
@@ -241,37 +258,39 @@ if($cadastro == 4){
 											<input type="hidden" name='id_cliente' value="<?php echo $id_cliente;?>">
 
 											<label for="cname" class="control-label col-lg-2">Nome</label>
-											<div class="col-lg-2">
+											<div class="col-lg-5">
 												<label class="form-control" id="subject"><?php echo $nome;?></label>
 											</div>
 
-											<label for="cname" class="control-label col-lg-1">CPF</label>
-											<div class="col-lg-2">
-												<label class="form-control" id="subject"><?php echo $cpf;?></label>
-											</div>
-
-											<label for="cname" class="control-label col-lg-1">RG</label>
-											<div class="col-lg-2">
-												<label class="form-control" id="subject"><?php echo $rg;?></label>
-											</div>
+                      <label for="cname" class="control-label col-lg-1">Celular</label>
+                      <div class="col-lg-2">
+                        <label class="form-control" id="subject"><?php echo $cel;?></label>
+                      </div>
 										</div>
+                    
+                    <div class="form-group ">
+                      <label for="cname" class="control-label col-lg-2">RG</label>
+                      <div class="col-lg-2">
+                        <label class="form-control" id="subject"><?php echo $rg;?></label>
+                      </div>
 
-										<div class="form-group ">
-											<label for="cname" class="control-label col-lg-2">E-mail</label>
-											<div class="col-lg-2">
-												<label class="form-control" id="subject"><?php echo $email;?></label>
-											</div>
-
-											<label for="cname" class="control-label col-lg-1">Celular</label>
-											<div class="col-lg-2">
-												<label class="form-control" id="subject"><?php echo $cel;?></label>
-											</div>
-
+											<label for="cname" class="control-label col-lg-1">CPF</label>
+                      <div class="col-lg-2">
+                        <label class="form-control" id="subject"><?php echo $cpf;?></label>
+                      </div>
+                      
 											<label for="cname" class="control-label col-lg-1">Renda R$</label>
 											<div class="col-lg-2">
 												<label class="form-control" id="subject"><?php echo $renda;?></label>
 											</div>
 										</div>
+
+                    <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">E-mail</label>
+                      <div class="col-lg-5">
+                        <label class="form-control" id="subject"><?php echo $email;?></label>
+                      </div>
+                    </div>
 
 										<div class="form-group">
 											<span class="title h4 uppercase">ENDEREÇO</span>
@@ -300,11 +319,11 @@ if($cadastro == 4){
 												<label class="form-control" id="subject"><?php echo $bairro;?></label>
 											</div>
 
-											<label for="cname" class="control-label col-lg-1">Cidade</label>
-											<div class="col-lg-2">
-												<label class="form-control" id="subject"><?php echo $cidade;?> </label>
-											</div>
-										</div>
+                    <label for="cname" class="control-label col-lg-1">Cidade</label>
+                      <div class="col-lg-2">
+                        <label class="form-control" id="subject"><?php echo $cidade;?> </label>
+                      </div>
+                    </div>
 
 										<div class="form-group">
 											<label for="cname" class="control-label col-lg-2">Estado</label>
@@ -325,7 +344,7 @@ if($cadastro == 4){
 										<div class="form-group ">
 											<label for="ccomment" class="control-label col-lg-2">Perfil</label>
 											<div class="col-lg-2">
-												<img src="img/<?php
+												<img id="img1" src="img/<?php
 												$aux = explode('/', $foto);
 												echo $aux[3];?>" height="200" width="200">
 											</div>
@@ -334,14 +353,14 @@ if($cadastro == 4){
 										<div class="form-group ">
 											<label for="ccomment" class="control-label col-lg-2">Doc. Frente</label>
 											<div class="col-lg-2">
-												<img src="img/<?php
+												<img id="img2" src="img/<?php
 												$aux = explode('/', $doc_frente);
 												echo $aux[3];?>" height="200" width="200">
 											</div>
 
 											<label for="ccomment" class="control-label col-lg-2">Doc. Verso</label>
 											<div class="col-lg-2">
-												<img src="img/<?php
+												<img id="img3" src="img/<?php
 												$aux = explode('/', $doc_verso);
 												echo $aux[3];?>" height="200" width="200">
 											</div>
@@ -355,33 +374,43 @@ if($cadastro == 4){
 											<input type="hidden" name='id_cliente' value="<?php echo  $_GET['id_cliente'];?>">
 											<label for="cname" class="control-label col-lg-2">Número do Cartão</label>
 											<div class="col-lg-2">
-												<input class="form-control" id="subject" name="numeroCartao" maxlength="19" type="text" required disabled value = "<?php echo $numero; ?>"  />
+												<input class="form-control" id="subject" name="numeroCartao" maxlength="19" type="text" required value = "<?php echo $numero; ?>"  />
 											</div>
 
 											<label for="cname" class="control-label col-lg-2">Validade</label>
 											<div class="col-lg-2">
-												<input class="form-control" id="subject" name="validade" maxlength="10" type="text" required disabled value="<?php echo $dt;?>" />
+												<input class="form-control" id="subject" name="validade" maxlength="10" type="text" required value="<?php echo $dt;?>" />
 											</div>
 										</div>
 
 										<div class="form-group ">
 											<label for="cname" class="control-label col-lg-2">Cod. Segurança</label>
 											<div class="col-lg-2">
-												<input class="form-control" id="subject" name="codseg" maxlength="3" type="text" required disabled value="<?php echo $codseg;?>" />
+												<input class="form-control" id="subject" name="codseg" maxlength="3" type="text" required value="<?php echo $codseg;?>" />
 											</div>
 
 											<label for="cname" class="control-label col-lg-2">Limite R$</label>
 											<div class="col-lg-2">
-												<input class="form-control" id="subject" name="limite" disabled maxlength="8" type="text"
-												value="<?php echo $limite; ?>"
-												required />
+												<input class="form-control" id="subject" name="limite" maxlength="8" type="text" required value="<?php echo $limite; ?>" />
 											</div>
 										</div>
 
 										<div class="form-group">
+											<span class="title h4 uppercase">COMENTÁRIOS</span>
+										</div>
+
+										<div class="form-group ">
+											<label for="cname" class="control-label col-lg-2">Texto</label>
+											<div class="col-lg-8">
+												<input class="form-control" id="comentario" name="comentario" maxlength="50" type="text" value="<?php echo $comentario; ?>"/>
+										</div>
+
+										<br><br><br><br>
+
+										<div class="form-group">
 											<div class="col-lg-offset-2 col-lg-10">
 												<input class="btn btn-primary" type="submit" value="Aceitar" />
-												<a href="modelo/completa_cadastro.php?id_cliente=<?php echo $id_cliente; ?>&recusa=1&email=<?php echo $email; ?>">
+												<a href="#" onclick="this.href='modelo/completa_cadastro.php?id_cliente=<?php echo $id_cliente; ?>&recusa=1&email=<?php echo $email; ?>&comentario='+document.getElementById('comentario').value;">
 													<button class="btn btn-default" type="button">Recusar</button>
 												</a>
 											</div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Abr-2016 às 18:16
+-- Generation Time: 11-Abr-2016 às 19:58
 -- Versão do servidor: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -29,12 +29,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `cartao` (
   `id_cartao` int(11) NOT NULL,
   `numero` int(16) NOT NULL,
-  `validade` date NOT NULL,
+  `validade` varchar(7) NOT NULL,
   `criacao` date NOT NULL,
   `codigo` int(3) NOT NULL,
   `nome_cliente` varchar(15) NOT NULL,
-  `bandeira` varchar(15) NOT NULL
+  `bandeira` varchar(15) NOT NULL,
+  `id_conta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `cartao`
+--
+
+INSERT INTO `cartao` (`id_cartao`, `numero`, `validade`, `criacao`, `codigo`, `nome_cliente`, `bandeira`, `id_conta`) VALUES
+(1, 2147483647, '04/2018', '2016-04-06', 314, 'menino feliz', 'UVV', 3),
+(33, 2147483647, '04/2018', '2016-04-11', 634, 'FELIPE DE OLIVE', 'UVV', 5);
 
 -- --------------------------------------------------------
 
@@ -46,7 +55,7 @@ CREATE TABLE `cliente` (
   `id_cliente` int(11) NOT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `id_endereco` int(10) DEFAULT NULL,
-  `cpf` bigint(11) DEFAULT NULL,
+  `cpf` varchar(11) DEFAULT NULL,
   `rg` int(10) DEFAULT NULL,
   `id_doc` int(10) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
@@ -63,23 +72,26 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nome`, `id_endereco`, `cpf`, `rg`, `id_doc`, `email`, `cel`, `convite`, `cadastro`, `senha`, `tipo`, `dt_solicitacao`) VALUES
-(1, 'FELIPE VOGEL', NULL, 11111111111, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 4, 'senha1', 1, '2016-03-23'),
-(2, 'CONVITE 1', NULL, 11111111111, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 2, NULL, 0, '2016-03-24'),
-(3, 'CONVITE 2', NULL, 22222222222, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 2, NULL, 0, '2016-03-24'),
-(4, 'CONVITE 3', NULL, 33333333333, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 1, NULL, 0, '2016-03-25'),
-(5, 'TESTE1', NULL, 11111111111, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 3, NULL, 0, '2016-03-25'),
-(6, 'usuario', NULL, 22222222222, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 4, 'senha2', 0, '2016-03-26'),
-(7, 'TESTE3', NULL, 33333333333, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 1, NULL, 0, '2016-03-24'),
-(8, 'CONVITE4', NULL, 44444444444, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 0, NULL, 0, '2016-03-26'),
-(9, 'CONVITE5', NULL, 55555555555, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 3, NULL, 0, '2016-03-24'),
-(10, 'TESTE4', NULL, 44444444444, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 1, NULL, 0, '2016-03-24'),
-(11, 'CONVITE6', NULL, 66666666666, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 4, NULL, 0, '2016-03-25'),
-(12, 'TESTE2', NULL, 22222222222, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 0, NULL, 0, '2016-04-01'),
-(13, 'CONVITE7', NULL, 77777777777, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 0, NULL, 0, '2016-04-02'),
-(14, 'TESTE5', NULL, 55555555555, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 0, NULL, 0, '2016-03-30'),
-(15, 'TESTE6', NULL, 66666666666, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 0, NULL, 0, '2016-04-03'),
-(17, 'TESTE7', NULL, 77777777777, NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 2, NULL, 0, '2016-04-04'),
-(18, 'CONVITE8', NULL, 88888888888, NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 0, NULL, 0, '2016-04-04');
+(1, 'FELIPE VOGEL', NULL, '11111111111', NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 4, 'senha1', 1, '2016-03-23'),
+(2, 'CONVITE 1', NULL, '11111111111', NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 2, '123', 0, '2016-03-24'),
+(3, 'CONVITE 2', NULL, '22222222222', NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 2, NULL, 0, '2016-03-24'),
+(4, 'CONVITE 3', NULL, '33333333333', NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 1, NULL, 0, '2016-03-25'),
+(5, 'TESTE1', NULL, '11111111111', NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 3, NULL, 0, '2016-03-25'),
+(6, 'usuario', NULL, '22222222222', NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 4, 'senha2', 0, '2016-03-26'),
+(7, 'TESTE3', NULL, '33333333333', NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 1, NULL, 0, '2016-03-24'),
+(8, 'CONVITE4', NULL, '44444444444', NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 0, NULL, 0, '2016-03-26'),
+(9, 'CONVITE5', NULL, '55555555555', NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 3, NULL, 0, '2016-03-24'),
+(10, 'TESTE4', NULL, '44444444444', NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 1, NULL, 0, '2016-03-24'),
+(11, 'CONVITE6', NULL, '66666666666', NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 4, NULL, 0, '2016-03-25'),
+(12, 'TESTE2', NULL, '22222222222', NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 0, NULL, 0, '2016-04-01'),
+(13, 'CONVITE7', NULL, '77777777777', NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 0, NULL, 0, '2016-04-02'),
+(14, 'TESTE5', NULL, '55555555555', NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 0, NULL, 0, '2016-03-30'),
+(15, 'TESTE6', NULL, '66666666666', NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 0, NULL, 0, '2016-04-03'),
+(17, 'TESTE7', NULL, '77777777777', NULL, NULL, 'feoli7@hotmail.com', NULL, 0, 2, NULL, 0, '2016-04-04'),
+(18, 'CONVITE8', NULL, '88888888888', NULL, NULL, 'feoli7@hotmail.com', NULL, 1, 0, NULL, 0, '2016-04-04'),
+(19, 'menino feliz', NULL, '22222222222', 2292522, NULL, 'lucsazevedo@gmail.com', 992322726, 0, 0, '123456', 0, '2016-04-05'),
+(20, 'testecpf', NULL, '12909437701', NULL, NULL, 'aguiar.micael@gmail.com', NULL, 0, 2, NULL, 0, '2016-04-05'),
+(22, 'FELIPE DE OLIVEIRA VOGEL PENNA', NULL, '12312312312', 2227465, NULL, 'feoli7@hotmail.com', 999148998, 0, 0, '12345678', 0, '2016-04-11');
 
 -- --------------------------------------------------------
 
@@ -93,15 +105,18 @@ CREATE TABLE `conta` (
   `limite` decimal(10,2) NOT NULL,
   `renda` decimal(10,2) NOT NULL,
   `saldo` decimal(10,2) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '0'
+  `status` int(1) NOT NULL DEFAULT '0',
+  `comentario` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `conta`
 --
 
-INSERT INTO `conta` (`id_conta`, `id_cliente`, `limite`, `renda`, `saldo`, `status`) VALUES
-(1, 0, '0.00', '100.00', '0.00', 0);
+INSERT INTO `conta` (`id_conta`, `id_cliente`, `limite`, `renda`, `saldo`, `status`, `comentario`) VALUES
+(2, 19, '0.00', '10000.00', '0.00', 0, NULL),
+(3, 19, '0.00', '10000.00', '0.00', 0, NULL),
+(5, 22, '0.10', '3000.00', '0.00', 0, 'REJEITADO AMIGO FELIPE');
 
 -- --------------------------------------------------------
 
@@ -122,7 +137,11 @@ CREATE TABLE `documentacao` (
 --
 
 INSERT INTO `documentacao` (`id_doc`, `id_cliente`, `foto`, `doc_frente`, `doc_verso`) VALUES
-(1, 0, '../img/3x4_001.bmp', '', '');
+(1, 0, '../img/3x4_001.bmp', '', ''),
+(2, 19, 'localhost/LAPS/img/IMG-20150213-WA0001.jpg', 'localhost/LAPS/img/4.png', 'localhost/LAPS/img/2.png'),
+(3, 19, 'localhost/LAPS/img/IMG-20150213-WA0001.jpg', 'localhost/LAPS/img/4.png', 'localhost/LAPS/img/2.png'),
+(4, 21, 'localhost/LAPS/img/0002.jpg', 'localhost/LAPS/img/00001.jpg', 'localhost/LAPS/img/00002.jpg'),
+(5, 22, 'localhost/LAPS/img/0002.jpg', 'localhost/LAPS/img/00001.jpg', 'localhost/LAPS/img/00002.jpg');
 
 -- --------------------------------------------------------
 
@@ -137,8 +156,18 @@ CREATE TABLE `endereco` (
   `complemento` varchar(45) DEFAULT NULL,
   `cep` int(10) DEFAULT NULL,
   `cidade` varchar(15) DEFAULT NULL,
-  `estado` varchar(2) DEFAULT NULL
+  `estado` varchar(2) DEFAULT NULL,
+  `bairro` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `endereco`
+--
+
+INSERT INTO `endereco` (`id_cliente`, `rua`, `num`, `complemento`, `cep`, `cidade`, `estado`, `bairro`) VALUES
+(19, 'Avenida Resplendor, ', 112, 'comp', 29101620, 'Vila Velha', 'Es', 'MaruÃ­pe'),
+(21, 'Rua Jaime Duarte', 599, '403', 29101620, 'Vila Velha', 'ES', 'Itapoa'),
+(22, 'Rua Jaime Duarte', 599, '403', 29101620, 'Vila Velha', 'ES', 'Itapoa');
 
 --
 -- Indexes for dumped tables
@@ -182,22 +211,22 @@ ALTER TABLE `endereco`
 -- AUTO_INCREMENT for table `cartao`
 --
 ALTER TABLE `cartao`
-  MODIFY `id_cartao` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cartao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `conta`
 --
 ALTER TABLE `conta`
-  MODIFY `id_conta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_conta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `documentacao`
 --
 ALTER TABLE `documentacao`
-  MODIFY `id_doc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_doc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
