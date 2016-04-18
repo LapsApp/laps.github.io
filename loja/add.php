@@ -15,4 +15,4 @@ $nome = $_GET['nome'];
 	if (mysqli_query($link, $sql)) { }
  ?>
 <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">alert ("PRODUTO ADICIONADO AO CARRINHO")</SCRIPT>
-<SCRIPT language="JavaScript">window.location.href="http://localhost/laps/loja/lojaonline.php?cat=GERAL";</SCRIPT>
+<SCRIPT language="JavaScript">window.location.href="../loja/lojaonline.php?cat=GERAL";</SCRIPT>

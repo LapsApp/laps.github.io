@@ -49,23 +49,23 @@
 CATEGORIAS : 
 <select class="postform" id="cat" name="cat" width="500" onchange="location=this.options[this.selectedIndex].value;">
 <option>SELECIONE UMA CATEGORIA</option>
-<option value="http://localhost/laps/loja/lojaonline.php?cat=GERAL">GERAL
+<option value="../loja/lojaonline.php?cat=GERAL">GERAL
    </option>
-<option value="http://localhost/laps/loja/lojaonline.php?cat=ALIMENTACAO">ALIMENTACAO
+<option value="../loja/lojaonline.php?cat=ALIMENTACAO">ALIMENTACAO
    </option>
-<option value="http://localhost/laps/loja/lojaonline.php?cat=TECNOLOGIA">TECNOLOGIA
+<option value="../loja/lojaonline.php?cat=TECNOLOGIA">TECNOLOGIA
    </option>
-<option value="http://localhost/laps/loja/lojaonline.php?cat=LIVRARIA">LIVRARIA
+<option value="../loja/lojaonline.php?cat=LIVRARIA">LIVRARIA
    </option>
-<option value="http://localhost/laps/loja/lojaonline.php?cat=ESPORTE">ESPORTE
+<option value="../loja/lojaonline.php?cat=ESPORTE">ESPORTE
    </option>
-<option value="http://localhost/laps/loja/lojaonline.php?cat=LAZER">LAZER
+<option value="../loja/lojaonline.php?cat=LAZER">LAZER
    </option>
-<option value="http://localhost/laps/loja/lojaonline.php?cat=CALCADO">CALCADOS
+<option value="../loja/lojaonline.php?cat=CALCADO">CALCADOS
    </option>
-<option value="http://localhost/laps/loja/lojaonline.php?cat=VESTUARIO">VESTUARIO
+<option value="../loja/lojaonline.php?cat=VESTUARIO">VESTUARIO
    </option>
-<option value="http://localhost/laps/loja/lojaonline.php?cat=ELETRODOMESTICO">ELETRODOMESTICO
+<option value="../loja/lojaonline.php?cat=ELETRODOMESTICO">ELETRODOMESTICO
    </option>
 </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 CARRINHO : 
