@@ -104,7 +104,7 @@ $result = $link->query($sql);
 $i =1;
 if ($result->num_rows > 0) { 
   while($row = $result->fetch_assoc()) { 
-    echo "<td align='center'><form method='post' action='add.php?id=".$row["id_prod"]."&nome=".$row["nome"]."'>";
+    echo "<td align='center'><form method='post' action='add.php?id=".$row["id_prod"]."&nome=".$row["nome"]."&cat=".$row["categoria"]."'>";
 if($row["categoria"]=="ALIMENTACAO"){echo "<div style='width: 250px; height: 350px; background: #FF9999; box-shadow: 0px 20px 15px grey'>";}
 if($row["categoria"]=="TECNOLOGIA"){echo "<div style='width: 250px; height: 350px; background: #CCFFE5; box-shadow: 0px 20px 15px grey'>";}
 if($row["categoria"]=="LIVRARIA"){echo "<div style='width: 250px; height: 350px; background: #FFE5CC; box-shadow: 0px 20px 15px grey'>";}

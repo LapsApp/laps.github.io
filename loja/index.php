@@ -57,7 +57,7 @@
 <tr>
 <td>
 <div align="center" id="card1-imagem"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<button class='btn' name='entrar' onclick="window.location='lojaonline.php?cat=GERAL';"><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENTRAR NO SITE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1></button>
+<button class='btn' name='entrar' onclick="window.location='../loja/lojaonline.php?cat=GERAL';"><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENTRAR NO SITE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1></button>
 </div></div>
 <td>
 </tr>
