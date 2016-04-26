@@ -79,7 +79,7 @@ Complete seu cadastro, acesse:
 
 if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Aceito', $msg)) {
 	$volta = $_SERVER['HTTP_REFERER'];
-	echo "<script>window.location='$volta';alert('Aceite enviada com sucesso para $mail');</script>";
+    echo "<script>window.location='$volta?obj=Aceite&type=sucesso';</script>";
 
 }
 if (!empty($error)) echo $error;

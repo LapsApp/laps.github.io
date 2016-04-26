@@ -73,10 +73,16 @@ Você possui pendências em seu nome, tente futuramente.
 </body>
 </html>';
 
-if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Recusado', $msg)) {
-    $volta = $_SERVER['HTTP_REFERER'];
-    echo "<script>window.location='$volta';alert('Recusa enviada com sucesso para $mail');</script>";
 
+if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Bem Vindo', $msg)) {
+   $volta = $_SERVER['HTTP_REFERER'];
+   echo "<script>window.location='$volta?obj=Cliente&type=sucesso'</script>";
+} else {
+   $volta = $_SERVER['HTTP_REFERER'];
+   echo "<script>window.location='$volta?obj=Cliente&type=erro'</script>";
 }
-if (!empty($error)) echo $error;
+if (!empty($error)) {
+   $volta = $_SERVER['HTTP_REFERER'];
+   echo "<script>window.location='$volta?obj=Cliente&type=erro'</script>";
+  }
 ?>

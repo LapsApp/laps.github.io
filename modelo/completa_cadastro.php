@@ -36,12 +36,14 @@ function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
 	$mail->Body = $corpo;
 	$mail->AddAddress($para);
 	if(!$mail->Send()) {
-		$error = 'Mail error: '.$mail->ErrorInfo; 
-		return false;
+		  $volta = $_SERVER['HTTP_REFERER'];
+    	echo "<script>window.location='$volta&obj=Cliente&type=erro'</script>";
 	} else {
-		$error = 'Mensagem enviada!';
+		  $volta = $_SERVER['HTTP_REFERER'];
+    	echo "<script>window.location='$volta&obj=Cliente&type=sucesso'</script>";
 		return true;
 	}
+
 }
 $msg = '
 <html>
@@ -87,8 +89,7 @@ Você possui pendências em seu nome, tente futuramente.
 
 if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Cliente Recusado', $msg)) {
     $volta = $_SERVER['HTTP_REFERER'];
-    echo "<script>window.location='$volta';alert('Cliente Rejeitado com Sucesso! Uma mensagem foi enviada');</script>";
-
+    echo "<script>window.location='$volta&obj=Cliente&type=sucesso'</script>";
 }
 if (!empty($error)) echo $error;
 
@@ -220,15 +221,17 @@ else
 		</html>';
 
 		if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Cliente Aprovado', $msg)) {
-			$volta = $_SERVER['HTTP_REFERER'];
-			echo "<script>window.location='$volta';alert('$nome, Cliente Aprovado com Sucesso! Uma mensagem foi enviada');</script>";
-		} else {
-			$volta = $_SERVER['HTTP_REFERER'];
-			echo "<script>window.location='$volta';alert('$nome, Ocorreu um erro ao enviar o email. Por favor tente novamente');</script>";
-		}
-		if (!empty($error)) {
-			$volta = $_SERVER['HTTP_REFERER'];
-			echo "<script>window.location='$volta';alert('$nome, Ocorreu um erro ao enviar o email. Por favor tente novamente');</script>";
-		}
+	
+   $volta = $_SERVER['HTTP_REFERER'];
+   echo "<script>window.location='$volta&obj=Cliente&type=sucesso'</script>";
+} else {
+   $volta = $_SERVER['HTTP_REFERER'];	
+   echo "<script>window.location='$volta&obj=Cliente&type=erro'</script>";
+}
+if (!empty($error)) {
+   $volta = $_SERVER['HTTP_REFERER'];
+   echo "<script>window.location='$volta&obj=Cliente&type=erro'</script>";
+}
+
 	}
 	?>

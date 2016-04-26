@@ -12,6 +12,7 @@ if(!empty($_GET['convite']))
 <head>
    <meta charset="utf-8">
    <title>LAPS</title>
+   
 
    <link rel="stylesheet" href="css/animate.min.css">
    <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -271,6 +272,10 @@ if(!empty($_GET['convite']))
    <script src="js/custom.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
    <script src="js/bootstrap.min.js"></script>
+   <?php
+      include ('modelo/funcoesJS.php');
+      include ('modelo/TesteMen.php');
+   ?>
 </body>
 
 </html>

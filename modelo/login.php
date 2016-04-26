@@ -11,16 +11,16 @@ if (isset($entrar)) {
 
     if ($result->num_rows <= 0) {
         $volta = $_SERVER['HTTP_REFERER'];
-        echo "<script>window.location='$volta';alert('Login e/ou senha incorretos');</script>";
+        echo "<script>window.location='$volta?obj=Login&type=erro';</script>";
         die();
     } else {
         while($row = $result->fetch_assoc()) {
 	        if($row["tipo"]==1){
 	        setcookie("login", $login);
-	        header("Location:../menu_adm.php");}
+	        header("Location:../menu_adm.php?");}
 	        else{
 	        setcookie("login", $login);
-	        header("Location:../convites.php");}
+	        header("Location:../convites.php?");}
 	    }
     }
 }

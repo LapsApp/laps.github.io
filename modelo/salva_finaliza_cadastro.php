@@ -92,6 +92,4 @@ $upload = move_uploaded_file($file_tmp_dv,'../img/'.$nome_correto_dv);
 //echo "<img src='../img/$nome_correto_dv' border='1'><br><br>";
 
 
-?>
-<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">alert ("cadastro efetuado com sucesso!")</SCRIPT>
-<SCRIPT language="JavaScript">window.location.href="http://localhost/LAPS/";</SCRIPT>
+?><SCRIPT language="JavaScript">window.location.href="http://localhost/LAPS/index.php?obj=Cadastro&type=sucesso";</SCRIPT>

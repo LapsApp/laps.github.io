@@ -150,5 +150,9 @@
    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
    <script src="js/form-validation-script.js"></script>
    <script src="js/scripts.js"></script>
+   <?php
+      include ('modelo/funcoesJS.php');
+      include ('modelo/TesteMen.php');
+   ?>
 </body>
 </html>

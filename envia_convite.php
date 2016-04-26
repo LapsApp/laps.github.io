@@ -1,4 +1,5 @@
 <?php
+
 $from = 'contato@laps.16mb.com';
 $to = $_POST['mail'];
 $subject = 'Assunto';
@@ -8,5 +9,12 @@ $headers = 'From: ' . $from . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
 ini_set(sendmail_from, $from);
-if (mail($to, $subject, $message, $headers)) echo "Mensagem enviada.";
+if (mail($to, $subject, $message, $headers)) 
+{
+   echo "<script>window.location='http://localhost/laps/convites.php?obj=Convite&type=sucesso'</script>";
+}
+else {
+   $volta = $_SERVER['HTTP_REFERER'];
+   echo "<script>window.location='http://localhost/laps/convites.php?obj=Convite&type=erro'</script>";
+}
 ?>

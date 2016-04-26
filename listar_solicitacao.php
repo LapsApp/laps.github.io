@@ -228,6 +228,10 @@ if ($result->num_rows > 0) {
     <!--custome script for all page-->
     <script src="js/scripts.js"></script>    
 
+<?php
+      include ('modelo/funcoesJS.php');
+      include ('modelo/TesteMen.php');
+   ?>
 
   </body>
 </html>

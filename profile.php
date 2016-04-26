@@ -146,5 +146,9 @@
     <script src="js/jquery.singlePageNav.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <?php
+      include ('modelo/funcoesJS.php');
+      include ('modelo/TesteMen.php');
+   ?>
 </body>
 </html>

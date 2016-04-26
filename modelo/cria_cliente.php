@@ -1,5 +1,6 @@
 <?php
-
+include ('funcoesJS.php');
+include ('TesteMen.php');
 $nome = $_POST['nome'];
 $email = $_POST['email'];
 $cpf = $_POST['cpf'];
@@ -19,6 +20,8 @@ $sql = "INSERT into Cliente(nome, email, cpf,convite,dt_solicitacao, cadastro)va
 '".$date."',
 1)";
 
+
+echo "<script>Teste(); </script>";
 
 //mysqli_query($link, $sql);
 if (mysqli_query($link, $sql)) { //echo "inserido";
@@ -103,13 +106,13 @@ $msg = '<html>
 
 if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Bem Vindo', $msg)) {
    $volta = $_SERVER['HTTP_REFERER'];
-   echo "<script>window.location='$volta';alert('$nome, Seu cadastro foi realizado com sucesso! Uma mensagem de confirmação será enviada para seu e-mail');</script>";
+   echo "<script>window.location='$volta?obj=Cadastro&type=sucesso'</script>";
 } else {
    $volta = $_SERVER['HTTP_REFERER'];
-   echo "<script>window.location='$volta';alert('$nome, Ocorreu um erro ao enviar o email. Por favor tente novamente');</script>";
+   echo "<script>window.location='$volta?obj=Cadastro&type=erro'</script>";
 }
 if (!empty($error)) {
    $volta = $_SERVER['HTTP_REFERER'];
-   echo "<script>window.location='$volta';alert('$nome, Ocorreu um erro ao enviar o email. Por favor tente novamente');</script>";
+   echo "<script>window.location='$volta?obj=Cadastro&type=erro'</script>";
 }
 ?>
