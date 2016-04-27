@@ -85,8 +85,8 @@
    $up2 = "UPDATE conta set limite = ".$novo_limite." where id_conta = ".$data3['id_conta'].";";
    mysqli_query($link_laps, $up2);
 		
-		    $volta = '../loja/lojaonline.php';
-			echo "<script>window.location='$volta&obj=Cliente&type=Sucesso'</script>";
+		    $volta = 'lojaonline.php';
+			echo "<script>window.location='$volta?obj=na compra&type=sucesso&cat=GERAL'</script>";
 		 
 	 
 	 
