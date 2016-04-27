@@ -1,4 +1,6 @@
 <?php
+	  // arquivo atual.
+	  
 	  include ('../modelo/funcoesJS.php');
       include ('../modelo/TesteMen.php');
 	  
