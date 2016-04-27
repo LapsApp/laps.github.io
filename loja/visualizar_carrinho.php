@@ -1,6 +1,7 @@
 <?php
+	 // arquivo atual.
 	$link = mysqli_connect("localhost", "root", "", "loja");
-                        if (!$link) {
+	if (!$link) {
                            die('Não foi possível conectar: ' . mysql_error());
                         }
 ?>
