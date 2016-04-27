@@ -83,7 +83,7 @@ CARRINHO :
                         }else{ echo "0";}
                         ?>
 
-ITENS&nbsp;&nbsp;&nbsp;&nbsp;<button class='btn' name='adicionar' value='' type='submit'>VISUALIZAR CARRINHO</button></b></div>
+ITENS&nbsp;&nbsp;&nbsp;&nbsp;<button class='btn' name='adicionar' value='' type='submit' onclick="window.location='../loja/visualizar_carrinho.php';">VISUALIZAR CARRINHO</button></b></div>
 
 <table align="center" width="1100" border="0" cellspacing="30"> 
 <tr>
@@ -115,7 +115,7 @@ if($row["categoria"]=="VESTUARIO"){echo "<div style='width: 250px; height: 350px
 if($row["categoria"]=="ELETRODOMESTICO"){echo "<div style='width: 250px; height: 350px; background: #CFCFCF; box-shadow: 0px 20px 15px grey'>";}
 echo "<br><b>".$row["loja"]."</b><br><br>
 <div id='img'><img src='".$row["foto"]."'>
-</div><b><br>".$row["nome"]."<br>".$row["valor"]."<br><br>
+</div><b><br>".$row["nome"]."<br>R$".$row["valor"]."<br><br>
 <button id='btn' class='btn' name='adicionar' value='' type='submit'>ADICIONAR AO CARRINHO</button>
 </b></div></form>
 </td>";
