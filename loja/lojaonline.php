@@ -47,7 +47,7 @@
   
 <div id="barra" style="line-height: 40px"><b>
 CATEGORIAS : 
-<select class="postform" id="cat" name="cat" width="500" onchange="location=this.options[this.selectedIndex].value;">
+<select class="postform" id="cat" name="cat" width="500" style="color: #000;" onchange="location=this.options[this.selectedIndex].value;">
 <option>SELECIONE UMA CATEGORIA</option>
 <option value="../loja/lojaonline.php?cat=GERAL">GERAL
    </option>

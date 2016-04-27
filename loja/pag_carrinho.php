@@ -4,6 +4,9 @@
 	  include ('../modelo/funcoesJS.php');
       include ('../modelo/TesteMen.php');
 	  
+	  
+	   $controle = 1;
+	  
 	$link = mysqli_connect("localhost", "root", "", "loja");
 	$link_laps = mysqli_connect("localhost", "root", "", "laps");
                         if (!$link) {
@@ -31,13 +34,14 @@
 	 if($data0['id_cartao']){
 			$_POST["num_cartao"] = $data0['id_cartao'];
 	}else{
-		echo "erro dados cartao";
-	//echo "<script>window.location='$volta&obj=Cliente&type=erro'</script>";
+	     $controle = 0;
+		 $volta = 'lojaonline.php';
+	echo "<script>window.location='$volta?cat=GERAL&obj=Compra devido ao cartao&type=erro'</script>";
 	}
 	 
 	 //echo "id> ".$_POST["num_cartao"].'</br>';
 	 
-	 $controle = 1;
+	
 	 
 	 $result=mysqli_query($link,"SELECT id_prod,nome,valor,categoria,addcar FROM produto where addcar != 0;");
 	 
@@ -58,8 +62,8 @@
 	
 	$controle = 0;
 	$volta = '../loja/lojaonline.php';
-	echo "limite erro";
-	//echo "<script>window.location='$volta&obj=Cliente&type=erro'</script>";
+	$volta = 'lojaonline.php';
+	echo "<script>window.location='$volta?cat=GERAL&obj=Compra por falta de limite&type=erro'</script>";
 	}
 
 	if($controle){
@@ -77,16 +81,26 @@
 	
 	$novo_limite = $data3['limite'] - $_POST['vl_total'];
 	
-	} 
 	
-   $up = "UPDATE produto set addcar = 0 where addcar != 0 ";
-   mysqli_query($link, $up);
-   
-   $up2 = "UPDATE conta set limite = ".$novo_limite." where id_conta = ".$data3['id_conta'].";";
+	$up2 = "UPDATE conta set limite = ".$novo_limite." where id_conta = ".$data3['id_conta'].";";
    mysqli_query($link_laps, $up2);
-		
+
+   
+   	   $up = "UPDATE produto set addcar = 0 where addcar != 0 ";
+       mysqli_query($link, $up);
+	   
+	   
 		    $volta = 'lojaonline.php';
 			echo "<script>window.location='$volta?obj=na compra&type=sucesso&cat=GERAL'</script>";
+	
+
+	
+	
+	} 
+	
+
+   
+   
 		 
 	 
 	 
