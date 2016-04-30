@@ -54,19 +54,19 @@
                   </a>
                </li>
                <li>
-                  <a class="" href="cadastro.php?id=0">
+                  <a class="" href="cadastro.php?id=<?php echo $id_cliente; ?>">
                      <i class="icon_document_alt"></i>
                      <span>MEUS DADOS</span>
                   </a>
                </li>
                <li>
-                  <a class="" href="convites.php">
+                  <a class="" href="convites.php?id=<?php echo $id_cliente; ?>">
                      <i class="icon_link"></i>
                      <span>INDICADOS</span>
                   </a>
                </li>
                <li>
-                  <a class="" href="suporte.php">
+                  <a class="" href="suporte.php?id=<?php echo $id_cliente; ?>">
                      <i class="icon_mail_alt"></i>
                      <span>SUPORTE</span>
                   </a>
@@ -127,7 +127,7 @@
 
                                  <label for="cname" class="control-label col-lg-2">Assunto<span class="required">*</span></label>
                                  <div class="col-lg-8">
-                                    <input class="form-control" id="subject" name="email" type="mail" required />
+                                    <input class="form-control" id="subject" name="email" type="mail" minlength="5" maxlength="20" required />
                                  </div>
                               </div>
 
@@ -136,7 +136,7 @@
                               <div class="form-group ">
                                  <label for="cname" class="control-label col-lg-2">Mensagem<span class="required">*</span></label>
                                  
-                                 <textarea rows="4" cols="110" id="comentario" name="comentario" maxlength="50" required /></textarea>
+                                 <textarea rows="4" cols="110" id="comentario" name="comentario" minlength="5" maxlength="320" required /></textarea>
                                </div>
                               
                               <div class="form-group">
