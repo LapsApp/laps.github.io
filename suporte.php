@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<?php $id_cliente = $_GET['id']; ?> 
+<?php header('Content-Type: text/html; charset=iso-8859-1');
+$id_cliente = $_GET['id']; ?> 
 <html lang="pt-br">
 <head>
    <meta charset="utf-8">
@@ -130,6 +131,45 @@
                                  </div>
                               </div>
                            </form>
+                           <br><br><br>
+
+ <div class="form-group ">
+									  <div class="col-lg-10">
+
+<?php
+	$link = mysqli_connect("localhost", "root", "", "laps");
+if (!$link) {
+    die('Não foi possível conectar: ' . mysql_error());
+}
+
+$sql = "SELECT id_msg, id_cliente, assunto, dt_msg, mensagem FROM suporte WHERE id_cliente = '".$id_cliente."' ORDER BY dt_msg";
+$result = $link->query($sql);
+
+$i = 1;
+if ($result->num_rows > 0) {
+	echo "<table align='center' rules=rows width=1000><tr>
+    	  <th><h4><b> DATA </b></h4></th>
+    	  <th><h4><b> ASSUNTO </b></h4></th>
+    	  <th><h4><b> MENSAGEM </b></h4></th>
+    	  </tr>";
+  while($row = $result->fetch_assoc()) { 
+    	echo "<tr><td width='200'>" .$row["dt_msg"]. "</td>
+    			  <td width='300'>" .$row["assunto"]. "</td>
+    			  <td width='500'>" .$row["mensagem"]. "</td>
+    			  </tr>";
+    			  $i++;
+
+    } echo "<tr></table>";
+} else {
+    echo "SEM MENSAGENS";
+}
+
+?>
+                                  			<br>
+                                          </div>
+                                      </div>
+
+
                         </div>
                      </div>
                   </section>
