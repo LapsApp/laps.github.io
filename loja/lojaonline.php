@@ -84,7 +84,7 @@ CARRINHO :
                         ?>
 
 ITENS&nbsp;&nbsp;&nbsp;&nbsp;<button class='btn' name='adicionar' value='' type='submit' onclick="window.location='../loja/visualizar_carrinho.php';">VISUALIZAR CARRINHO</button></b></div>
-
+<br><br>
 <table align="center" width="1100" border="0" cellspacing="30"> 
 <tr>
 
@@ -105,19 +105,19 @@ $i =1;
 if ($result->num_rows > 0) { 
   while($row = $result->fetch_assoc()) { 
     echo "<td align='center'><form method='post' action='add.php?id=".$row["id_prod"]."&nome=".$row["nome"]."&cat=".$row["categoria"]."'>";
-if($row["categoria"]=="ALIMENTACAO"){echo "<div style='width: 250px; height: 350px; background: #FF9999; box-shadow: 0px 20px 15px grey'>";}
-if($row["categoria"]=="TECNOLOGIA"){echo "<div style='width: 250px; height: 350px; background: #CCFFE5; box-shadow: 0px 20px 15px grey'>";}
-if($row["categoria"]=="LIVRARIA"){echo "<div style='width: 250px; height: 350px; background: #FFE5CC; box-shadow: 0px 20px 15px grey'>";}
-if($row["categoria"]=="ESPORTE"){echo "<div style='width: 250px; height: 350px; background: #CCFF99; box-shadow: 0px 20px 15px grey'>";}
-if($row["categoria"]=="LAZER"){echo "<div style='width: 250px; height: 350px; background: #C6E2FF; box-shadow: 0px 20px 15px grey'>";}
-if($row["categoria"]=="CALCADO"){echo "<div style='width: 250px; height: 350px; background: #EEDD82; box-shadow: 0px 20px 15px grey'>";}
-if($row["categoria"]=="VESTUARIO"){echo "<div style='width: 250px; height: 350px; background: #FFBBFF; box-shadow: 0px 20px 15px grey'>";}
-if($row["categoria"]=="ELETRODOMESTICO"){echo "<div style='width: 250px; height: 350px; background: #CFCFCF; box-shadow: 0px 20px 15px grey'>";}
+if($row["categoria"]=="ALIMENTACAO"){echo "<div style='width: 250px; height: 380px; background: #FF9999; color: #000; box-shadow: 0px 20px 15px grey'>";}
+if($row["categoria"]=="TECNOLOGIA"){echo "<div style='width: 250px; height: 380px; background: #CCFFE5; color: #000; box-shadow: 0px 20px 15px grey'>";}
+if($row["categoria"]=="LIVRARIA"){echo "<div style='width: 250px; height: 380px; background: #FFE5CC; color: #000; box-shadow: 0px 20px 15px grey'>";}
+if($row["categoria"]=="ESPORTE"){echo "<div style='width: 250px; height: 380px; background: #CCFF99; color: #000; box-shadow: 0px 20px 15px grey'>";}
+if($row["categoria"]=="LAZER"){echo "<div style='width: 250px; height: 380px; background: #C6E2FF; color: #000; box-shadow: 0px 20px 15px grey'>";}
+if($row["categoria"]=="CALCADO"){echo "<div style='width: 250px; height: 380px; background: #EEDD82; color: #000; box-shadow: 0px 20px 15px grey'>";}
+if($row["categoria"]=="VESTUARIO"){echo "<div style='width: 250px; height: 380px; background: #FFBBFF; color: #000; box-shadow: 0px 20px 15px grey'>";}
+if($row["categoria"]=="ELETRODOMESTICO"){echo "<div style='width: 250px; height: 380px; background: #CFCFCF; color: #000; box-shadow: 0px 20px 15px grey'>";}
 echo "<br><b>".$row["loja"]."</b><br><br>
 <div id='img'><img src='".$row["foto"]."'>
 </div><b><br>".$row["nome"]."<br>R$".$row["valor"]."<br><br>
 <button id='btn' class='btn' name='adicionar' value='' type='submit'>ADICIONAR AO CARRINHO</button>
-</b></div></form>
+</b></div></form><br><br>
 </td>";
 if($i%4==0){echo "</tr><tr>";}
 $i++;

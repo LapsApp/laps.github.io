@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: text/html; charset=iso-8859-1');
 $from = 'lapsuvv@gmail.com';
 
 require_once("../phpmailer/class.phpmailer.php");

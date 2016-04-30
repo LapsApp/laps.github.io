@@ -54,19 +54,19 @@
                   </a>
                </li>
                <li>
-                  <a class="" href="cadastro.php?id=<?php echo $id_cliente; ?>">
+                  <a class="" href="cadastro.php?id=0">
                      <i class="icon_document_alt"></i>
                      <span>MEUS DADOS</span>
                   </a>
                </li>
                <li>
-                  <a class="" href="convites.php?id=<?php echo $id_cliente; ?>">
+                  <a class="" href="convites.php">
                      <i class="icon_link"></i>
                      <span>INDICADOS</span>
                   </a>
                </li>
                <li>
-                  <a class="" href="suporte.php?id=<?php echo $id_cliente; ?>">
+                  <a class="" href="suporte.php">
                      <i class="icon_mail_alt"></i>
                      <span>SUPORTE</span>
                   </a>
@@ -109,7 +109,7 @@
                   <h3 class="page-header"><i class="fa fa-files-o"></i> INDICADOS</h3>
                   <ol class="breadcrumb">
                      <li><i class="fa fa-home"></i><a href="index.html">INÍCIO</a></li>
-                     <li><i class="icon_link"></i>INDICADOS</li>
+                     <li><i class="icon_mail_alt"></i>SUPORTE</li>
                   </ol>
                </div>
             </div>
@@ -118,21 +118,30 @@
                <div class="col-lg-12">
                   <section class="panel">
                      <header class="panel-heading">
-                        INDICADOS
+                        SUPORTE
                      </header>
                      <div class="panel-body">
                         <div class="form">
                            <form class="form-validate form-horizontal" method="post" action="modelo/envia_convite.php">
                               <div class="form-group ">
 
-                                 <label for="cname" class="control-label col-lg-2">Email indicado <span class="required">*</span></label>
-                                 <div class="col-lg-4">
+                                 <label for="cname" class="control-label col-lg-2">Assunto<span class="required">*</span></label>
+                                 <div class="col-lg-8">
                                     <input class="form-control" id="subject" name="email" type="mail" required />
                                  </div>
                               </div>
+
+                              
+
+                              <div class="form-group ">
+                                 <label for="cname" class="control-label col-lg-2">Mensagem<span class="required">*</span></label>
+                                 
+                                 <textarea rows="4" cols="110" id="comentario" name="comentario" maxlength="50" required /></textarea>
+                               </div>
+                              
                               <div class="form-group">
                                  <div class="col-lg-offset-2 col-lg-10">
-                                    <button class="btn btn-primary" type="submit">ENVIAR CONVITE</button>
+                                    <button class="btn btn-primary" type="submit">ENVIAR MENSAGEM</button>
 
                                  </div>
                               </div>

@@ -6,7 +6,7 @@ $entrar = $_POST['entrar'];
 
 $connect = mysqli_connect('localhost', 'root', '', 'laps');
 if (isset($entrar)) {
-	$sql = ("SELECT tipo FROM cliente WHERE cpf = '$login' AND senha = '$senha'") or die("erro ao selecionar");
+	$sql = ("SELECT tipo, id_cliente FROM cliente WHERE cpf = '$login' AND senha = '$senha'") or die("erro ao selecionar");
     $result = $connect->query($sql);
 
     if ($result->num_rows <= 0) {
@@ -17,10 +17,10 @@ if (isset($entrar)) {
         while($row = $result->fetch_assoc()) {
 	        if($row["tipo"]==1){
 	        setcookie("login", $login);
-	        header("Location:../menu_adm.php?");}
+	        header("Location:../menu_adm.php?id=".$row["id_cliente"]);}
 	        else{
 	        setcookie("login", $login);
-	        header("Location:../convites.php?");}
+	        header("Location:../convites.php?id=".$row["id_cliente"]);}
 	    }
     }
 }

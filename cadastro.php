@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<?
-$id_cliente = $_GET['id'];
-?>
+<?php $id_cliente = $_GET['id']; ?> 
 <html lang="pt-br">
 <head>
    <meta charset="utf-8">
@@ -12,12 +10,12 @@ $id_cliente = $_GET['id'];
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <link href="css/bootstrap-theme.css" rel="stylesheet">
    <link href="css/elegant-icons-style.css" rel="stylesheet" />
-   <link href="css/font-awesome.min.css" rel="stylesheet" />
+   <link href="css/font-awesome.min.css" rel="stylesheet"/>
    <link href="css/style.css" rel="stylesheet">
    <link href="css/style-responsive.css" rel="stylesheet" />
 </head>
 
-<body>
+<body style="color: #000;">
    <!-- container section start -->
    <section id="container" class="">
       <!--header start-->
@@ -54,15 +52,21 @@ $id_cliente = $_GET['id'];
                   </a>
                </li>
                <li>
-                  <a class="" href="cadastro.php?id=0">
+                  <a class="" href="cadastro.php?id=<?php echo $id_cliente; ?>">
                      <i class="icon_document_alt"></i>
                      <span>MEUS DADOS</span>
                   </a>
                </li>
                <li>
-                  <a class="" href="convites.php">
-                     <i class="icon_genius"></i>
+                  <a class="" href="convites.php?id=<?php echo $id_cliente; ?>">
+                     <i class="icon_link"></i>
                      <span>INDICADOS</span>
+                  </a>
+               </li>
+               <li>
+                  <a class="" href="suporte.php?id=<?php echo $id_cliente; ?>">
+                     <i class="icon_mail_alt"></i>
+                     <span>SUPORTE</span>
                   </a>
                </li>
                <li class="" >

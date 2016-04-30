@@ -109,7 +109,7 @@
                   <h3 class="page-header"><i class="fa fa-files-o"></i> INDICADOS</h3>
                   <ol class="breadcrumb">
                      <li><i class="fa fa-home"></i><a href="index.html">INÍCIO</a></li>
-                     <li><i class="icon_link"></i>INDICADOS</li>
+                     <li><i class="icon_mail_alt"></i>SUPORTE</li>
                   </ol>
                </div>
             </div>
@@ -118,21 +118,14 @@
                <div class="col-lg-12">
                   <section class="panel">
                      <header class="panel-heading">
-                        INDICADOS
+                        SUPORTE
                      </header>
                      <div class="panel-body">
                         <div class="form">
-                           <form class="form-validate form-horizontal" method="post" action="modelo/envia_convite.php">
-                              <div class="form-group ">
-
-                                 <label for="cname" class="control-label col-lg-2">Email indicado <span class="required">*</span></label>
-                                 <div class="col-lg-4">
-                                    <input class="form-control" id="subject" name="email" type="mail" required />
-                                 </div>
-                              </div>
+                              
                               <div class="form-group">
-                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button class="btn btn-primary" type="submit">ENVIAR CONVITE</button>
+                                 <div class="col-lg-offset-0 col-lg-2">
+                                    <button class="btn btn-primary" type="submit" onclick="window.location='../trunk/suporte_msg.php?id=<?php echo $id_cliente; ?>'">CRIAR NOVA MENSAGEM</button>
 
                                  </div>
                               </div>

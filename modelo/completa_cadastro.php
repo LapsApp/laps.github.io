@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: text/html; charset=iso-8859-1');
 $link = mysqli_connect("localhost", "root", "", "laps");
 if(!empty($_GET['recusa']))
 {

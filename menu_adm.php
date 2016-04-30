@@ -23,7 +23,7 @@
    <link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="color: #000;">
    <!-- container section start -->
    <section id="container" class="">
       <!--header start-->
@@ -61,15 +61,21 @@
                </li>
                <li>
                   <a class="" href="listar_cadastros.php">
-                     <i class="icon_document_alt"></i>
+                     <i class="icon_documents_alt"></i>
                      <span>VERIFICAR<br>CADASTROS</span>
                   </a>
                </li>
                <li>
                   <a class="" href="listar_solicitacao.php">
-                     <i class="icon_genius"></i>
+                     <i class="icon_documents_alt"></i>
                      <span>VERIFICAR<br>SOLICITAÇÕES</span>
                   </a>
+               <li class="" >
+                  <a class="">
+                     <i class="icon_mail_alt"></i>
+                     <span>XXXXX</span>
+                  </a>
+               </li>
                </li>
                <li class="" >
                   <a class="">

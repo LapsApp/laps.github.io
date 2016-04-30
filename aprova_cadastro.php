@@ -143,7 +143,7 @@ if($cadastro == 4){
 
 </head>
 
-<body>
+<body style="color: #000;">
 	<!-- container section start -->
 	<section id="container" class="">
 		<!--header start-->
@@ -249,7 +249,7 @@ if($cadastro == 4){
 								<div class="form">
 									<form class="form-validate form-horizontal" method="post" action="modelo/completa_cadastro.php" enctype="multipart/form-data">
 										<div class="form-group">
-											<span class="title h4 uppercase">DADOS</span>
+											<span class="title h4 uppercase">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DADOS</span>
 										</div>
 										<div class="form-group ">
 											<input type="hidden" name='id_conta' value="<?php echo $id_conta;?>">
@@ -293,7 +293,7 @@ if($cadastro == 4){
                     </div>
 
 										<div class="form-group">
-											<span class="title h4 uppercase">ENDEREÇO</span>
+											<span class="title h4 uppercase">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENDEREÇO</span>
 										</div>
 
 										<div class="form-group">
@@ -338,7 +338,7 @@ if($cadastro == 4){
 										</div>
 
 										<div class="form-group">
-											<span class="title h4 uppercase">FOTOS</span>
+											<span class="title h4 uppercase">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOTOS</span>
 										</div>
 
 										<div class="form-group ">
@@ -367,7 +367,7 @@ if($cadastro == 4){
 										</div>
 
 										<div class="form-group">
-											<span class="title h4 uppercase">DADOS DO CARTÃO</span>
+											<span class="title h4 uppercase">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DADOS DO CARTÃO</span>
 										</div>
 
 										<div class="form-group">
@@ -396,16 +396,16 @@ if($cadastro == 4){
 										</div>
 
 										<div class="form-group">
-											<span class="title h4 uppercase">COMENTÁRIOS</span>
+											<span class="title h4 uppercase">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COMENTÁRIOS</span>
 										</div>
 
 										<div class="form-group ">
-											<label for="cname" class="control-label col-lg-2">Texto</label>
-											<div class="col-lg-8">
-												<input class="form-control" id="comentario" name="comentario" maxlength="50" type="text" value="<?php echo $comentario; ?>"/>
-										</div>
-
-										<br><br><br><br>
+											<label for="cname" class="control-label col-lg-2">Texto Adicional</label>
+											<!--<input class="form-control" id="comentario" name="comentario" maxlength="50" type="text" value="<?php echo $comentario; ?>"/>-->
+											<textarea rows="4" cols="100" id="comentario" name="comentario" maxlength="50"><?php echo $comentario; ?></textarea>
+									    </div>
+																		
+										<br>
 
 										<div class="form-group">
 											<div class="col-lg-offset-2 col-lg-10">
