@@ -108,7 +108,7 @@
                <div class="col-lg-12">
                   <h3 class="page-header"><i class="fa fa-files-o"></i> INDICADOS</h3>
                   <ol class="breadcrumb">
-                     <li><i class="fa fa-home"></i><a href="index.html">INÍCIO</a></li>
+                     <li><i class="fa fa-home"></i><a href="index.html">INICIO</a></li>
                      <li><i class="icon_mail_alt"></i>SUPORTE</li>
                   </ol>
                </div>
@@ -122,12 +122,12 @@
                      </header>
                      <div class="panel-body">
                         <div class="form">
-                           <form class="form-validate form-horizontal" method="post" action="modelo/envia_convite.php">
+                           <form class="form-validate form-horizontal" method="post" action="modelo/envia_msg.php?id=<?php echo $id_cliente; ?>">
                               <div class="form-group ">
 
                                  <label for="cname" class="control-label col-lg-2">Assunto<span class="required">*</span></label>
                                  <div class="col-lg-8">
-                                    <input class="form-control" id="subject" name="email" type="mail" minlength="5" maxlength="20" required />
+                                    <input class="form-control" id="subject" name="assunto" type="mail" minlength="5" maxlength="20" required />
                                  </div>
                               </div>
 
@@ -136,7 +136,7 @@
                               <div class="form-group ">
                                  <label for="cname" class="control-label col-lg-2">Mensagem<span class="required">*</span></label>
                                  
-                                 <textarea rows="4" cols="110" id="comentario" name="comentario" minlength="5" maxlength="320" required /></textarea>
+                                 <textarea rows="4" cols="110" id="subject" name="mensagem" minlength="5" maxlength="320" required /></textarea>
                                </div>
                               
                               <div class="form-group">
