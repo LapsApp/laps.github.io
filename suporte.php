@@ -155,7 +155,7 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) { 
     	echo "<tr><td width='200'>" .$row["dt_msg"]. "</td>
     			  <td width='300'>" .$row["assunto"]. "</td>
-    			  <td width='500'>" .$row["mensagem"]. "</td>
+    			  <td width='500'><br>" .$row["mensagem"]. "<br><br></td>
     			  </tr>";
     			  $i++;
 
