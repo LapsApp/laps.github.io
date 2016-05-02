@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<?php $id_cliente = $_GET['id']; ?> 
+<?php header('Content-Type: text/html; charset=iso-8859-1');
+$id_cliente = $_GET['id']; ?> 
 <html lang="pt-br">
 <head>
    <meta charset="utf-8">
@@ -127,7 +128,7 @@
 
                                  <label for="cname" class="control-label col-lg-2">Assunto<span class="required">*</span></label>
                                  <div class="col-lg-8">
-                                    <input class="form-control" id="subject" name="assunto" type="mail" minlength="5" maxlength="20" required />
+                                    <input class="form-control" id="subject" name="assunto" type="mail" style="text-transform:uppercase" minlength="5" maxlength="20" required />
                                  </div>
                               </div>
 

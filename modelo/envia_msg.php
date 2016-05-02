@@ -93,6 +93,7 @@ $msg = '<html>
 
 
 if (smtpmailer($from, $mail, 'SUPORTE', $assunto, $msg)) {
+header('Content-Type: text/html; charset=iso-8859-1');
 $sql =	"INSERT INTO `suporte` (`id_cliente`, `assunto`, `dt_msg`, `mensagem`) VALUES ('".$id_cliente."', '".$assunto."', '".$date."', '".$mensagem."')";
 mysqli_query($connect, $sql);
 

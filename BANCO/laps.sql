@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Abr-2016 às 22:53
+-- Generation Time: 02-Maio-2016 às 05:09
 -- Versão do servidor: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -122,7 +122,8 @@ INSERT INTO `compras` (`id_compra`, `id_cartao`, `valor`, `quantidade`, `categor
 (2, 33, '349.99', 1, 'ESPORTE', '2016-04-27 01:06:48'),
 (3, 33, '689.99', 1, 'ESPORTE', '2016-04-27 01:23:27'),
 (4, 33, '1699.00', 1, 'ELETRODOMESTICO', '2016-04-29 03:14:55'),
-(5, 33, '19.90', 1, 'ALIMENTACAO', '2016-04-30 20:41:24');
+(5, 33, '19.90', 1, 'ALIMENTACAO', '2016-04-30 20:41:24'),
+(6, 33, '30.00', 1, 'LAZER', '2016-05-02 02:53:40');
 
 -- --------------------------------------------------------
 
@@ -148,7 +149,7 @@ CREATE TABLE `conta` (
 INSERT INTO `conta` (`id_conta`, `id_cliente`, `limite`, `renda`, `saldo`, `status`, `comentario`, `limite_anterior`) VALUES
 (2, 19, '0.00', '10000.00', '0.00', 0, NULL, '0.00'),
 (3, 19, '0.00', '10000.00', '0.00', 0, NULL, '0.00'),
-(5, 22, '6821.42', '3000.00', '0.00', 0, 'ACEITO!!! SEJA BEM VINDO AO LAPS FELIPE!!!', '0.00');
+(5, 22, '6791.42', '3000.00', '0.00', 0, 'ACEITO!!! SEJA BEM VINDO AO LAPS FELIPE!!!', '0.00');
 
 -- --------------------------------------------------------
 
@@ -209,9 +210,21 @@ INSERT INTO `endereco` (`id_cliente`, `rua`, `num`, `complemento`, `cep`, `cidad
 
 CREATE TABLE `suporte` (
   `id_msg` int(11) NOT NULL,
-  `assunto` varchar(5) NOT NULL,
-  `mensagem` varchar(20) NOT NULL
+  `id_cliente` int(11) NOT NULL,
+  `assunto` varchar(50) NOT NULL,
+  `dt_msg` date NOT NULL,
+  `mensagem` varchar(320) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `suporte`
+--
+
+INSERT INTO `suporte` (`id_msg`, `id_cliente`, `assunto`, `dt_msg`, `mensagem`) VALUES
+(1, 22, 'TESTE DE SUPORTE', '2016-04-30', 'asdasd asda sada sd sad as dasdasd asdasdasd asdasd asdasdsa dsds a sd asd as asd sad asd asda sd asdasdasdasd asdasdas asd sdsd asd asdasdas sdas d asd asd sa asdsda sdddsdasd asdasd as asdasda'),
+(2, 22, 'LIMITE DO CARTÃO', '2016-04-29', 'qwe qweqw eqwe q weqw eqw eq weq we qwe qweqw eqwe qqwew eq we q we qweqqwe qwe qwe qwewe wew qwe qwewe qweqweqwe wewe qwe weqweqwe qweqweq'),
+(3, 22, 'SEGUNDA VIA', '2016-05-01', 'jkl jkl jkl jkljkljkl jkl k jkl jkl jkljljkljkl jkl jkljkl jkljkl jljklkljkljkl jkljkljkljkl jkjkjkl jkl jkljkjklj jkljkljkljkljkljkljklj'),
+(4, 22, 'ROUBO DO CARTÃO', '2016-05-02', 'bvcvbcbv bvcbv v cbv cvbcb cvbc bc bvcb vcb vvbcb vcvb cbv cbvbv cb cb cbv cbvcbc bvcbvcbvcbvc vbc vbc bv bvc bvcbv cbvc bvc bc bbv cb cbcbv cvb cbv cvb cbv cbc bv cbc bv bc bc bvcbv cbvcb vcbv c bc bvc bvvb cvb bv cbv cbv vb cv cb cbv cvb cbvc bv bvcc c bvc vbc bvc bvc bcbv bvb cbv bv cvb cvb cvbc bvc bvb ccvb c vbcbv');
 
 --
 -- Indexes for dumped tables
@@ -248,6 +261,12 @@ ALTER TABLE `endereco`
   ADD PRIMARY KEY (`id_cliente`);
 
 --
+-- Indexes for table `suporte`
+--
+ALTER TABLE `suporte`
+  ADD PRIMARY KEY (`id_msg`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -271,6 +290,11 @@ ALTER TABLE `conta`
 --
 ALTER TABLE `documentacao`
   MODIFY `id_doc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `suporte`
+--
+ALTER TABLE `suporte`
+  MODIFY `id_msg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
