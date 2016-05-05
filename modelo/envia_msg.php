@@ -81,7 +81,7 @@ $msg = '<html>
 </td>
 </tr>
 </table>
-<p align="Justify"><b>SUPORTE - MENSAGEM</b>
+<p align="Justify"><b>'.$assunto.'</b>
 <p align="Justify">'.$mensagem.'
 <br><br><br><br>
 <img src="http://lapsapp.github.io/images/assign2.jpg">
@@ -90,7 +90,6 @@ $msg = '<html>
 </table>
 </body>
 </html>';
-
 
 if (smtpmailer($from, $mail, 'SUPORTE', $assunto, $msg)) {
 header('Content-Type: text/html; charset=iso-8859-1');

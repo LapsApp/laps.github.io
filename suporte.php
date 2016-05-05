@@ -142,19 +142,19 @@ if (!$link) {
     die('Não foi possível conectar: ' . mysql_error());
 }
 
-$sql = "SELECT id_msg, id_cliente, assunto, dt_msg, mensagem FROM suporte WHERE id_cliente = '".$id_cliente."' ORDER BY dt_msg";
+$sql = "SELECT id_msg, id_cliente, assunto, dt_msg, mensagem FROM suporte WHERE id_cliente = '".$id_cliente."' ORDER BY dt_msg DESC";
 $result = $link->query($sql);
 
 $i = 1;
 if ($result->num_rows > 0) {
-	echo "<table align='center' rules=rows width=1000><tr>
+	echo "<table align='center' rules=rows width=1000 <tr>
     	  <th><h4><b> DATA </b></h4></th>
     	  <th><h4><b> ASSUNTO </b></h4></th>
     	  <th><h4><b> MENSAGEM </b></h4></th>
     	  </tr>";
   while($row = $result->fetch_assoc()) { 
     	echo "<tr><td width='200'>" .$row["dt_msg"]. "</td>
-    			  <td width='300'>" .$row["assunto"]. "</td>
+    			  <td width='300'><b>" .$row["assunto"]. "</b></td>
     			  <td width='500'><br>" .$row["mensagem"]. "<br><br></td>
     			  </tr>";
     			  $i++;
