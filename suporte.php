@@ -26,7 +26,7 @@ $id_cliente = $_GET['id']; ?>
          </div>
 
          <!--logo start-->
-         <a href="menu_usuario.php?id=<?php echo $id_cliente; ?>" class="logo">L<span class="lite">APS</span></a>
+         <a href="index.php" class="logo">L<span class="lite">APS</span></a>
          <!--logo end-->
 
          <div class="nav search-row" id="top_menu">
@@ -49,7 +49,7 @@ $id_cliente = $_GET['id']; ?>
             <!-- sidebar menu start-->
             <ul class="sidebar-menu">
                <li class="active">
-                  <a class="" href="menu_usuario.php?id=<?php echo $id_cliente; ?>">
+                  <a class="" href="index.html">
                      <i class="icon_house_alt"></i>
                      <span>INICIO</span>
                   </a>
@@ -109,9 +109,9 @@ $id_cliente = $_GET['id']; ?>
                <div class="col-lg-12">
                   <h3 class="page-header"><i class="fa fa-files-o"></i> INDICADOS</h3>
                   <ol class="breadcrumb">
-                     <li><i class="fa fa-home"></i><a href="menu_usuario.php?id=<?php echo $id_cliente; ?>">INICIO</a></li>
+                     <li><i class="fa fa-home"></i><a href="index.html">INICIO</a></li>
                      <li><i class="icon_mail_alt"></i>SUPORTE</li>
-                  </ol>
+                  </ol> 
                </div>
             </div>
             <!-- Form validations -->
