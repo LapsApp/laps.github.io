@@ -126,7 +126,7 @@ $id_cliente = $_GET['id']; ?>
                               
                               <div class="form-group">
                                  <div class="col-lg-offset-0 col-lg-2">
-                                    <button class="btn btn-primary" type="submit" onclick="window.location='../trunk/suporte_msg.php?id=<?php echo $id_cliente; ?>'">CRIAR NOVA MENSAGEM</button>
+                                    <button class="btn btn-primary" type="submit" onclick="window.location='./suporte_msg.php?id=<?php echo $id_cliente; ?>'">CRIAR NOVA MENSAGEM</button>
 
                                  </div>
                               </div>
