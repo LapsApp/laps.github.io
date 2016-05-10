@@ -49,6 +49,7 @@ function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
 		return false;
 	} else {
 		$error = 'Mensagem enviada!';
+		
 		return true;
 	}
 }
@@ -97,10 +98,16 @@ $sql =	"INSERT INTO `suporte` (`id_cliente`, `assunto`, `dt_msg`, `mensagem`) VA
 mysqli_query($connect, $sql);
 
 	$volta = $_SERVER['HTTP_REFERER'];
-	echo "<script>window.location='$volta';alert('Mensagem enviada com sucesso para $from');</script>";
+	
+	//$volta = 'suporte.php';
+	//echo "<script>window.location='$volta?cat=GERAL&obj=Mensagem enviada com sucesso&type=sucesso'</script>";
 
 }
-if (!empty($error)) echo $error;
 
+echo "<script>alert('Mensagem enviada com sucesso para $from');</script>";
+
+if (!empty($error)) //echo $error;
+     $volta = "../suporte.php?id=".$id_cliente;
+	echo "<script>window.location='$volta?cat=GERAL&obj=Mensagem enviada com sucesso&type=sucesso'</script>";
 }
 ?>
