@@ -20,7 +20,7 @@ if (isset($entrar)) {
 	        header("Location:../menu_adm.php?id=".$row["id_cliente"]);}
 	        else{
 	        setcookie("login", $login);
-	        header("Location:../convites.php?id=".$row["id_cliente"]);}
+	        header("Location:../menu_usuario.php?id=".$row["id_cliente"]);}
 	    }
     }
 }

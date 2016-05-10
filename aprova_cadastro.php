@@ -94,13 +94,17 @@ if($cadastro == 4){
 		$renda = $row["renda"];
 		$comentario = $row["comentario"];
 	}
-	//$codseg = $codigo;
-	//$dt = $validade;
+	$codseg = $codigo;
+	$dt = $validade;
 }else {
 	$data = explode('-', $dt_solicitacao);
 	$dt = $data[1].'/'.($data[0]+2);
 	$numero = mt_rand(0001, 9999).mt_rand(0001, 9999).mt_rand(0001, 9999)	.mt_rand(0001, 9999);
-	$codseg = mt_rand(001, 999);
+	$codSeg1 = round(($numero{0} + $numero{1} + $numero{2} + $numero{3})/4);
+    $codSeg2 = round(($numero{4} + $numero{5} + $numero{6} + $numero{7})/4);
+    $codSeg3 = round(($numero{8} + $numero{9} + $numero{10} + $numero{10})/4);
+
+    $codseg = $codSeg1.$codSeg2.$codSeg3;
 
 	$sal = $renda / 880;
 	if($sal <= 2 )

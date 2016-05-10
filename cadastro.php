@@ -25,7 +25,7 @@
          </div>
 
          <!--logo start-->
-         <a href="index.php" class="logo">L<span class="lite">APS</span></a>
+         <a href="menu_usuario.php?id=<?php echo $id_cliente; ?>" class="logo">L<span class="lite">APS</span></a>
          <!--logo end-->
 
          <div class="nav search-row" id="top_menu">
@@ -46,7 +46,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu">
                <li class="active">
-                  <a class="" href="index.html">
+                  <a class="" href="menu_usuario.php?id=<?php echo $id_cliente; ?>">
                      <i class="icon_house_alt"></i>
                      <span>INICIO</span>
                   </a>
@@ -106,7 +106,7 @@
                <div class="col-lg-12">
                   <h3 class="page-header"><i class="fa fa-files-o"></i> CADASTRO</h3>
                   <ol class="breadcrumb">
-                     <li><i class="fa fa-home"></i><a href="index.html">INÍCIO</a></li>
+                     <li><i class="fa fa-home"></i><a href="menu_usuario.php?id=<?php echo $id_cliente; ?>">INÍCIO</a></li>
                      <li><i class="icon_document_alt"></i>MEUS DADOS</li>
                      <li><i class="fa fa-files-o"></i>CADASTRO</li>
                   </ol>
