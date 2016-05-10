@@ -1,3 +1,11 @@
+<?php
+	$link = mysqli_connect("localhost", "root", "", "laps");
+	if (!$link) {
+                           die('Não foi possível conectar: ' . mysql_error());
+                        }
+						
+						$id_cliente = $_GET['id']; 
+?>
 <html lang="en">
 <style>
 th, td { line-height: 3; }
@@ -133,217 +141,46 @@ tr:hover {
 									<table id="demo">
 									    <thead>
 									        <tr>
-									            <th>Local</th>
+											    <th>Compra</th>
 									            <th>Categoria</th>
 									            <th>Data</th>
 									            <th>Valor</th>
 									        </tr>
 									    </thead>
 									    <tbody>
+										<?php
+												 
+												 //$id_cliente = 22; // remover depois de criar o link, GET no inicio da pagina
+													
+												 $r_cli=mysqli_query($link,"SELECT car.id_cartao FROM cartao car INNER JOIN conta cc ON cc.id_conta = car.id_conta where cc.id_cliente = ".$id_cliente.";");
+												 $data_cli=mysqli_fetch_assoc($r_cli);
+													
+													
+												 $result=mysqli_query($link,"SELECT DISTINCT id_compra FROM compras where id_cartao = ".$data_cli['id_cartao'].";");
+												 
+												 $total = 0;
+												 
+												 while($data=mysqli_fetch_assoc($result)){ 
+													
+													$result2=mysqli_query($link,"SELECT sum(quantidade*valor) valor_compra,DATE_FORMAT(data,'%d/%m/%Y %H:%i:%S') data,categoria FROM `compras` where id_compra = ".$data['id_compra'].";");
+													$data2=mysqli_fetch_assoc($result2);
+													
+													
+													//$result3=mysqli_query($link,"SELECT data,categoria FROM `compras` where id_compra = ".$data['id_compra'].";");
+													//$data3=mysqli_fetch_assoc($result3);
+													
+													
+													//$subtotal = ($data['quantidade'])*str_replace(",",".",$data["valor"]);
+		
+	 
+									    ?>
 									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1998</td>
-									            <td>5950.33</td>
+												<td><?php echo $data["id_compra"]?></td>
+									            <td><?php echo $data2["categoria"]?></td>
+									            <td><?php echo $data2["data"]?></td>
+									            <td><?php echo $data2["valor_compra"]?></td>
 									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1999</td>
-									            <td>6109.53</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>2000</td>
-									            <td>6272.00</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1994</td>
-									            <td>9755.03</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1995</td>
-									            <td>9988.00</td>
-									        </tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1998</td>
-									            <td>5950.33</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1999</td>
-									            <td>6109.53</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>2000</td>
-									            <td>6272.00</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1994</td>
-									            <td>9755.03</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1995</td>
-									            <td>9988.00</td>
-									        </tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1998</td>
-									            <td>5950.33</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1999</td>
-									            <td>6109.53</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>2000</td>
-									            <td>6272.00</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1994</td>
-									            <td>9755.03</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1995</td>
-									            <td>9988.00</td>
-									        </tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1998</td>
-									            <td>5950.33</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1999</td>
-									            <td>6109.53</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>2000</td>
-									            <td>6272.00</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1994</td>
-									            <td>9755.03</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1995</td>
-									            <td>9988.00</td>
-									        </tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1998</td>
-									            <td>5950.33</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1999</td>
-									            <td>6109.53</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>2000</td>
-									            <td>6272.00</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1994</td>
-									            <td>9755.03</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1995</td>
-									            <td>9988.00</td>
-									        </tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1998</td>
-									            <td>5950.33</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1999</td>
-									            <td>6109.53</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>2000</td>
-									            <td>6272.00</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1994</td>
-									            <td>9755.03</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1995</td>
-									            <td>9988.00</td>
-									        </tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1998</td>
-									            <td>5950.33</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>1999</td>
-									            <td>6109.53</td>
-									        </tr>
-									        <tr>
-									            <td>Benin</td>
-									            <td>BEN</td>
-									            <td>2000</td>
-									            <td>6272.00</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1994</td>
-									            <td>9755.03</td>
-									        </tr>
-									        <tr>
-									            <td>Burkina Faso</td>
-									            <td>BFA</td>
-									            <td>1995</td>
-									            <td>9988.00</td>
-									        </tr>
+												 <?php } // FIM WHILE COMPRAS ?>
 									    </tbody>
 									</table>
 									         </div>
