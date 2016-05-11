@@ -85,16 +85,16 @@
                <li class="">
                   <a class="" href="starter.php?id=<?php echo $id_cliente; ?>">
                      <i class="icon_documents_alt"></i>
-                     <span>VERIFICAR <br>COMPRAS</span>
+                     <span>LISTA DE<br>COMPRAS</span>
                   </a>
                </li>
                <li>
                   <a class="">
-                     <i class="icon_piechart"></i>
-                     <span>XXXXX</span>
+                     <i class="icon_blocked"></i>
+                     <span>BLOQUEIO</span>
                   </a>
                </li>
-               <li class="">
+               <!--<li class="">
                   <a class="">
                      <i class="icon_table"></i>
                      <span>XXXXX</span>
@@ -105,7 +105,7 @@
                      <i class="icon_documents_alt"></i>
                      <span>XXXXX</span>
                   </a>
-               </li>
+               </li>-->
             </ul>
             <!-- sidebar menu end-->
          </div>
