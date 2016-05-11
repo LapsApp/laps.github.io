@@ -29,8 +29,6 @@
 	 
 	 // trocando para id cartao
 	 
-	 
-	 
 	 if($data0['id_cartao']){
 			$_POST["num_cartao"] = $data0['id_cartao'];
 	}else{
@@ -39,13 +37,7 @@
 	echo "<script>window.location='$volta?cat=GERAL&obj=Compra devido ao cartao&type=erro'</script>";
 	}
 	 
-	 //echo "id> ".$_POST["num_cartao"].'</br>';
-	 
-	
-	 
 	 $result=mysqli_query($link,"SELECT id_prod,nome,valor,categoria,addcar FROM produto where addcar != 0;");
-	 
-	 
 	 
 	 $result2=mysqli_query($link_laps,"SELECT MAX(id_compra)+1 as max FROM compras");
 	 $data2=mysqli_fetch_assoc($result2);
@@ -55,9 +47,7 @@
 	$result3=mysqli_query($link_laps,"SELECT cc.limite,cc.id_conta FROM CONTA cc INNER JOIN cartao cart ON cc.id_conta = cart.id_conta WHERE cart.id_cartao = ".$_POST["num_cartao"].";");
 	$data3=mysqli_fetch_assoc($result3);
 	
-	
-	// VERIFICAR O LIMITE 
-	
+	// VERIFICAR O LIMITE
 	if($data3['limite'] < $_POST['vl_total']){
 	
 	$controle = 0;
@@ -70,38 +60,20 @@
 		while( $data=mysqli_fetch_assoc($result) ){ 
 			  
 			  $insert = "INSERT INTO compras(id_compra,id_cartao,valor,quantidade,categoria) values(".$data2['max'].",".$_POST["num_cartao"].",".str_replace(",",".",$data["valor"]).",".$data['addcar'].",'".$data['categoria']."');";
-			  
 			  echo $insert."</br>";
 			  mysqli_query($link_laps, $insert);	
 			  $insert = '';
-				
-			  
-												   }
+		}
 											   
+		$novo_limite = $data3['limite'] - $_POST['vl_total'];
 	
-	$novo_limite = $data3['limite'] - $_POST['vl_total'];
-	
-	
-	$up2 = "UPDATE conta set limite = ".$novo_limite." where id_conta = ".$data3['id_conta'].";";
-   mysqli_query($link_laps, $up2);
-
-   
-   	   $up = "UPDATE produto set addcar = 0 where addcar != 0 ";
-       mysqli_query($link, $up);
-	   
-	   
-		    $volta = 'lojaonline.php';
-			echo "<script>window.location='$volta?obj=na compra&type=sucesso&cat=GERAL'</script>";
-	
-
-	
-	
-	} 
-	
-
-   
-   
-		 
-	 
-	 
+		$up2 = "UPDATE conta set limite = ".$novo_limite." where id_conta = ".$data3['id_conta'].";";
+		mysqli_query($link_laps, $up2);
+		
+   	    $up = "UPDATE produto set addcar = 0 where addcar != 0 ";
+        mysqli_query($link, $up);
+	  
+	    $volta = 'lojaonline.php';
+	    echo "<script>window.location='$volta?obj=na compra&type=sucesso&cat=GERAL'</script>";
+	} 	 
 ?>

@@ -1,26 +1,17 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
+<?php $id_cliente = $_GET['id']; ?> 
 <html lang="pt-br">
 <head>
    <meta charset="utf-8">
    <link rel="shortcut icon" href="img/favicon.png">
 
    <title>LAPS</title>
-
-   <link href="css/bootstrap.min.css" rel="stylesheet">
-   <link href="css/bootstrap-theme.css" rel="stylesheet">
-   <link href="css/elegant-icons-style.css" rel="stylesheet" />
-   <link href="css/font-awesome.min.css" rel="stylesheet" />
-   <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-   <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
-   <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-   <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
-   <link href="css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
-   <link rel="stylesheet" href="css/fullcalendar.css">
-   <link href="css/widgets.css" rel="stylesheet">
-   <link href="css/style.css" rel="stylesheet">
-   <link href="css/style-responsive.css" rel="stylesheet" />
-   <link href="css/xcharts.min.css" rel=" stylesheet">
-   <link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/bootstrap-theme.css" rel="stylesheet">
+      <link href="css/elegant-icons-style.css" rel="stylesheet" />
+      <link href="css/font-awesome.min.css" rel="stylesheet" />
+      <link href="css/style.css" rel="stylesheet">
+      <link href="css/style-responsive.css" rel="stylesheet" />
 </head>
 
 <body style="color: #000;">
@@ -78,9 +69,9 @@
                   </a>
                </li>
                <li class="">
-                  <a class="">
-                     <i class="icon_desktop"></i>
-                     <span>XXXXX</span>
+                  <a class="" href="starter.php?id=<?php echo $id_cliente; ?>">
+                     <i class="icon_documents_alt"></i>
+                     <span>VERIFICAR <br>COMPRAS</span>
                   </a>
                </li>
                <li>
@@ -115,8 +106,7 @@
                <div class="col-lg-12">
                   <h3 class="page-header"><i class="fa fa-laptop"></i>SEJA BEM-VINDO AO LAPS!</h3>
                   <ol class="breadcrumb">
-                     <li><i class="fa fa-home"></i><a href="menu_usuario.php?id=<?php echo $id_cliente; ?>">INICIO</a></li>
-                     <li><i class="fa fa-laptop"></i>MENU</li>
+                     <li><i class="fa fa-home"></i><a href="menu_usuario.php?id=<?php echo $id_cliente; ?>">INÍCIO</a></li>
                   </ol>
                </div>
             </div>
@@ -131,30 +121,33 @@
                         </div>
                   </a><!--/.info-box-->
                </div><!--/.col-->
-               
-               <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                  <div class="info-box brown-bg">
+
+               <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="starter.php?id=<?php echo $id_cliente; ?>">
+                  <div class="info-box green-bg">
                      <div class="count">
-                        <?php $id_cliente = $_GET['id']; 
-                        $link = mysqli_connect("localhost", "root", "", "laps");
-                        if (!$link) {
-                           die('Não foi possível conectar: ' . mysql_error());
-                        }
+                         <?php $id_cliente = $_GET['id']; 
+                            $link = mysqli_connect("localhost", "root", "", "laps");
+                            if (!$link) {
+                            die('Não foi possível conectar: ' . mysql_error());
+                            }
 
-                        $result=mysqli_query($link,"SELECT limite as total FROM conta WHERE id_cliente = '".$id_cliente."' ");
-                        $data=mysqli_fetch_assoc($result);
-                        //echo $data;
-
-                        if($data['total']>0){
-                           echo "R$",$data['total'];
-                        }else{
-                           echo "0";
-                        }
-                        ?>
+                            $dt = date("d.m.y");
+                            $mesAtual = date("m");
+                            $anoAtual = date("Y");
+                            $result=mysqli_query($link,"SELECT SUM(compras.valor * compras.quantidade) as total FROM compras, cartao, conta WHERE compras.id_cartao = cartao.id_cartao AND cartao.id_conta = conta.id_conta AND conta.id_cliente = '".$id_cliente."' AND MONTH(compras.data) = '".$mesAtual."' AND YEAR(compras.data) = '".$anoAtual."' ");
+                            $data=mysqli_fetch_assoc($result);
+                            
+                            if($data['total']>0){
+                                echo "R$", round($data['total'], 4);
+                            }else{
+                                echo "0";
+                            }
+                          ?>
                      </div>
-                     <div class="title">SEU LIMITE TOTAL</div>
+                     <div class="title">FATURA ATUAL</div>
                   </div><!--/.info-box-->
                </div><!--/.col-->
+               
 
                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                   <div class="info-box dark-bg">
@@ -165,9 +158,8 @@
                            die('Não foi possível conectar: ' . mysql_error());
                         }
 
-                        $result=mysqli_query($link,"SELECT saldo as total FROM conta WHERE id_cliente = '".$id_cliente."' ");
+                        $result=mysqli_query($link,"SELECT limite as total FROM conta WHERE id_cliente = '".$id_cliente."' ");
                         $data=mysqli_fetch_assoc($result);
-                        //echo $data;
 
                         if($data['total']>0){
                            echo "R$",$data['total'];
@@ -180,19 +172,29 @@
                   </div><!--/.info-box-->
                </div><!--/.col-->
 
-               <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="">
-                  <div class="info-box dark-bg">
-                     <div class="count">4.362</div>
-                     <div class="title">OUTRO</div>
-                  </div><!--/.info-box-->
-               </div><!--/.col-->
+               <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                  <div class="info-box brown-bg">
+                     <div class="count">
+                        <?php $id_cliente = $_GET['id']; 
+                        $link = mysqli_connect("localhost", "root", "", "laps");
+                        if (!$link) {
+                           die('Não foi possível conectar: ' . mysql_error());
+                        }
 
-               <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="">
-                  <div class="info-box green-bg">
-                     <div class="count">1.426</div>
-                     <div class="title">OUTRO</div>
+                        $result=mysqli_query($link,"SELECT saldo as total FROM conta WHERE id_cliente = '".$id_cliente."' ");
+                        $data=mysqli_fetch_assoc($result);
+
+                        if($data['total']>0){
+                           echo "R$",$data['total'];
+                        }else{
+                           echo "0";
+                        }
+                        ?>
+                     </div>
+                     <div class="title">SEU LIMITE TOTAL</div>
                   </div><!--/.info-box-->
                </div><!--/.col-->
+               
             </div><!--/.row-->
          </section>
       </section>

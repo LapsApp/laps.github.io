@@ -26,7 +26,7 @@ $id_cliente = $_GET['id']; ?>
          </div>
 
          <!--logo start-->
-         <a href="index.php" class="logo">L<span class="lite">APS</span></a>
+         <a href="menu_usuario.php?id=<?php echo $id_cliente; ?>" class="logo">L<span class="lite">APS</span></a>
          <!--logo end-->
 
          <div class="nav search-row" id="top_menu">
@@ -38,8 +38,6 @@ $id_cliente = $_GET['id']; ?>
                </li>
             </ul>
          </div>
-
-
       </header>
       <!--header end-->
 
@@ -49,7 +47,7 @@ $id_cliente = $_GET['id']; ?>
             <!-- sidebar menu start-->
             <ul class="sidebar-menu">
                <li class="active">
-                  <a class="" href="index.html">
+                  <a class="" href="menu_usuario.php?id=<?php echo $id_cliente; ?>">
                      <i class="icon_house_alt"></i>
                      <span>INICIO</span>
                   </a>
@@ -73,9 +71,9 @@ $id_cliente = $_GET['id']; ?>
                   </a>
                </li>
                <li class="">
-                  <a class="">
-                     <i class="icon_desktop"></i>
-                     <span>XXXXX</span>
+                  <a class="" href="starter.php?id=<?php echo $id_cliente; ?>">
+                     <i class="icon_documents_alt"></i>
+                     <span>VERIFICAR <br>COMPRAS</span>
                   </a>
                </li>
                <li>
@@ -109,7 +107,7 @@ $id_cliente = $_GET['id']; ?>
                <div class="col-lg-12">
                   <h3 class="page-header"><i class="fa fa-files-o"></i> INDICADOS</h3>
                   <ol class="breadcrumb">
-                     <li><i class="fa fa-home"></i><a href="index.html">INICIO</a></li>
+                     <li><i class="fa fa-home"></i><a href="menu_usuario.php?id=<?php echo $id_cliente; ?>" >INICIO</a></li>
                      <li><i class="icon_mail_alt"></i>SUPORTE</li>
                   </ol> 
                </div>
@@ -127,7 +125,6 @@ $id_cliente = $_GET['id']; ?>
                               <div class="form-group">
                                  <div class="col-lg-offset-0 col-lg-2">
                                     <button class="btn btn-primary" type="submit" onclick="window.location='./suporte_msg.php?id=<?php echo $id_cliente; ?>'">CRIAR NOVA MENSAGEM</button>
-
                                  </div>
                               </div>
                            </form>

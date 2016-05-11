@@ -4,9 +4,7 @@
 <head>
    <meta charset="utf-8">
    <link rel="shortcut icon" href="img/favicon.png">
-
    <title>LAPS</title>
-
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <link href="css/bootstrap-theme.css" rel="stylesheet">
    <link href="css/elegant-icons-style.css" rel="stylesheet" />
@@ -70,9 +68,9 @@
                   </a>
                </li>
                <li class="">
-                  <a class="">
-                     <i class="icon_desktop"></i>
-                     <span>XXXXX</span>
+                  <a class="" href="starter.php?id=<?php echo $id_cliente; ?>">
+                     <i class="icon_documents_alt"></i>
+                     <span>VERIFICAR <br>COMPRAS</span>
                   </a>
                </li>
                <li>
