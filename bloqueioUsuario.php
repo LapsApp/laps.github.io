@@ -124,8 +124,8 @@
 				<div class="col-lg-12">
 					<h3 class="page-header"><i class="fa fa-files-o"></i>BLOQUEIO</h3>
 					<ol class="breadcrumb">
-						<li><i class="fa fa-home"></i><a href="menu_adm.php">INÍCIO</a></li>
-						<li><i class="icon_genius"></i>BLOQUEIO</li>
+						<li><i class="fa fa-home"></i><a href="menu_usuario.php?id=<?php echo $id_cliente; ?>">INÍCIO</a></li>
+						<li><i class="icon_blocked"></i>BLOQUEIO</li>
 					</ol>
 				</div>
 			</div>
@@ -166,6 +166,8 @@
 													<button class='btn btn-primary' name='bloqueia' value='".$data["id_conta"]."' type='submit'>Bloquear</button>
 													</td>";
 												}
+												//Não é pra ativar
+												/*
 												else
 												{
 													echo"
@@ -173,6 +175,7 @@
 													<button class='btn btn-primary' name='ativa' value='".$data["id_conta"]."' type='submit'>Ativar</button>
 													</td>";
 												}
+												*/
 												?>
 				  
 
