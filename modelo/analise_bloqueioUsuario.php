@@ -16,9 +16,28 @@ if (isset($bloqueia))
    $data_cli_b=mysqli_fetch_assoc($cli_b);
          $mail = $data_cli_b["email"]; 
 		include("./envia_msg_bloqueio.php");		 
-
-   $up =	"UPDATE conta set status = 1"." where id_conta = ".$bloqueia;
+if (isset($falhou) == false)
+{
+	$up =	"UPDATE conta set status = 1"." where id_conta = ".$bloqueia;
    mysqli_query($link, $up);
+   
+   if (isset($up)) {
+   $volta = $_SERVER['HTTP_REFERER'];
+   $volta=explode("&",$volta);
+   echo "<script>window.location='$volta[0]&obj=Bloqueio da conta&type=sucesso'</script>";
+} else {
+   $volta = $_SERVER['HTTP_REFERER'];
+   $volta=explode("&",$volta);
+   echo "<script>window.location='$volta[0]&obj=Bloqueio da conta.&type=erro'</script>";
+}
+}
+else
+{	
+   $volta = $_SERVER['HTTP_REFERER'];
+   $volta=explode("&",$volta);
+   echo "<script>window.location='$volta[0]&obj=Bloqueio da conta&type=erro'</script>";
+}
+   
 
 }
 //Não é pra ativar

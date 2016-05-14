@@ -71,12 +71,13 @@ $msg = '
 </body>
 </html>';
 
-if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Bloqueio da conta', $msg)) {
-	$volta = $_SERVER['HTTP_REFERER'];
+if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Bloqueio da conta', $msg) == false) {
+	/*$volta = $_SERVER['HTTP_REFERER'];
 	$volta=explode("&",$volta);
-    echo "<script>window.location='$volta[0]&obj=Bloqueio&type=sucesso';</script>";
+    echo "<script>window.location='$volta[0]&obj=Bloqueio&type=sucesso';</script>";*/
+	$falhou = 'Erro';
 }
-if (!empty($error)) echo $error;
+//if (!empty($error)) echo $error;
 }
 
 //Não é pra ativar
