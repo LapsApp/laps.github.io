@@ -135,8 +135,8 @@
                            <div class="form">
                               <form class="form-validate form-horizontal" id="feedback_form" method="post" action="    ">
                                  <div class="form-group ">
-                                    <div class="col-lg-10">
-                                       <table id="demo">
+                                    <div class="col-lg-12">
+                                       <table id="demo" style="width: 100%;">
                                           <thead>
                                              <tr>
                                                 <th>Compra</th>
@@ -149,7 +149,7 @@
                                              <?php
                                                 //$id_cliente = 22; // remover depois de criar o link, GET no inicio da pagina
                                                 $r_cli=mysqli_query($link,"SELECT car.id_cartao FROM cartao car INNER JOIN conta cc ON cc.id_conta = car.id_conta where cc.id_cliente = ".$id_cliente.";");
-                                                $data_cli=mysqli_fetch_assoc($r_cli);
+                                                $data_cli = mysqli_fetch_assoc($r_cli);
                                                 
                                                 $result=mysqli_query($link,"SELECT DISTINCT id_compra FROM compras where id_cartao = ".$data_cli['id_cartao'].";");
                                                 $total = 0;

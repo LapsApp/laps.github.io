@@ -108,6 +108,6 @@ echo "<script>alert('Mensagem enviada com sucesso para $from');</script>";
 
 if (!empty($error)) //echo $error;
      $volta = "../suporte.php?id=".$id_cliente;
-	echo "<script>window.location='$volta?cat=GERAL&obj=Mensagem enviada com sucesso&type=sucesso'</script>";
+	echo "<script>window.location='$volta&cat=GERAL&obj=Mensagem enviada com sucesso&type=sucesso'</script>";
 }
 ?>
