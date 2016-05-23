@@ -140,7 +140,10 @@
                             $dt = date("d.m.y");
                             $mesAtual = date("m");
                             $anoAtual = date("Y");
-                            $result=mysqli_query($link,"SELECT SUM(compras.valor * compras.quantidade) as total FROM compras, cartao, conta WHERE compras.id_cartao = cartao.id_cartao AND cartao.id_conta = conta.id_conta AND conta.id_cliente = '".$id_cliente."' AND MONTH(compras.data) = '".$mesAtual."' AND YEAR(compras.data) = '".$anoAtual."' ");
+                            $result=mysqli_query($link,"SELECT SUM(cp.valor * cp.quantidade) as total FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/04/15' AND '2016/05/14' AND ct.id_cliente = ".$id_cliente);
                             $data=mysqli_fetch_assoc($result);
                             
                             if($data['total']>0){
@@ -187,7 +190,7 @@
                            die('Não foi possível conectar: ' . mysql_error());
                         }
 
-                        $result=mysqli_query($link,"SELECT saldo as total FROM conta WHERE id_cliente = '".$id_cliente."' ");
+                        $result=mysqli_query($link,"SELECT limitetotal as total FROM conta WHERE id_cliente = '".$id_cliente."' ");
                         $data=mysqli_fetch_assoc($result);
 
                         if($data['total']>0){

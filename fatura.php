@@ -20,22 +20,111 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['PRÓXIMAS FATURAS',     30],
-          ['FATURA FECHADA', 34],
-          ['FATURA ATUAL', 16],   
-		      ['LIMITE DISPONÍVEL',  20]
+          ['FATURAS', 'VALORES', { role: 'style' }],
+
+          <?php
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $valorpre=0;
+                                    $valoratual=0;
+                                    $valorpos=0;
+                                    $limitetotal=0;
+
+//----------------------------------PRÓXIMAS FATURAS
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago, ct.limitetotal,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/05/15' AND '2017/05/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');                                          
+                                          $valorpos= $valorpos+$valor; 
+                                          $limitetotal=$row["limitetotal"];                                
+
+                                       } $valorpos=number_format($valorpos, 2, '.', '');
+                                       echo"['PRÓXIMAS FATURAS',".$valorpos.", 'color: #FE9A2E'],";
+                                         
+                                    } 
+
+//----------------------------------FATURAS FECHADAS
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago, ct.limitetotal,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/03/15' AND '2016/04/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');                                          
+                                          $valorpre= $valorpre+$valor; 
+                                          $limitetotal=$row["limitetotal"];                                
+
+                                       } $valorpre=number_format($valorpre, 2, '.', '');
+                                       echo"['FATURA FECHADA',".$valorpre.",'color: #FE2E2E'],";
+                                         
+                                    } 
+
+//----------------------------------FATURAS ATUAL
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago, ct.limitetotal,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/04/15' AND '2016/05/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');                                          
+                                          $valoratual= $valoratual+$valor; 
+                                          $limitetotal=$row["limitetotal"];                                
+
+                                       } $valoratual=number_format($valoratual, 2, '.', '');
+                                       echo"['FATURA ATUAL',".$valoratual.",'color: #58ACFA'],";
+                                         
+                                    }
+
+//----------------------------------LIMITE DISPONÍVEL
+                                    $limitetotal = $limitetotal-$valorpre-$valoratual-$valorpos;
+
+                                    echo"['LIMITE DISPONÍVEL',".$limitetotal.",'color: #04B45F'],"; 
+
+                                    ?>
+
         ]);
 
         var options = {
           title: '',
-		  legend: 'none',
-          pieHole: 0.4,
-          slices: {  0: { color: '#FE9A2E',indexLabel: "Android" },
-                     1: { color: '#FE2E2E' },
-                     2: { color: '#58ACFA' },
-                     3: { color: '#04B45F' },
-          },
+		      legend: 'none',
+          pieHole: 0.5,
+          
           };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -172,23 +261,80 @@
 						<input type="radio" name="tabs" class="tabs" id="tab3">
 						<label for="tab3">MAR</label>
 						<div>
-						   <p>3</p>
-						</div>
-						
-						<input type="radio" name="tabs" class="tabs" id="tab4">
-						<label for="tab4">ABR</label>
-						<div>
-						  <p>
-              <?php
+              <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
-                                    $date = date('m');                                  
+                                    $date = date('Y-m-d');                                  
 
                                     $link = mysqli_connect("localhost", "root", "", "laps");
                                     if (!$link) {
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, 
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/02/15' AND '2016/03/14' AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    echo "<table align='center' rules=rows width=600><tr>                                    
+                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> DATA DA COMPRA </b></h4></th>
+                                    <th><h4><b> CATEGORIA </b></h4></th>
+                                    <th><h4><b> PARCELA </b></h4></th>
+                                    <th><h4 align='right'><b> VALOR </b></h4></th>
+                                    <th><h4><b></b></h4></th></tr>";
+                                    $i = 1;
+                                    $valorfm=0;
+                                    $pgto=0;
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+
+                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
+                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
+                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          echo "<tr><td>" .$i. "</td>
+                                          <td>" . $row["data"]. "</td>  
+                                          <td>" . $row["categoria"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                         
+                                          <td align='right'>R$" .$valor. "</td>";
+                                          $i++;
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
+
+                                       } $valorfm=number_format($valorfm, 2, '.', '');
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                           else{echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>";}
+                                         
+                                    } else {
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
+                                    }
+
+                                    ?></p>
+            </div>
+						
+						<input type="radio" name="tabs" class="tabs" id="tab4">
+						<label for="tab4">ABR</label>
+						<div>
+              <p><?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $date = date('Y-m-d');                                  
+
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -208,6 +354,7 @@
                                     <th><h4><b></b></h4></th></tr>";
                                     $i = 1;
                                     $valorfm=0;
+                                    $pgto=0;
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
@@ -216,40 +363,42 @@
                                           if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
                                           
 
-
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
-                                          $valorfm= $valorfm+$valor;                                       
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
 
                                        } $valorfm=number_format($valorfm, 2, '.', '');
-                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b></h4>";
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                           else{echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>";}
+                                         
                                     } else {
-                                       echo "NENHUMA COMPRA REALIZADA";
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
                                     }
 
-                                    ?>
-              </p>
-						</div>
+                                    ?></p>
+            </div>
 
 						<input type="radio" name="tabs" class="tabs" id="tab5" checked>
 						<label for="tab5">MAI</label>
 						<div>
-						   <p>
-           <?php
+              <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
-                                    $date = date('m');                                  
+                                    $date = date('Y-m-d');                                  
 
                                     $link = mysqli_connect("localhost", "root", "", "laps");
                                     if (!$link) {
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, 
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -269,6 +418,7 @@
                                     <th><h4><b></b></h4></th></tr>";
                                     $i = 1;
                                     $valorfm=0;
+                                    $pgto=0;
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
@@ -277,78 +427,600 @@
                                           if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
                                           
 
-
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
-                                          $valorfm= $valorfm+$valor;                                       
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
 
                                        } $valorfm=number_format($valorfm, 2, '.', '');
-                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b></h4>";
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                           else{echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>";}
+                                         
                                     } else {
-                                       echo "NENHUMA COMPRA REALIZADA";
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
                                     }
 
-                                    ?>      
-               </p>
-						</div>
+                                    ?></p>
+            </div>
+
 						
 						<input type="radio" name="tabs" class="tabs" id="tab6">
 						<label for="tab6">JUN</label>
 						<div>
-						  <p>6</p>
-						</div>
+              <p><?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $date = date('Y-m-d');                                  
+
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/05/15' AND '2016/06/14' AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    echo "<table align='center' rules=rows width=600><tr>                                    
+                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> DATA DA COMPRA </b></h4></th>
+                                    <th><h4><b> CATEGORIA </b></h4></th>
+                                    <th><h4><b> PARCELA </b></h4></th>
+                                    <th><h4 align='right'><b> VALOR </b></h4></th>
+                                    <th><h4><b></b></h4></th></tr>";
+                                    $i = 1;
+                                    $valorfm=0;
+                                    $pgto=0;
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+
+                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
+                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
+                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          echo "<tr><td>" .$i. "</td>
+                                          <td>" . $row["data"]. "</td>  
+                                          <td>" . $row["categoria"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='right'>R$" .$valor. "</td>";
+                                          $i++;
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
+
+                                       } $valorfm=number_format($valorfm, 2, '.', '');
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                         
+                                    } else {
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
+                                    }
+
+                                    ?></p>
+            </div>
+
+
 
 						<input type="radio" name="tabs" class="tabs" id="tab7">
 						<label for="tab7">JUL</label>
 						<div>
-						   <p>7</p>
-						</div>
+              <p><?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $date = date('Y-m-d');                                  
+
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/06/15' AND '2016/07/14' AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    echo "<table align='center' rules=rows width=600><tr>                                    
+                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> DATA DA COMPRA </b></h4></th>
+                                    <th><h4><b> CATEGORIA </b></h4></th>
+                                    <th><h4><b> PARCELA </b></h4></th>
+                                    <th><h4 align='right'><b> VALOR </b></h4></th>
+                                    <th><h4><b></b></h4></th></tr>";
+                                    $i = 1;
+                                    $valorfm=0;
+                                    $pgto=0;
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+
+                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
+                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
+                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          echo "<tr><td>" .$i. "</td>
+                                          <td>" . $row["data"]. "</td>  
+                                          <td>" . $row["categoria"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='right'>R$" .$valor. "</td>";
+                                          $i++;
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
+
+                                       } $valorfm=number_format($valorfm, 2, '.', '');
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                         
+                                    } else {
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
+                                    }
+
+                                    ?></p>
+            </div>
+
 						
 						<input type="radio" name="tabs" class="tabs" id="tab8">
 						<label for="tab8">AGO</label>
 						<div>
-						  <p>8</p>
-						</div>
+              <p><?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $date = date('Y-m-d');                                  
+
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/07/15' AND '2016/08/14' AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    echo "<table align='center' rules=rows width=600><tr>                                    
+                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> DATA DA COMPRA </b></h4></th>
+                                    <th><h4><b> CATEGORIA </b></h4></th>
+                                    <th><h4><b> PARCELA </b></h4></th>
+                                    <th><h4 align='right'><b> VALOR </b></h4></th>
+                                    <th><h4><b></b></h4></th></tr>";
+                                    $i = 1;
+                                    $valorfm=0;
+                                    $pgto=0;
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+
+                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
+                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
+                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          echo "<tr><td>" .$i. "</td>
+                                          <td>" . $row["data"]. "</td>  
+                                          <td>" . $row["categoria"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='right'>R$" .$valor. "</td>";
+                                          $i++;
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
+
+                                       } $valorfm=number_format($valorfm, 2, '.', '');
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                         
+                                    } else {
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
+                                    }
+
+                                    ?></p>
+            </div>
+
 
 						<input type="radio" name="tabs" class="tabs" id="tab9">
 						<label for="tab9">SET</label>
 						<div>
-						   <p>9</p>
-						</div>
+              <p><?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $date = date('Y-m-d');                                  
+
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/08/15' AND '2016/09/14' AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    echo "<table align='center' rules=rows width=600><tr>                                    
+                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> DATA DA COMPRA </b></h4></th>
+                                    <th><h4><b> CATEGORIA </b></h4></th>
+                                    <th><h4><b> PARCELA </b></h4></th>
+                                    <th><h4 align='right'><b> VALOR </b></h4></th>
+                                    <th><h4><b></b></h4></th></tr>";
+                                    $i = 1;
+                                    $valorfm=0;
+                                    $pgto=0;
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+
+                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
+                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
+                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          echo "<tr><td>" .$i. "</td>
+                                          <td>" . $row["data"]. "</td>  
+                                          <td>" . $row["categoria"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='right'>R$" .$valor. "</td>";
+                                          $i++;
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
+
+                                       } $valorfm=number_format($valorfm, 2, '.', '');
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                         
+                                    } else {
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
+                                    }
+
+                                    ?></p>
+            </div>
+
 						
 						<input type="radio" name="tabs" class="tabs" id="tab10">
 						<label for="tab10">OUT</label>
 						<div>
-						  <p>10</p>
-						</div>
+              <p><?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $date = date('Y-m-d');                                  
+
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/09/15' AND '2016/10/14' AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    echo "<table align='center' rules=rows width=600><tr>                                    
+                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> DATA DA COMPRA </b></h4></th>
+                                    <th><h4><b> CATEGORIA </b></h4></th>
+                                    <th><h4><b> PARCELA </b></h4></th>
+                                    <th><h4 align='right'><b> VALOR </b></h4></th>
+                                    <th><h4><b></b></h4></th></tr>";
+                                    $i = 1;
+                                    $valorfm=0;
+                                    $pgto=0;
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+
+                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
+                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
+                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          echo "<tr><td>" .$i. "</td>
+                                          <td>" . $row["data"]. "</td>  
+                                          <td>" . $row["categoria"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='right'>R$" .$valor. "</td>";
+                                          $i++;
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
+
+                                       } $valorfm=number_format($valorfm, 2, '.', '');
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                         
+                                    } else {
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
+                                    }
+
+                                    ?></p>
+            </div>
 
 						<input type="radio" name="tabs" class="tabs" id="tab11">
 						<label for="tab11">NOV</label>
 						<div>
-						  <p>11</p>
-						</div>
+              <p><?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $date = date('Y-m-d');                                  
+
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/10/15' AND '2016/11/14' AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    echo "<table align='center' rules=rows width=600><tr>                                    
+                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> DATA DA COMPRA </b></h4></th>
+                                    <th><h4><b> CATEGORIA </b></h4></th>
+                                    <th><h4><b> PARCELA </b></h4></th>
+                                    <th><h4 align='right'><b> VALOR </b></h4></th>
+                                    <th><h4><b></b></h4></th></tr>";
+                                    $i = 1;
+                                    $valorfm=0;
+                                    $pgto=0;
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+
+                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
+                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
+                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          echo "<tr><td>" .$i. "</td>
+                                          <td>" . $row["data"]. "</td>  
+                                          <td>" . $row["categoria"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='right'>R$" .$valor. "</td>";
+                                          $i++;
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
+
+                                       } $valorfm=number_format($valorfm, 2, '.', '');
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                         
+                                    } else {
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
+                                    }
+
+                                    ?></p>
+            </div>
 
 						<input type="radio" name="tabs" class="tabs" id="tab12">
 						<label for="tab12">DEZ</label>
 						<div>
-						   <p>12</p>
-						</div>
+              <p><?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $date = date('Y-m-d');                                  
+
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/11/15' AND '2016/12/14' AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    echo "<table align='center' rules=rows width=600><tr>                                    
+                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> DATA DA COMPRA </b></h4></th>
+                                    <th><h4><b> CATEGORIA </b></h4></th>
+                                    <th><h4><b> PARCELA </b></h4></th>
+                                    <th><h4 align='right'><b> VALOR </b></h4></th>
+                                    <th><h4><b></b></h4></th></tr>";
+                                    $i = 1;
+                                    $valorfm=0;
+                                    $pgto=0;
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+
+                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
+                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
+                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          echo "<tr><td>" .$i. "</td>
+                                          <td>" . $row["data"]. "</td>  
+                                          <td>" . $row["categoria"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='right'>R$" .$valor. "</td>";
+                                          $i++;
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
+
+                                       } $valorfm=number_format($valorfm, 2, '.', '');
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                         
+                                    } else {
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
+                                    }
+
+                                    ?></p>
+            </div>
 
             <input type="radio" name="tabs" class="tabs" id="tab1">
             <label for="tab1">JAN</label>
             <div>
-              <p>1</p>
+              <p><?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $date = date('Y-m-d');                                  
+
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/1215' AND '2017/01/14' AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    echo "<table align='center' rules=rows width=600><tr>                                    
+                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> DATA DA COMPRA </b></h4></th>
+                                    <th><h4><b> CATEGORIA </b></h4></th>
+                                    <th><h4><b> PARCELA </b></h4></th>
+                                    <th><h4 align='right'><b> VALOR </b></h4></th>
+                                    <th><h4><b></b></h4></th></tr>";
+                                    $i = 1;
+                                    $valorfm=0;
+                                    $pgto=0;
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+
+                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
+                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
+                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          echo "<tr><td>" .$i. "</td>
+                                          <td>" . $row["data"]. "</td>  
+                                          <td>" . $row["categoria"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='right'>R$" .$valor. "</td>";
+                                          $i++;
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
+
+                                       } $valorfm=number_format($valorfm, 2, '.', '');
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                         
+                                    } else {
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
+                                    }
+
+                                    ?></p>
             </div>
 
             <input type="radio" name="tabs" class="tabs" id="tab2">
             <label for="tab2">FEV</label>
             <div>
-              <p>2</p>
+              <p><?php
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $date = date('Y-m-d');                                  
+
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2017/01/15' AND '2017/02/14' AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    echo "<table align='center' rules=rows width=600><tr>                                    
+                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> DATA DA COMPRA </b></h4></th>
+                                    <th><h4><b> CATEGORIA </b></h4></th>
+                                    <th><h4><b> PARCELA </b></h4></th>
+                                    <th><h4 align='right'><b> VALOR </b></h4></th>
+                                    <th><h4><b></b></h4></th></tr>";
+                                    $i = 1;
+                                    $valorfm=0;
+                                    $pgto=0;
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+
+                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
+                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
+                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                          
+
+                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          echo "<tr><td>" .$i. "</td>
+                                          <td>" . $row["data"]. "</td>  
+                                          <td>" . $row["categoria"]. "</td>
+                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='right'>R$" .$valor. "</td>";
+                                          $i++;
+                                          $valorfm= $valorfm+$valor;
+                                          if($row["pago"]==1){$pgto=1;}                              
+
+                                       } $valorfm=number_format($valorfm, 2, '.', '');
+                                         echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                         
+                                    } else {
+                                      
+                                       echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
+                                    }
+
+                                    ?></p>
             </div>
 						</div>  
 						
