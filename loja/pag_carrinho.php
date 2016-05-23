@@ -44,7 +44,7 @@
 	 
 	 if($data2['max'] == NULL){$data2['max'] = 1;}
 	 
-	$result3=mysqli_query($link_laps,"SELECT cc.limite,cc.id_conta FROM CONTA cc INNER JOIN cartao cart ON cc.id_conta = cart.id_conta WHERE cart.id_cartao = ".$_POST["num_cartao"].";");
+	$result3=mysqli_query($link_laps,"SELECT cc.limite,cc.id_conta, cc.status FROM CONTA cc INNER JOIN cartao cart ON cc.id_conta = cart.id_conta WHERE cart.id_cartao = ".$_POST["num_cartao"].";");
 	$data3=mysqli_fetch_assoc($result3);
 	
 	// VERIFICAR O LIMITE
@@ -54,6 +54,15 @@
 	$volta = '../loja/lojaonline.php';
 	$volta = 'lojaonline.php';
 	echo "<script>window.location='$volta?cat=GERAL&obj=Compra por falta de limite&type=erro'</script>";
+	}
+	
+	//VERIFICAR CONTA BLOQUEADA
+	if($data3['status'] == 1){
+		
+	$controle = 0;
+	$volta = '../loja/lojaonline.php';
+	$volta = 'lojaonline.php';
+	echo "<script>window.location='$volta?cat=GERAL&obj=compra. Conta bloqueada.&type=erro'</script>";
 	}
 
 	if($controle){
