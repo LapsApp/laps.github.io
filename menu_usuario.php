@@ -128,7 +128,7 @@
                   </a><!--/.info-box-->
                </div><!--/.col-->
 
-               <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="starter.php?id=<?php echo $id_cliente; ?>">
+               <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="fatura.php?id=<?php echo $id_cliente; ?>">
                   <div class="info-box green-bg">
                      <div class="count">
                          <?php $id_cliente = $_GET['id']; 
@@ -153,7 +153,7 @@
                             }
                           ?>
                      </div>
-                     <div class="title">FATURA ATUAL</div>
+                     <div class="title">SUA FATURA ATUAL</div>
                   </div><!--/.info-box-->
                </div><!--/.col-->
                
