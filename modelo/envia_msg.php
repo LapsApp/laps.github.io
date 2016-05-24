@@ -9,8 +9,6 @@ $mensagem = $_POST['mensagem'];
 date_default_timezone_set('America/Sao_Paulo');
 $date = date('Y-m-d h:i:s a');
 
-echo $date;
-
 $connect = mysqli_connect('localhost', 'root', '', 'laps');
 
 	$sql = "SELECT email FROM cliente WHERE id_cliente = '$id_cliente'";
