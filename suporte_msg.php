@@ -125,14 +125,11 @@ $id_cliente = $_GET['id']; ?>
                         <div class="form">
                            <form class="form-validate form-horizontal" method="post" action="modelo/envia_msg.php?id=<?php echo $id_cliente; ?>">
                               <div class="form-group ">
-
                                  <label for="cname" class="control-label col-lg-2">Assunto<span class="required">*</span></label>
                                  <div class="col-lg-8">
                                     <input class="form-control" id="subject" name="assunto" type="mail" style="text-transform:uppercase" minlength="5" maxlength="20" required />
                                  </div>
                               </div>
-
-                              
 
                               <div class="form-group ">
                                  <label for="cname" class="control-label col-lg-2">Mensagem<span class="required">*</span></label>

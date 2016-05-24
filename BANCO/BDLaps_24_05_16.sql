@@ -206,7 +206,7 @@ CREATE TABLE `suporte` (
   `id_msg` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `assunto` varchar(50) NOT NULL,
-  `dt_msg` date NOT NULL,
+  `dt_msg` datetime NOT NULL,
   `mensagem` varchar(320) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

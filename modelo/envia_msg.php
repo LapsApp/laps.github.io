@@ -7,7 +7,9 @@ $from = 'lapsuvv@gmail.com';
 $assunto = $_POST['assunto'];
 $mensagem = $_POST['mensagem'];
 date_default_timezone_set('America/Sao_Paulo');
-$date = date('Y-m-d');
+$date = date('Y-m-d h:i:s a');
+
+echo $date;
 
 $connect = mysqli_connect('localhost', 'root', '', 'laps');
 

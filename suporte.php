@@ -121,7 +121,6 @@ $id_cliente = $_GET['id']; ?>
                      </header>
                      <div class="panel-body">
                         <div class="form">
-                              
                               <div class="form-group">
                                  <div class="col-lg-offset-0 col-lg-2">
                                     <button class="btn btn-primary" type="submit" onclick="window.location='./suporte_msg.php?id=<?php echo $id_cliente; ?>'">CRIAR NOVA MENSAGEM</button>
@@ -129,44 +128,42 @@ $id_cliente = $_GET['id']; ?>
                               </div>
                            </form>
                            <br><br><br>
+                           <div class="form-group">
+                               <div class="col-lg-10">
+                                <?php
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                if (!$link) {
+                                    die('Não foi possível conectar: ' . mysql_error());
+                                }
 
- <div class="form-group ">
-									  <div class="col-lg-10">
+                                $sql = "SELECT id_msg, id_cliente, assunto, dt_msg, mensagem FROM suporte WHERE id_cliente = '".$id_cliente."' ORDER BY dt_msg DESC";
+                                $result = $link->query($sql);
 
-<?php
-	$link = mysqli_connect("localhost", "root", "", "laps");
-if (!$link) {
-    die('Não foi possível conectar: ' . mysql_error());
-}
+                                $i = 1;
+                                if ($result->num_rows > 0) {
+                                    echo "<table align='center' rules=rows width=1000 <tr>
+                                        <th><h4><b> DATA </b></h4></th>
+                                        <th><h4><b> ASSUNTO </b></h4></th>
+                                        <th><h4><b> MENSAGEM </b></h4></th>
+                                        </tr>";
+                                while($row = $result->fetch_assoc()) { 
+                                    $originalDate = $row["dt_msg"];
+                                    $data = date("d/m/Y h:i:s", strtotime($originalDate));
+                                        echo "<tr><td width='200'>" .$data. "</td>
+                                                <td width='300'><b>" .$row["assunto"]. "</b></td>
+                                                <td width='500'><br>" .$row["mensagem"]. "<br><br></td>
+                                                </tr>";
+                                                $i++;
 
-$sql = "SELECT id_msg, id_cliente, assunto, dt_msg, mensagem FROM suporte WHERE id_cliente = '".$id_cliente."' ORDER BY dt_msg DESC";
-$result = $link->query($sql);
+                                    } echo "<tr></table>";
+                                } else {
+                                    echo "SEM MENSAGENS";
+                                }
 
-$i = 1;
-if ($result->num_rows > 0) {
-	echo "<table align='center' rules=rows width=1000 <tr>
-    	  <th><h4><b> DATA </b></h4></th>
-    	  <th><h4><b> ASSUNTO </b></h4></th>
-    	  <th><h4><b> MENSAGEM </b></h4></th>
-    	  </tr>";
-  while($row = $result->fetch_assoc()) { 
-    	echo "<tr><td width='200'>" .$row["dt_msg"]. "</td>
-    			  <td width='300'><b>" .$row["assunto"]. "</b></td>
-    			  <td width='500'><br>" .$row["mensagem"]. "<br><br></td>
-    			  </tr>";
-    			  $i++;
-
-    } echo "<tr></table>";
-} else {
-    echo "SEM MENSAGENS";
-}
-
-?>
-                                  			<br>
-                                          </div>
-                                      </div>
-
-
+                                ?>
+                                <br>
+                                </div>
+                            </div>
                         </div>
                      </div>
                   </section>
