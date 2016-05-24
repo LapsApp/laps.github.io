@@ -270,7 +270,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -294,16 +294,19 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
-                                          
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+										  
+										  if($t_parcela == NULL or $t_parcela == ""){
+												
+												$t_parcela = $row["parcelas"];
+																				    }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                         
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -334,7 +337,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -358,16 +361,19 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
-                                          
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+										  
+										  if($t_parcela == NULL or $t_parcela == ""){
+												
+												$t_parcela = $row["parcelas"];
+																				    }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -398,7 +404,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -421,17 +427,19 @@
                                     $pgto=0;
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
-
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
-                                          
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+										  
+										  if($t_parcela == NULL or $t_parcela == ""){
+												
+												$t_parcela = $row["parcelas"];
+																				    }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -463,7 +471,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -487,16 +495,21 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
+                                         // ALTERACAO
                                           
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+										  
+										  if($t_parcela == NULL or $t_parcela == ""){
+												
+												$t_parcela = $row["parcelas"];
+																				    }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -504,7 +517,7 @@
 
                                        } $valorfm=number_format($valorfm, 2, '.', '');
                                          echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
-                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+										  if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
                                          
                                     } else {
                                       
@@ -528,7 +541,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -552,16 +565,16 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
-                                          
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+                                          // ALTERACAO
+										  
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -592,7 +605,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -616,16 +629,19 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
-                                          
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+										  
+										  if($t_parcela == NULL or $t_parcela == ""){
+												
+												$t_parcela = $row["parcelas"];
+																				    }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -656,7 +672,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -680,16 +696,19 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
-                                          
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+										  
+										  if($t_parcela == NULL or $t_parcela == ""){
+												
+												$t_parcela = $row["parcelas"];
+																				    }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -720,7 +739,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -744,16 +763,19 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
-                                          
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+										  
+										  if($t_parcela == NULL or $t_parcela == ""){
+												
+												$t_parcela = $row["parcelas"];
+																				    }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -783,7 +805,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -807,16 +829,19 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
-                                          
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+										  
+										  if($t_parcela == NULL or $t_parcela == ""){
+												
+												$t_parcela = $row["parcelas"];
+																				    }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -846,7 +871,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -870,16 +895,19 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
-                                          
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+										  
+										  if($t_parcela == NULL or $t_parcela == ""){
+												
+												$t_parcela = $row["parcelas"];
+																				    }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -909,7 +937,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -933,16 +961,19 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          if($row["parcelas"]<=1){$row["parcelas"]=1;} //para pagamentos a vista aparecerem como 1
-                                          $valor=number_format($row["valor"]/$row["parcelas"], 2, '.', ''); // dividir as parcelas
-                                          if($row["parcelas"]<=1){$parcela=1;}else{$parcela=$date-$row["mes"];}
-                                          
-
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');
+										  $t_parcela = $row["t_parcelas"];
+										  $parcela = $row["parcelas"];
+										  
+										  if($t_parcela == NULL or $t_parcela == ""){
+												
+												$t_parcela = $row["parcelas"];
+																				    }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
+										  
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
-                                          <td align='center'>" .$parcela."/". $row["parcelas"]. "</td>                                          
+                                          <td align='center'>" .$parcela."</td>                                          
                                           <td align='right'>R$" .$valor. "</td>";
                                           $i++;
                                           $valorfm= $valorfm+$valor;
@@ -972,7 +1003,7 @@
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
