@@ -42,7 +42,7 @@
 
       <!--sidebar start-->
       <aside>
-         <div id="sidebar"  class="nav-collapse ">
+         <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu">
                <li class="active">
@@ -75,8 +75,14 @@
                      <span>LISTA DE<br>COMPRAS</span>
                   </a>
                </li>
+               <li class="">
+                  <a class="" href="fatura.php?id=<?php echo $id_cliente; ?>">
+                     <i class="icon_documents_alt"></i>
+                     <span>DETALHAR<br>FATURAS</span>
+                  </a>
+               </li>
                <li>
-                  <a class="">
+                  <a class="" href="bloqueioUsuario.php?id=<?php echo $id_cliente; ?>">
                      <i class="icon_blocked"></i>
                      <span>BLOQUEIO</span>
                   </a>

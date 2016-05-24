@@ -76,8 +76,14 @@ $id_cliente = $_GET['id']; ?>
                      <span>LISTA DE<br>COMPRAS</span>
                   </a>
                </li>
+               <li class="">
+                  <a class="" href="fatura.php?id=<?php echo $id_cliente; ?>">
+                     <i class="icon_documents_alt"></i>
+                     <span>DETALHAR<br>FATURAS</span>
+                  </a>
+               </li>
                <li>
-                  <a class="">
+                  <a class="" href="bloqueioUsuario.php?id=<?php echo $id_cliente; ?>">
                      <i class="icon_blocked"></i>
                      <span>BLOQUEIO</span>
                   </a>
