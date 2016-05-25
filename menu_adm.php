@@ -77,10 +77,10 @@
                   </a>
                </li>
                </li>
-               <li class="" >
-                  <a class="">
+               <li class="">
+                  <a class="" href="listar_contas.php">
                      <i class="icon_desktop"></i>
-                     <span>XXXXX</span>
+                     <span>BLOQUEAR<br>USUÁRIOS</span>
                   </a>
                </li>
                <li>
