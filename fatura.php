@@ -231,10 +231,10 @@
          <section class="wrapper">
             <div class="row">
                <div class="col-lg-12">
-                  <h3 class="page-header"><i class="fa fa-files-o"></i> FATURAS</h3>
+                  <h3 class="page-header"><i class="fa fa-files-o"></i> DETALHAR FATURAS</h3>
                   <ol class="breadcrumb">
                      <li><i class="fa fa-home"></i><a href="index.html">INÍCIO</a></li>
-                     <li><i class="icon_document_alt"></i>FATURAS</li>
+                     <li><i class="icon_document_alt"></i>DETALHAR FATURAS</li>
                   </ol>
                </div>
             </div>
@@ -259,7 +259,7 @@
 						<div class="tabs-container">
 
 						<input type="radio" name="tabs" class="tabs" id="tab3">
-						<label for="tab3">MAR</label>
+						<label for="tab3"><b>MAR</b></label>
 						<div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -326,7 +326,7 @@
             </div>
 						
 						<input type="radio" name="tabs" class="tabs" id="tab4">
-						<label for="tab4">ABR</label>
+						<label for="tab4"><b>ABR</b></label>
 						<div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -393,7 +393,7 @@
             </div>
 
 						<input type="radio" name="tabs" class="tabs" id="tab5" checked>
-						<label for="tab5">MAI</label>
+						<label for="tab5"><b>MAI</b></label>
 						<div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -460,7 +460,7 @@
 
 						
 						<input type="radio" name="tabs" class="tabs" id="tab6">
-						<label for="tab6">JUN</label>
+						<label for="tab6"><b>JUN</b></label>
 						<div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -530,7 +530,7 @@
 
 
 						<input type="radio" name="tabs" class="tabs" id="tab7">
-						<label for="tab7">JUL</label>
+						<label for="tab7"><b>JUL</b></label>
 						<div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -594,7 +594,7 @@
 
 						
 						<input type="radio" name="tabs" class="tabs" id="tab8">
-						<label for="tab8">AGO</label>
+						<label for="tab8"><b>AGO</b></label>
 						<div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -661,7 +661,7 @@
 
 
 						<input type="radio" name="tabs" class="tabs" id="tab9">
-						<label for="tab9">SET</label>
+						<label for="tab9"><b>SET</b></label>
 						<div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -728,7 +728,7 @@
 
 						
 						<input type="radio" name="tabs" class="tabs" id="tab10">
-						<label for="tab10">OUT</label>
+						<label for="tab10"><b>OUT</b></label>
 						<div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -794,7 +794,7 @@
             </div>
 
 						<input type="radio" name="tabs" class="tabs" id="tab11">
-						<label for="tab11">NOV</label>
+						<label for="tab11"><b>NOV</b></label>
 						<div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -860,7 +860,7 @@
             </div>
 
 						<input type="radio" name="tabs" class="tabs" id="tab12">
-						<label for="tab12">DEZ</label>
+						<label for="tab12"><b>DEZ</b></label>
 						<div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -926,7 +926,7 @@
             </div>
 
             <input type="radio" name="tabs" class="tabs" id="tab1">
-            <label for="tab1">JAN</label>
+            <label for="tab1"><b>JAN</b></label>
             <div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
@@ -992,7 +992,7 @@
             </div>
 
             <input type="radio" name="tabs" class="tabs" id="tab2">
-            <label for="tab2">FEV</label>
+            <label for="tab2"><b>FEV</b></label>
             <div>
               <p><?php
                                     date_default_timezone_set('America/Sao_Paulo');
