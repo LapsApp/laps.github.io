@@ -96,13 +96,13 @@ $msg = '<html>
 </html>';
 if (smtpmailer($mail, $from, 'LAPS', 'LAPS - '.$tipo, $msg)) {
    $volta = $_SERVER['HTTP_REFERER'];
-   echo "<script>window.location='http://localhost/laps/listar_contas.php?obj=Alteracao&type=sucesso'</script>";
+   echo "<script>window.location='http://localhost/laps/trunk/listar_contas.php?obj=Alteracao&type=sucesso'</script>";
 } else {
    $volta = $_SERVER['HTTP_REFERER'];
-   echo "<script>window.location='http://localhost/laps/listar_contas.php?obj=Alteracao&type=erro'</script>";
+   echo "<script>window.location='http://localhost/laps/trunk/listar_contas.php?obj=Alteracao&type=erro'</script>";
 }
 if (!empty($error)) {
    $volta = $_SERVER['HTTP_REFERER'];
-   echo "<script>window.location='http://localhost/laps/listar_contas.php?obj=Alteracao&type=erro'</script>";
+   echo "<script>window.location='http://localhost/laps/trunk/listar_contas.php?obj=Alteracao&type=erro'</script>";
 }
 ?>
