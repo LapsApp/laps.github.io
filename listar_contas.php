@@ -147,7 +147,7 @@ tr:hover {
                                     $sql = "SELECT c.id_conta, 
                                                    ci.nome, 
                                                    c.limite, 
-                                                   c.saldo,
+                                                   c.limitetotal,
                                                    c.status, 
                                                    c.comentario 
                                              from conta c 
@@ -159,8 +159,8 @@ tr:hover {
                                     <th><h4><b> *** </b></h4></th>
                                     <th><h4><b> CONTA </b></h4></th>
                                     <th><h4><b> RESPONSÁVEL </b></h4></th>
-                                    <th><h4><b> LIMITE </b></h4></th>
-                                    <th><h4><b> SALDO </b></h4></th>
+                                    <th><h4><b> LIMITE TOTAL</b></h4></th>
+                                    <th><h4><b> LIMITE DISPONÍVEL </b></h4></th>
                                     <th><h4><b> STATUS </b></h4></th>
                                     <th><h4><b> OBS </b></h4><th></th></th>";
                                     $i = 1;
@@ -169,8 +169,8 @@ tr:hover {
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["id_conta"]. "</td>
                                           <td>" . $row["nome"]. "</td>
-                                          <td>" . $row["limite"]. "</td>
-                                           <td>" . $row["saldo"]. "</td>
+                                          <td>" . $row["limitetotal"]. "</td>
+                                           <td>" . $row["limite"]. "</td>
                                            ";
                                           if($row["status"]==0)
                                           { 
