@@ -16,15 +16,57 @@
    
    <script src="js/loader.js"></script>
    <script >
-      google.charts.load("current", {packages:["corechart"]});
+   <?php
+                                    $link = mysqli_connect("localhost", "root", "", "laps");
+                                    if (!$link) {
+                                       die('Não foi possível conectar: ' . mysql_error());
+                                    }
+                                    $id_cliente = $_GET['id'];
+                                    $alimentacao=10;
+                                    $tecnologia=20;
+                                    $livraria=30;
+                                    $esporte=40;
+                                    $lazer=50;
+                                    $calcado=60;
+                                    $vestuario=70;
+                                    $eletrodomestico=80;
+
+                                    $sql = "SELECT  cp.valor, cp.quantidade, cp.categoria, cp.data
+                                    FROM compras cp
+                                    join cartao c on cp.id_cartao = c.id_cartao
+                                    join conta ct on ct.id_conta = c.id_conta
+                                    WHERE cp.data BETWEEN '2016/01/01' AND '2016/12/31' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
+                                   
+                                    $result = $link->query($sql);
+
+                                    
+                                    if ($result->num_rows > 0) { 
+                                       while($row = $result->fetch_assoc()) {     
+                                          
+
+                                          $alimentacao=10;
+                                          $tecnologia=20;
+                                          $livraria=30;
+                                          $esporte=40;
+                                          $lazer=50;
+                                          $calcado=60;
+                                          $vestuario=70;
+                                          $eletrodomestico=80;                              
+
+                                       } 
+                                         
+                                    }
+
+
+ echo"google.charts.load('current', {packages:['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['CATEGORIAS', 'GASTOS'],
-          ['ALIMENTAÇÃO', 100], ['TECNOLOGIA', 100], ['LIVRARIA', 100],
-          ['ESPORTE', 100], ['LAZER', 100], ['CALÇADOS', 100],
-          ['VESTUÁRIO', 100], ['ELETRODOMÉSTICO', 100]       
-        ]);
+          ['ALIMENTAÇÃO', 100], ['TECNOLOGIA', 200], ['LIVRARIA', 300],
+          ['ESPORTE', 400], ['LAZER', 500], ['CALÇADOS', 600],
+          ['VESTUÁRIO', 700], ['ELETRODOMÉSTICO', 800]       
+        ]);       
 
         var options = {
           title: '',
@@ -32,14 +74,14 @@
           legend: {position: 'top', alignment: 'center', maxLines: 2},
           is3D: true,
           slices: {
-            0: { color: '#FF9999' },
-            1: { color: '#CCFFE5' },
-            2: { color: '#FFE5CC' },
-            3: { color: '#CCFF99' },
-            4: { color: '#C6E2FF' },
-            5: { color: '#EEDD82' },
-            6: { color: '#FFBBFF' },
-            7: { color: '#CFCFCF' }
+            0: { color: '#E02F2F', offset: 0.1 },
+            1: { color: '#7AF4A9', offset: 0.1 },
+            2: { color: '#F1A677', offset: 0.1 },
+            3: { color: '#FFFF99', offset: 0.1 },
+            4: { color: '#689DEA', offset: 0.1 },
+            5: { color: '#B58F2A', offset: 0.1 },
+            6: { color: '#EA5BEA', offset: 0.1 },
+            7: { color: '#6F6F6F', offset: 0.1 },
           }
           
           
@@ -47,7 +89,9 @@
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
-      }
+      }";
+
+      ?>
     </script>
   
    </head>

@@ -34,7 +34,7 @@
                                     $limitetotal=0;
 
 //----------------------------------PRÓXIMAS FATURAS
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago, ct.limitetotal,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago, ct.limitetotal,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
@@ -45,12 +45,17 @@
                                    
                                     $result = $link->query($sql);
 
-                                    
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
-                                          
 
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');                                          
+                                $t_parcela = $row["t_parcelas"];
+                                $parcela = $row["parcelas"];
+                                
+                                if($t_parcela == NULL or $t_parcela == ""){
+                                    
+                                    $t_parcela = $row["parcelas"];
+                                                                }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');                                       
                                           $valorpos= $valorpos+$valor; 
                                           $limitetotal=$row["limitetotal"];                                
 
@@ -60,23 +65,28 @@
                                     } 
 
 //----------------------------------FATURAS FECHADAS
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago, ct.limitetotal,
+                                   $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago, ct.limitetotal,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
-                                    WHERE cp.data BETWEEN '2016/03/15' AND '2016/05/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
+                                    WHERE cp.data BETWEEN '2016/03/15' AND '2016/04/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
                                    
                                     $result = $link->query($sql);
 
-                                    
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
-                                          
 
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');                                          
+                                $t_parcela = $row["t_parcelas"];
+                                $parcela = $row["parcelas"];
+                                
+                                if($t_parcela == NULL or $t_parcela == ""){
+                                    
+                                    $t_parcela = $row["parcelas"];
+                                                                }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');                                                
                                           $valorpre= $valorpre+$valor; 
                                           $limitetotal=$row["limitetotal"];                                
 
@@ -86,23 +96,28 @@
                                     } 
 
 //----------------------------------FATURAS ATUAL
-                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago, ct.limitetotal,
+                                    $sql = "SELECT  cp.id_compra, cp.id_cartao, cp.parcelas,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago, ct.limitetotal,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
                                     EXTRACT(DAY FROM cp.data) AS dia
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
-                                    WHERE cp.data BETWEEN '2016/05/15' AND '2016/06/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
+                                    WHERE cp.data BETWEEN '2016/04/15' AND '2016/05/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
                                    
                                     $result = $link->query($sql);
 
-                                    
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
-                                          
 
-                                          $valor=number_format($row["valor"]*$row["quantidade"], 2, '.', '');                                          
+                                $t_parcela = $row["t_parcelas"];
+                                $parcela = $row["parcelas"];
+                                
+                                if($t_parcela == NULL or $t_parcela == ""){
+                                    
+                                    $t_parcela = $row["parcelas"];
+                                                                }
+                                          $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');                                                
                                           $valoratual= $valoratual+$valor; 
                                           $limitetotal=$row["limitetotal"];                                
 
@@ -440,15 +455,16 @@
                                     $pgto=0;
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
-										  $t_parcela = $row["t_parcelas"];
-										  $parcela = $row["parcelas"];
-										  
-										  if($t_parcela == NULL or $t_parcela == ""){
-												
-												$t_parcela = $row["parcelas"];
-																				    }
+
+                                $t_parcela = $row["t_parcelas"];
+                                $parcela = $row["parcelas"];
+                                
+                                if($t_parcela == NULL or $t_parcela == ""){
+                                    
+                                    $t_parcela = $row["parcelas"];
+                                                                }
                                           $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
-										  
+                                
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
@@ -508,17 +524,15 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                         // ALTERACAO
-                                          
-										  $t_parcela = $row["t_parcelas"];
-										  $parcela = $row["parcelas"];
-										  
-										  if($t_parcela == NULL or $t_parcela == ""){
-												
-												$t_parcela = $row["parcelas"];
-																				    }
+                                $t_parcela = $row["t_parcelas"];
+                                $parcela = $row["parcelas"];
+                                
+                                if($t_parcela == NULL or $t_parcela == ""){
+                                    
+                                    $t_parcela = $row["parcelas"];
+                                                                }
                                           $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
-										  
+                                
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
@@ -530,7 +544,7 @@
 
                                        } $valorfm=number_format($valorfm, 2, '.', '');
                                          echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$".$valorfm."                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
-										  if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
+                                           if($pgto==1){echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";}
                                          
                                     } else {
                                       
@@ -578,12 +592,15 @@
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {     
 
-                                          // ALTERACAO
-										  
-										  $t_parcela = $row["t_parcelas"];
-										  $parcela = $row["parcelas"];
+                                $t_parcela = $row["t_parcelas"];
+                                $parcela = $row["parcelas"];
+                                
+                                if($t_parcela == NULL or $t_parcela == ""){
+                                    
+                                    $t_parcela = $row["parcelas"];
+                                                                }
                                           $valor=number_format($row["valor"]*$row["quantidade"]/$t_parcela, 2, '.', '');
-										  
+                                
                                           echo "<tr><td>" .$i. "</td>
                                           <td>" . $row["data"]. "</td>  
                                           <td>" . $row["categoria"]. "</td>
