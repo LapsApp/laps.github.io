@@ -67,7 +67,7 @@
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
-                                    WHERE cp.data BETWEEN '2016/03/15' AND '2016/04/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
+                                    WHERE cp.data BETWEEN '2016/03/15' AND '2016/05/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
                                    
                                     $result = $link->query($sql);
 
@@ -93,7 +93,7 @@
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
-                                    WHERE cp.data BETWEEN '2016/04/15' AND '2016/05/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
+                                    WHERE cp.data BETWEEN '2016/05/15' AND '2016/06/14' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
                                    
                                     $result = $link->query($sql);
 
