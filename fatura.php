@@ -20,7 +20,7 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['FATURAS', 'VALORES', { role: 'style' }],
+          ['FATURAS', 'VALORES'],
 
           <?php
                                     $link = mysqli_connect("localhost", "root", "", "laps");
@@ -55,7 +55,7 @@
                                           $limitetotal=$row["limitetotal"];                                
 
                                        } $valorpos=number_format($valorpos, 2, '.', '');
-                                       echo"['PRÓXIMAS FATURAS',".$valorpos.", 'color: #FE9A2E'],";
+                                       echo"['PRÓXIMAS FATURAS',".$valorpos."],";
                                          
                                     } 
 
@@ -81,7 +81,7 @@
                                           $limitetotal=$row["limitetotal"];                                
 
                                        } $valorpre=number_format($valorpre, 2, '.', '');
-                                       echo"['FATURA FECHADA',".$valorpre.",'color: #FE2E2E'],";
+                                       echo"['PENDENTES',".$valorpre."],";
                                          
                                     } 
 
@@ -107,14 +107,14 @@
                                           $limitetotal=$row["limitetotal"];                                
 
                                        } $valoratual=number_format($valoratual, 2, '.', '');
-                                       echo"['FATURA ATUAL',".$valoratual.",'color: #58ACFA'],";
+                                       echo"['FATURA ATUAL',".$valoratual."],";
                                          
                                     }
 
 //----------------------------------LIMITE DISPONÍVEL
                                     $limitetotal = $limitetotal-$valorpre-$valoratual-$valorpos;
 
-                                    echo"['LIMITE DISPONÍVEL',".$limitetotal.",'color: #04B45F'],"; 
+                                    echo"['LIMITE DISPONÍVEL',".$limitetotal."],"; 
 
                                     ?>
 
@@ -122,8 +122,15 @@
 
         var options = {
           title: '',
-		      legend: 'none',
+		    legend: 'none',
+          legend: {position: 'top', maxLines: 3},
           pieHole: 0.5,
+          slices: {
+            0: { color: '#58ACFA' },
+            1: { color: '#FE2E2E' },
+            2: { color: '#FE9A2E' },
+            3: { color: '#04B45F' }
+          }
           
           };
 
@@ -197,6 +204,12 @@
                   </a>
                </li>
                <li class="">
+                  <a class="" href="consumo_categoria.php?id=<?php echo $id_cliente; ?>">
+                     <i class="icon_piechart"></i>
+                     <span>CONSUMO POR<br>CATEGORIAS</span>
+                  </a>
+               </li>
+               <li class="">
                   <a class="" href="fatura.php?id=<?php echo $id_cliente; ?>">
                      <i class="icon_documents_alt"></i>
                      <span>DETALHAR<br>FATURAS</span>
@@ -250,7 +263,7 @@
 						<tr>
 						<td align="center">
             <b>FECHAMENTO DIA 15 E VENCIMENTO DIA 25</b>
-                        <div id="donutchart" style="width: 400px; height: 400px;"></div>
+                        <div id="donutchart" style="width: 420px; height: 420px;"></div>
                         
 						</td>
 						<td align="center">
@@ -944,7 +957,7 @@
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
-                                    WHERE cp.data BETWEEN '2016/1215' AND '2017/01/14' AND ct.id_cliente = ".$id_cliente;
+                                    WHERE cp.data BETWEEN '2016/12/15' AND '2017/01/14' AND ct.id_cliente = ".$id_cliente;
                                    
                                     $result = $link->query($sql);
 
