@@ -4,7 +4,7 @@ $id_cliente = $_GET['id'];
 ?>
 <html lang="en">
 <style>
-th, td { line-height: 3; }
+th, td { line-height: 3; padding: 5px 5px;}
 
 th{
    background: #F0F0F0;
@@ -156,37 +156,37 @@ tr:hover {
                                     $result = $link->query($sql);
 
                                     echo "<table align='center' rules=rows width=1000 style='width: 100%;''><tr>
-                                    <th><h4><b> *** </b></h4></th>
-                                    <th><h4><b> CONTA </b></h4></th>
-                                    <th><h4><b> RESPONSÁVEL </b></h4></th>
-                                    <th><h4><b> LIMITE TOTAL</b></h4></th>
-                                    <th><h4><b> LIMITE DISPONÍVEL </b></h4></th>
-                                    <th><h4><b> STATUS </b></h4></th>
-                                    <th><h4><b> OBS </b></h4><th></th></th>";
+                                    <th style='padding: 20px;'><h4><b> *** </b></h4></th>
+                                    <th style='padding: 20px;'><h4><b> CONTA </b></h4></th>
+                                    <th style='padding: 20px;'><h4><b> RESPONSÁVEL </b></h4></th>
+                                    <th style='padding: 20px;'><h4><b> LIMITE TOTAL</b></h4></th>
+                                    <th style='padding: 20px;'><h4><b> LIMITE DISPONÍVEL </b></h4></th>
+                                    <th style='padding: 20px;'><h4><b> STATUS </b></h4></th>
+                                    <th style='padding: 20px;'><h4><b> OBS </b></h4><th></th></th>";
                                     $i = 1;
                                     if ($result->num_rows > 0) {
                                        while($row = $result->fetch_assoc()) {
-                                          echo "<tr><td>" .$i. "</td>
-                                          <td>" . $row["id_conta"]. "</td>
-                                          <td>" . $row["nome"]. "</td>
-                                          <td>" . $row["limitetotal"]. "</td>
-                                           <td>" . $row["limite"]. "</td>
+                                          echo "<tr><td style='padding: 20px;'>" .$i. "</td>
+                                          <td style='padding: 20px;'>" . $row["id_conta"]. "</td>
+                                          <td style='padding: 20px;'>" . $row["nome"]. "</td>
+                                          <td style='padding: 20px;'>" . $row["limitetotal"]. "</td>
+                                           <td style='padding: 20px;'>" . $row["limite"]. "</td>
                                            ";
                                           if($row["status"]==0)
                                           { 
-                                             echo "<td style='color:blue' > ATIVO </td>";
+                                             echo "<td style='color:blue; padding: 20px;' > ATIVO </td>";
                                           }else
                                           { 
-                                             echo"<td style='color:red' > BLOQUEADO </td>";
+                                             echo"<td style='color:red;padding: 20px;' > BLOQUEADO </td>";
                                           }
-                                          echo  "<td>" . $row["comentario"]. "</td>";
+                                          echo  "<td style='padding: 20px;'>" . $row["comentario"]. "</td>";
 
                                           if($row["status"] == 0)
                                           {
-                                             echo "<td align='right'><a href='muda_status_conta.php?id_conta=".$row["id_conta"]."' class='btn btn-info' role='button'>BLOQUEAR</a></td></tr>";
+                                             echo "<td align='right' style='padding: 20px;'><a href='muda_status_conta.php?id_conta=".$row["id_conta"]."' class='btn btn-info' role='button'>BLOQUEAR</a></td></tr>";
                                           }else
                                           {
-                                             echo "<td align='right'><a href='muda_status_conta.php?id_conta=".$row["id_conta"]."' class='btn btn-info' role='button'>DESBLOQUEAR</a></td></tr>";
+                                             echo "<td align='right' style='padding: 20px;'><a href='muda_status_conta.php?id_conta=".$row["id_conta"]."' class='btn btn-info' role='button'>DESBLOQUEAR</a></td></tr>";
                                           }
                                           $i++;
 

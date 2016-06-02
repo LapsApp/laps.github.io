@@ -17,6 +17,9 @@
       <link href="css/style.css" rel="stylesheet">
       <link href="css/style-responsive.css" rel="stylesheet" />
       <style>
+          table{
+            font-size: 11px;
+          }
          th, td {
          line-height: 3;
          }
@@ -160,17 +163,19 @@
                                                 $result=mysqli_query($link,"SELECT DISTINCT id_compra FROM compras where id_cartao = ".$data_cli['id_cartao'].";");
                                                 $total = 0;
                                                 while($data=mysqli_fetch_assoc($result)){ 
-                                                    $result2=mysqli_query($link,"SELECT sum(quantidade*valor) valor_compra,DATE_FORMAT(data,'%d/%m/%Y %H:%i:%S') data,categoria FROM `compras` where id_compra = ".$data['id_compra'].";");
+                                                    $result2=mysqli_query($link,"SELECT sum(c.quantidade*c.valor) valor_compra,DATE_FORMAT(c.data,'%d/%m/%Y %H:%i:%S') data,l.categoria, l.nome, l.endereco FROM compras c
+                                                             join lojas l on l.id_loja = c.id_loja where id_compra = ".$data['id_compra'].";");
                                                     $data2=mysqli_fetch_assoc($result2);                                 
                                                 //$result3=mysqli_query($link,"SELECT data,categoria FROM `compras` where id_compra = ".$data['id_compra'].";");
                                                 //$data3=mysqli_fetch_assoc($result3);
                                                 //$subtotal = ($data['quantidade'])*str_replace(",",".",$data["valor"]);
                                                 ?>
                                              <tr>
-                                                <td><?php echo $data["id_compra"]?></td>
+                                                <td style="line-height: 1;"><?php echo $data2["nome"]."
+                                                                <br> <small>".$data2["endereco"]."</small>"?></td>
                                                 <td><?php echo $data2["categoria"]?></td>
                                                 <td><?php echo $data2["data"]?></td>
-                                                <td><?php echo $data2["valor_compra"]?></td>
+                                                <td><?php echo number_format($data2["valor_compra"], 2, ',', '.');?></td>
                                              </tr>
                                              <?php } // FIM WHILE COMPRAS ?>
                                           </tbody>
