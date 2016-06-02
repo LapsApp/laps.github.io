@@ -1,0 +1,9 @@
+<td align="center">
+<div style="width: 250px; height: 350px; background: #EEDD82; box-shadow: 0px 20px 15px grey"><br>
+<b>ITAPOA</b><br><br>
+<div id="img"><img src="ele_002.jpg">
+</div><b><br>VIZZANO<br>R$119,96<br>
+<button class='btn' name='adicionar' value='".$row["id_produto"]."' type='submit'>ADICIONAR AO CARRINHO</button>
+</b></div>
+</td>
+
