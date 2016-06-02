@@ -13,10 +13,10 @@ function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
 	$mail->IsHTML(true);
 	$mail->IsSMTP();		// Ativar SMTP
 	$mail->SMTPDebug = 1;		// Debugar: 1 = erros e mensagens, 2 = mensagens apenas
-	$mail->SMTPAuth = true;		// Autenticação ativada
+	$mail->SMTPAuth = true;		// Autenticaï¿½ï¿½o ativada
 	$mail->SMTPSecure = 'ssl';	// SSL REQUERIDO pelo GMail
 	$mail->Host = 'smtp.gmail.com';	// SMTP utilizado
-	$mail->Port = 465;  		// A porta 465 deverá estar aberta em seu servidor
+	$mail->Port = 465;  		// A porta 465 deverï¿½ estar aberta em seu servidor
 	$mail->Username = GUSER;
 	$mail->Password = GPWD;
 	$mail->SetFrom($de, $de_nome);
@@ -53,18 +53,18 @@ $msg = '
 <table id="t1" width="800">
 <tr>
 <td>
-<img src="http://lapsapp.github.io/images/assign1.jpg"><br>
+<img src="http://lapsapp.github.io/img/assign1.jpg"><br>
 <table id="t2" width="800">
 <tr>
 <td width="500">
-<p align="Justify"><b>Prezado(a) usuário! </b>
+<p align="Justify"><b>Prezado(a) usuï¿½rio! </b>
 <p align="Justify">Sua conta foi bloqueada com sucesso.<br><br>
 </table>
-<p align="Justify">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online.
+<p align="Justify">Com o LAPS vocï¿½ poderï¿½ acompanhar em tempo real suas compras, visualizar seu limite disponï¿½vel, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartï¿½o, tudo online.
 <br><br>
 <p align="center">Atenciosamente,</p>
 <p align="center"><b>EQUIPE LAPS</b><br><br></p>
-<img src="http://lapsapp.github.io/images/assign2.jpg">
+<img src="http://lapsapp.github.io/img/assign2.jpg">
 </td>
 </tr>
 </table>
@@ -80,7 +80,7 @@ if (smtpmailer($mail, $from, 'LAPS', 'LAPS - Bloqueio da conta', $msg) == false)
 //if (!empty($error)) echo $error;
 }
 
-//Não é pra ativar
+//Nï¿½o ï¿½ pra ativar
 /*
 if (isset($ativa)){
 $msg = '
@@ -88,7 +88,7 @@ $msg = '
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>ATIVAÇÃO DE CONTA</title>
+<title>ATIVAï¿½ï¿½O DE CONTA</title>
 <style id="jsbin-css">
 #t1{
 	background: #FFFFFF;
@@ -103,18 +103,18 @@ $msg = '
 <table id="t1" width="800">
 <tr>
 <td>
-<img src="http://lapsapp.github.io/images/assign1.jpg"><br>
+<img src="http://lapsapp.github.io/img/assign1.jpg"><br>
 <table id="t2" width="800">
 <tr>
 <td width="500">
-<p align="Justify"><b>Prezado(a) usuário! </b>
+<p align="Justify"><b>Prezado(a) usuï¿½rio! </b>
 <p align="Justify">Sua conta foi ativada com sucesso.<br><br>
 </table>
-<p align="Justify">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online.
+<p align="Justify">Com o LAPS vocï¿½ poderï¿½ acompanhar em tempo real suas compras, visualizar seu limite disponï¿½vel, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartï¿½o, tudo online.
 <br><br>
 <p align="center">Atenciosamente,</p>
 <p align="center"><b>EQUIPE LAPS</b><br><br></p>
-<img src="http://lapsapp.github.io/images/assign2.jpg">
+<img src="http://lapsapp.github.io/img/assign2.jpg">
 </td>
 </tr>
 </table>

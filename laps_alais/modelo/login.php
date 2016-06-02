@@ -17,10 +17,10 @@ if (isset($entrar)) {
         while($row = $result->fetch_assoc()) {
 	        if($row["tipo"]==1){
 	        setcookie("login", $login);
-	        header("Location:../menu_adm.php?id=".$row["id_cliente"]);}
+	        header("Location:../pages_adm/menu_adm.php?id=".$row["id_cliente"]);}
 	        else{
 	        setcookie("login", $login);
-	        header("Location:../menu_usuario.php?id=".$row["id_cliente"]);}
+	        header("Location:../pages_user/menu_usuario.php?id=".$row["id_cliente"]);}
 	    }
     }
 }

@@ -7,12 +7,12 @@
 
    <title>LAPS</title>
 
-   <link href="css/bootstrap.min.css" rel="stylesheet">
-   <link href="css/bootstrap-theme.css" rel="stylesheet">
-   <link href="css/elegant-icons-style.css" rel="stylesheet" />
-   <link href="css/font-awesome.min.css" rel="stylesheet"/>
-   <link href="css/style.css" rel="stylesheet">
-   <link href="css/style-responsive.css" rel="stylesheet" />
+   <link href="../css/bootstrap.min.css" rel="stylesheet">
+   <link href="../css/bootstrap-theme.css" rel="stylesheet">
+   <link href="../css/elegant-icons-style.css" rel="stylesheet" />
+   <link href="../css/font-awesome.min.css" rel="stylesheet"/>
+   <link href="../css/style.css" rel="stylesheet">
+   <link href="../css/style-responsive.css" rel="stylesheet" />
 </head>
 
 <body style="color: #000;">
@@ -112,7 +112,7 @@
                <div class="col-lg-12">
                   <h3 class="page-header"><i class="fa fa-files-o"></i> CADASTRO</h3>
                   <ol class="breadcrumb">
-                     <li><i class="fa fa-home"></i><a href="menu_usuario.php?id=<?php echo $id_cliente; ?>">INÍCIO</a></li>
+                     <li><i class="fa fa-home"></i><a href="../pages_user/menu_usuario.php?id=<?php echo $id_cliente; ?>">INÍCIO</a></li>
                      <li><i class="icon_document_alt"></i>MEUS DADOS</li>
                      <li><i class="fa fa-files-o"></i>CADASTRO</li>
                   </ol>
@@ -127,11 +127,11 @@
                      </header>
                      <div class="panel-body">
                         <div class="form">
-                           <form class="form-validate form-horizontal" method="post" action="modelo/salva_finaliza_cadastro.php" enctype="multipart/form-data">
+                           <form class="form-validate form-horizontal" method="post" action="../modelo/salva_finaliza_cadastro.php" enctype="multipart/form-data">
                               <div class="form-group"><br>
                                  <label for="ccomment" class="control-label col-lg-2">Foto</label>
                                  <div class="col-lg-4">
-                                    <img border="0" src="images/user_.png" name="frente" id="fotoimg" height="100" width="100" alt="Frente"> 
+                                    <img border="0" src="../img/user_.png" name="frente" id="fotoimg" height="100" width="100" alt="Frente"> 
                                     <input name="foto" type="file" id="foto" onchange="readURL(this,'fotoimg');" required />
                                  </div>
                               </div>
@@ -190,13 +190,13 @@
                               <div class="form-group"><br>
                                  <label for="ccomment" class="control-label col-lg-2">Doc. Frente</label>
                                  <div class="col-lg-4">
-                                    <img border="0" src="images/card_user.png" name="frente" id="frenteimg" height="100" width="100" alt="Frente">
+                                    <img border="0" src="../img/card_user.png" name="frente" id="frenteimg" height="100" width="100" alt="Frente">
                                     <input name="frente" type="file" id="frente" onchange="readURL(this,'frenteimg');" required />
                                  </div>
 
                                  <label for="ccomment" class="control-label col-lg-2">Doc. Verso</label>
                                  <div class="col-lg-4">
-                                    <img border="0" src="images/card_user.png" name="verso" id="versoimg" height="100" width="100" alt="Verso">
+                                    <img border="0" src="../img/card_user.png" name="verso" id="versoimg" height="100" width="100" alt="Verso">
                                     <input name="verso" type="file" id="verso" onchange="readURL(this,'versoimg');" required />
                                  </div>
                               </div>
@@ -222,13 +222,13 @@
    <!-- container section end -->
 
    <!-- javascripts -->
-   <script src="js/jquery.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/jquery.scrollTo.min.js"></script>
-   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-   <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-   <script src="js/form-validation-script.js"></script>
-   <script src="js/scripts.js"></script>
+   <script src="../js/jquery.js"></script>
+   <script src="../js/bootstrap.min.js"></script>
+   <script src="../js/jquery.scrollTo.min.js"></script>
+   <script src="../js/jquery.nicescroll.js">
+   <script src="../js/jquery.validate.min.js"></script>
+   <script src="../js/form-validation-script.js"></script>
+   <script src="../js/scripts.js"></script>
 
    <script language="JavaScript" type="text/javascript">
    function readURL(input, id) {

@@ -11,10 +11,10 @@ $headers = 'From: ' . $from . "\r\n" .
 ini_set(sendmail_from, $from);
 if (mail($to, $subject, $message, $headers)) 
 {
-   echo "<script>window.location='http://localhost/laps/convites.php?obj=Convite&type=sucesso'</script>";
+   echo "<script>window.location='../pages_user/convites.php?obj=Convite&type=sucesso'</script>";
 }
 else {
    $volta = $_SERVER['HTTP_REFERER'];
-   echo "<script>window.location='http://localhost/laps/convites.php?obj=Convite&type=erro'</script>";
+   echo "<script>window.location='../pages_user/convites.php?obj=Convite&type=erro'</script>";
 }
 ?>

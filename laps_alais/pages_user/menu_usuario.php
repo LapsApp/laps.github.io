@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<?php $id_cliente = $_GET['id']; ?> 
-<html lang="pt-br">
-<head>
-   <meta charset="utf-8">
-   <link rel="shortcut icon" href="../img/favicon.png">
-
-   <title>LAPS</title>
-      <link href="../css/bootstrap.min.css" rel="stylesheet">
-      <link href="../css/bootstrap-theme.css" rel="stylesheet">
-      <link href="../css/elegant-icons-style.css" rel="stylesheet" />
-      <link href="../css/font-awesome.min.css" rel="stylesheet" />
-      <link href="../css/style.css" rel="stylesheet">
-      <link href="../css/style-responsive.css" rel="stylesheet" />
-</head>
+<?php
+$id_cliente = $_GET['id'];
+$paginaTitulo = 'Menu Usuário';
+include 'partes/header.php';
+?>
 
 <body style="color: #000;">
    <!-- container section start -->
@@ -40,68 +30,7 @@
       <!--header end-->
 
       <!--sidebar start-->
-      <aside>
-         <div id="sidebar" class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu">
-               <li class="active">
-                  <a class="" href="../pages_user/menu_usuario.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_house_alt"></i>
-                     <span>INICIO</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="" href="../pages_user/cadastro.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_document_alt"></i>
-                     <span>MEUS DADOS</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="" href="../pages_user/convites.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_link"></i>
-                     <span>INDICADOS</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="" href="../pages_user/suporte.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_mail_alt"></i>
-                     <span>SUPORTE</span>
-                  </a>
-               </li>
-               <li class="">
-                  <a class="" href="../pages_user/starter.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_documents_alt"></i>
-                     <span>LISTA DE<br>COMPRAS</span>
-                  </a>
-               </li>
-               <li class="">
-                  <a class="" href="../pages_user/fatura.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_documents_alt"></i>
-                     <span>DETALHAR<br>FATURAS</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="" href="../pages_user/bloqueioUsuario.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_blocked"></i>
-                     <span>BLOQUEIO</span>
-                  </a>
-               </li>
-               <!--<li class="">
-                  <a class="">
-                     <i class="icon_table"></i>
-                     <span>XXXXX</span>
-                  </a>
-               </li>
-               <li class="">
-                  <a class="">
-                     <i class="icon_documents_alt"></i>
-                     <span>XXXXX</span>
-                  </a>
-               </li>-->
-            </ul>
-            <!-- sidebar menu end-->
-         </div>
-      </aside>
+     <?php include 'partes/nav.php'; ?>
       <!--sidebar end-->
 
       <!--main content start-->
@@ -203,10 +132,8 @@
                      <div class="title">SEU LIMITE TOTAL</div>
                   </div><!--/.info-box-->
                </div><!--/.col-->
-               
             </div><!--/.row-->
          </section>
       </section>
    </section>
-</body>
-</html>
+<?php include 'partes/footer.php'; ?>

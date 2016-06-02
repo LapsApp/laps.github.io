@@ -178,7 +178,7 @@ img
 /* start home */       
 #home
     {
-    background: url('../images/home-bg.jpg') no-repeat;
+    background: url('../img/home-bg.jpg') no-repeat;
     background-size: cover;
     color: #fff;
     margin-top: 70px;
@@ -360,7 +360,7 @@ img
 
 #cadastro
     {
-        background: url('../images/credit-card.jpg') no-repeat;
+        background: url('../img/credit-card.jpg') no-repeat;
         /*opacity:0.6;
         filter:alpha(opacity=60);*/
         background-size: cover;
@@ -408,7 +408,7 @@ img
 /* start contact */
 #contact
     {
-        background: url('../images/contact-bg.jpg') no-repeat;
+        background: url('../img/contact-bg.jpg') no-repeat;
         background-size: cover;
         color: #fff;
     }

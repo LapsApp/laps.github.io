@@ -65,7 +65,7 @@ $msg = '
 <table id="t1" width="800"> 
 <tr>
 <td>
-  <img src="http://lapsapp.github.io/images/assign1.jpg"><br>
+  <img src="http://lapsapp.github.io/img/assign1.jpg"><br>
 <table id="t2" width="800"> 
 <tr>
 <td width="500">
@@ -73,14 +73,14 @@ $msg = '
   <p align="Justify">Infelizmente, sua solicitação de cadastro foi recusada.<br> 
 Você possui pendências em seu nome, tente futuramente.
 </td>
-<td width="300" align="center"><img src="http://lapsapp.github.io/images/laps.png" width="140" height="160">
+<td width="300" align="center"><img src="http://lapsapp.github.io/img/laps.png" width="140" height="160">
 </td>
 </tr>
 </table>
 <br><br>'.$comentario.'<br><br>
 <p align="center">Atenciosamente,</p>
 <p align="center"><b>EQUIPE LAPS</b><br><br></p>
-  <img src="http://lapsapp.github.io/images/assign2.jpg">
+  <img src="http://lapsapp.github.io/img/assign2.jpg">
 </td>
 </tr>
 </table>
@@ -191,14 +191,14 @@ else
 		<table id="t1" width="800">
 		<tr>
 		<td>
-		<img src="http://lapsapp.github.io/images/assign1.jpg"><br>
+		<img src="http://lapsapp.github.io/img/assign1.jpg"><br>
 		<table id="t2" width="800">
 		<tr>
 		<td width="500">
 		<p align="Justify"><b>Prezado(a) '.$nome.'! </b>
 		<p align="Justify">Seja muito bem-vindo! <br><br>
 		<p align="Justify">Você já faz parte da nossa rede.</td>
-		<td width="300" align="center"><img src="http://lapsapp.github.io/images/laps.png" width="140" height="160">
+		<td width="300" align="center"><img src="http://lapsapp.github.io/img/laps.png" width="140" height="160">
 		</td>
 		</tr>
 		</table>
@@ -213,7 +213,7 @@ else
 		<br><br>
 		<p align="center">Atenciosamente,</p>
 		<p align="center"><b>EQUIPE LAPS</b><br><br></p>
-		<img src="http://lapsapp.github.io/images/assign2.jpg">
+		<img src="http://lapsapp.github.io/img/assign2.jpg">
 		</td>
 		</tr>
 		</table>

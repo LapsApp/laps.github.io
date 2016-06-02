@@ -37,7 +37,7 @@ if(!empty($_GET['convite']))
                <span class="icon icon-bar"></span>
             </button>
             <h2 class="brand brand-name navbar-left">
-               <a href="#home" ><img class="img-responsive2" src="images/laps.png" width="20px">LAPS</a>
+               <a href="#home" ><img class="img-responsive2" src="img/laps.png" width="20px">LAPS</a>
             </h2>
          </div>
          <div class="collapse navbar-collapse">
@@ -70,7 +70,7 @@ if(!empty($_GET['convite']))
                   <p class="tm-white">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar
                      boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online!<a href="login.html">Login</a>
                   </p>
-                  <img src="images/software-img.png" class="img-responsive" alt="home img">
+                  <img src="img/software-img.png" class="img-responsive" alt="home img">
                </div>
                <div class="col-md-1"></div>
             </div>
@@ -85,7 +85,7 @@ if(!empty($_GET['convite']))
          <div class="row">
             <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
                <!-- <i class="fa fa-laptop"></i> -->
-               <img src="images/responsive.png" height="100px" width="100px">
+               <img src="img/responsive.png" height="100px" width="100px">
                <h3 class="text-uppercase">RESPONSIVE LAYOUT</h3>
                <p>Nossa página possui um design responsivo que possibilita você acessar sua conta de qualquer dispositivo
                   com a mesma facilidade de sempre!
@@ -93,7 +93,7 @@ if(!empty($_GET['convite']))
             </div>
             <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
                <!-- <i class="fa fa-twitter"></i> -->
-               <img src="images/security.png" height="100px" width="100px">
+               <img src="img/security.png" height="100px" width="100px">
                <h3 class="text-uppercase">SEGURANÇA</h3>
                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
                   et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
@@ -102,7 +102,7 @@ if(!empty($_GET['convite']))
             <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
                <!--  <i class="fa fa-font"></i>
                <h3 class="text-uppercase">GOOGLE FONT</h3> -->
-               <img src="images/support.png" height="100px" width="100px">
+               <img src="img/support.png" height="100px" width="100px">
                <h3 class="text-uppercase">SUPORTE</h3>
                <p>Qualquer dúvida ou problema poderá rapidamente ser solucionado através de nossa equipe de suporte qye
                   está a disposição para atendê-lo.
@@ -131,7 +131,7 @@ if(!empty($_GET['convite']))
                </p>
             </div>
             <div class="col-md-6 wow fadeInRight" data-wow-delay="0.6s">
-               <img src="images/software-img.png" class="img-responsive" alt="feature img">
+               <img src="img/software-img.png" class="img-responsive" alt="feature img">
             </div>
          </div>
       </div>
@@ -143,7 +143,7 @@ if(!empty($_GET['convite']))
       <div class="container">
          <div class="row">
             <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-               <img src="images/software-img.png" class="img-responsive" alt="feature img">
+               <img src="img/software-img.png" class="img-responsive" alt="feature img">
             </div>
             <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                <h2 class="text-uppercase">More of Your Software</h2>
@@ -169,31 +169,31 @@ if(!empty($_GET['convite']))
                <h2 class="text-uppercase">Quem Somos</h2>
             </div>
             <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-               <img src="images/alais.png" height="100px" width="100px">
+               <img src="img/alais.png" height="100px" width="100px">
                <h3 class="text-uppercase">Alais Salino</h3>
             </div>
             <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-               <img src="images/diogo.png" height="100px" width="100px">
+               <img src="img/diogo.png" height="100px" width="100px">
                <h3 class="text-uppercase">Diogo Diniz</h3>
             </div>
             <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-               <img src="images/felipe.png" height="100px" width="100px">
+               <img src="img/felipe.png" height="100px" width="100px">
                <h3 class="text-uppercase">Felipe Vogel</h3>
             </div>
             <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-               <img src="images/lucas.png" height="100px" width="100px">
+               <img src="img/lucas.png" height="100px" width="100px">
                <h3 class="text-uppercase">Lucas Azevedo</h3>
             </div>
             <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-               <img src="images/micael.png" height="100px" width="100px">
+               <img src="img/micael.png" height="100px" width="100px">
                <h3 class="text-uppercase">Micael Aguiar</h3>
             </div>
             <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-               <img src="images/myriana.png" height="100px" width="100px">
+               <img src="img/myriana.png" height="100px" width="100px">
                <h3 class="text-uppercase">Myriana Freitas</h3>
             </div>
             <div class="col-md-12 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-               <img src="images/rodrigo.png" height="100px" width="100px">
+               <img src="img/rodrigo.png" height="100px" width="100px">
                <h3 class="text-uppercase">Rodrigo Ribeiro</h3>
             </div>
          </div>
