@@ -16,26 +16,29 @@
    
    <script src="js/loader.js"></script>
    <script >
+      function gerar(){
    <?php
                                     $link = mysqli_connect("localhost", "root", "", "laps");
                                     if (!$link) {
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $alimentacao=10;
-                                    $tecnologia=20;
-                                    $livraria=30;
-                                    $esporte=40;
-                                    $lazer=50;
-                                    $calcado=60;
-                                    $vestuario=70;
-                                    $eletrodomestico=80;
+                                    $dt_inicial="2016/01/01";
+                                    $dt_final="2017/12/31";
+                                    $alimentacao=0;
+                                    $tecnologia=0;
+                                    $livraria=0;
+                                    $esporte=0;
+                                    $lazer=0;
+                                    $calcado=0;
+                                    $vestuario=0;
+                                    $eletrodomestico=0;
 
                                     $sql = "SELECT  cp.valor, cp.quantidade, cp.categoria, cp.data
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
-                                    WHERE cp.data BETWEEN '2016/01/01' AND '2016/12/31' AND cp.pago=0 AND ct.id_cliente = ".$id_cliente;
+                                    WHERE cp.data BETWEEN '$dt_inicial' AND '$dt_final' AND ct.id_cliente = '$id_cliente'";
                                    
                                     $result = $link->query($sql);
 
@@ -63,9 +66,9 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['CATEGORIAS', 'GASTOS'],
-          ['ALIMENTAÇÃO', 100], ['TECNOLOGIA', 200], ['LIVRARIA', 300],
-          ['ESPORTE', 400], ['LAZER', 500], ['CALÇADOS', 600],
-          ['VESTUÁRIO', 700], ['ELETRODOMÉSTICO', 800]       
+          ['ALIMENTAÇÃO', ".$alimentacao."], ['TECNOLOGIA', ".$tecnologia."], ['LIVRARIA', ".$livraria."],
+          ['ESPORTE', ".$esporte."], ['LAZER', ".$lazer."], ['CALÇADOS', ".$calcado."],
+          ['VESTUÁRIO', ".$vestuario."], ['ELETRODOMÉSTICO', ".$eletrodomestico."]       
         ]);       
 
         var options = {
@@ -90,8 +93,9 @@
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
       }";
-
       ?>
+
+  }
     </script>
   
    </head>
@@ -215,6 +219,15 @@
                      </header>
                      <div class="panel-body">
 					 <table width="1100" border="0" align="center"> 
+					    <tr>
+						<td align="center">
+						<b>PERÍODO</b><br><br>
+						DATA INÍCIAL: <input id="dt_inicial" type="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						DATA FINAL: <input id="dt_final" id="piechart" type="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button class='btn btn-primary' name='gerar' onclick="gerar()">GERAR GRÁFICO DE CONSUMO</button><br><br>
+						</td>
+						</tr>
+
 						<tr>
 						<td align="center">
             <b>CONSUMO POR CATEGORIAS</b>
