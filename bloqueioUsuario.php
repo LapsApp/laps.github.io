@@ -60,66 +60,9 @@
 
         <!--sidebar start-->
       <aside>
-         <div id="sidebar" class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu">
-               <li class="active">
-                  <a class="" href="menu_usuario.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_house_alt"></i>
-                     <span>INICIO</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="" href="cadastro.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_document_alt"></i>
-                     <span>MEUS DADOS</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="" href="convites.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_link"></i>
-                     <span>INDICADOS</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="" href="suporte.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_mail_alt"></i>
-                     <span>SUPORTE</span>
-                  </a>
-               </li>
-               <li class="">
-                  <a class="" href="starter.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_documents_alt"></i>
-                     <span>LISTA DE<br>COMPRAS</span>
-                  </a>
-               </li>
-               <li class="">
-                  <a class="" href="fatura.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_documents_alt"></i>
-                     <span>DETALHAR<br>FATURAS</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="" href="bloqueioUsuario.php?id=<?php echo $id_cliente; ?>">
-                     <i class="icon_blocked"></i>
-                     <span>BLOQUEIO</span>
-                  </a>
-               </li>
-               <!--<li class="">
-                  <a class="">
-                     <i class="icon_table"></i>
-                     <span>XXXXX</span>
-                  </a>
-               </li>
-               <li class="">
-                  <a class="">
-                     <i class="icon_documents_alt"></i>
-                     <span>XXXXX</span>
-                  </a>
-               </li>-->
-            </ul>
-            <!-- sidebar menu end-->
-         </div>
+         <?php
+			include("./aside_usuario_menu.php");
+		 ?>
       </aside>
       <!--sidebar end-->
 
@@ -148,50 +91,67 @@
                                        <div class="form-group ">
                                     <div class="col-lg-10">
 
-								<table id="demo" width="30%">
+								<table id="demo" width="100%">
                                           <thead>
                                              <tr>
-                                                <th>Conta</th>
-                                                <th>Status</th>
+                                                <th style='padding: 20px;'>Conta</th>
+                                                <th style='padding: 20px;'>Status</th>
+												<th style='padding: 20px;' colspan="2">Comentário</th>
 												<th></th>
 												
                                              </tr>
                                           </thead>
                                           <tbody>
                                              <?php                                                
-                                                $result=mysqli_query($link,"SELECT DISTINCT cc.id_conta, (case cc.status when 0 then 'Ativa' when 1 then 'Bloqueada' end) status_conta, status FROM conta cc where id_cliente = ".$id_cliente.";");
+                                                $result=mysqli_query($link,"SELECT DISTINCT cc.id_conta, (case cc.status when 0 then 'Ativa' when 1 then 'Bloqueada' end) status_conta, cc.status, cc.comentario FROM conta cc where id_cliente = ".$id_cliente.";");
                                                 $total = 0;
                                                 while($data=mysqli_fetch_assoc($result)){ 
+												$status = $data["status"];
+												$id_conta = $data["id_conta"];
                                                 ?>
                                              <tr>
-                                                <td><?php echo $data["id_conta"]?></td>
-                                                <td><?php echo $data["status_conta"]?></td>
-												<?php if($data["status"] == 0)
-												{
-													echo"<td align='right'>
-													<button class='btn btn-primary' name='bloqueia' value='".$data["id_conta"]."' type='submit'>Bloquear</button>
-													</td>";
-												}
-												//Não é pra ativar
-												/*
-												else
-												{
-													echo"
-													<td align='right'>
-													<button class='btn btn-primary' name='ativa' value='".$data["id_conta"]."' type='submit'>Ativar</button>
-													</td>";
-												}
-												*/
-												?>
-				  
+                                                <td style='padding: 20px;'><?php echo $data["id_conta"]?></td>
+                                                <td style='padding: 20px;'><?php echo $data["status_conta"]?></td>
+												<td style='padding: 20px;'><?php echo $data["comentario"]?></td>
+															  
+                                            </tr>
 
-                                             </tr>
                                              <?php } // FIM WHILE COMPRAS ?>
                                           </tbody>
                                        </table>
                                   
                                           </div>
                                       </div>
+										<?php									  
+										if($status == 0){
+											echo "
+											
+											<div class='form-group '>
+												<table width='70%'>
+												<tr>
+												<td align='left' style='padding: 10px;'>
+													<label for='cname' class='control-label col-lg-4'>MOTIVO PARA BLOQUEIO </label>
+													<div class='col-lg-7'>
+													   <textarea class='form-control' id='subject' name='obs'>
+													   </textarea>
+													</div>
+												</td>
+												<td align='left'>
+												<div>							
+													<button class='btn btn-primary' name='bloqueia' value='".$id_conta."' type='submit'>Bloquear</button>													
+												</div>
+												</td>
+												</tr>
+												</table>
+                                             </div>
+											 
+
+											 ";												 
+													
+											 										 
+										}
+									   
+											 ?>
                                   </form>
                               </div>
 

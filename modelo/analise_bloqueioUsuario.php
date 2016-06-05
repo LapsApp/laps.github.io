@@ -6,7 +6,8 @@ if (!$link) {
 }
 
 if (isset($_POST["bloqueia"])) {$bloqueia = $_POST['bloqueia'];}
-//if (isset($_POST["ativa"])) {$ativa = $_POST['ativa'];}
+//if (isset($_POST["ativa"])) {$ativa = $_POST['ativa
+$obs = $_POST['obs'];
 
 
 
@@ -18,7 +19,7 @@ if (isset($bloqueia))
 		include("./envia_msg_bloqueio.php");		 
 if (isset($falhou) == false)
 {
-	$up =	"UPDATE conta set status = 1"." where id_conta = ".$bloqueia;
+	$up =	"UPDATE conta set status = 1".", comentario = '".$obs."' where id_conta = ".$bloqueia;
    mysqli_query($link, $up);
    
    if (isset($up)) {
