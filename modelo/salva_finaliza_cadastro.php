@@ -50,7 +50,12 @@ fclose($pont_dv);
 $dados_dv = addslashes($dados_dv);
 
 $sql =	"UPDATE cliente set rg = '".$rg."', cel = '".$cel."', senha = '".$senha."', cadastro = 3  where id_cliente = ".$id_cliente;
-mysqli_query($link, $sql);
+if (! mysqli_query($link, $sql))
+{
+	$volta = $_SERVER['HTTP_REFERER'];
+    $volta=explode("&",$volta);
+    echo "<script>window.location='$volta[0]&obj=Alterar dados&type=erro'</script>";
+}
 
 //echo $sql;
 
@@ -62,12 +67,22 @@ $sql =	"INSERT into Endereco(id_cliente, rua, num, complemento, cep, cidade,bair
 '".$cidade."',
 '".$bairro."',
 '".$estado."')";
-mysqli_query($link, $sql);
+if (! mysqli_query($link, $sql))
+{
+	$volta = $_SERVER['HTTP_REFERER'];
+    $volta=explode("&",$volta);
+    echo "<script>window.location='$volta[0]&obj=Alterar dados&type=erro'</script>";
+}
 //echo $sql;
 
 
 $sql =	"INSERT into Conta(id_cliente, renda) values(".$id_cliente.", ".$renda.")";
-mysqli_query($link, $sql);
+if (! mysqli_query($link, $sql))
+{
+	$volta = $_SERVER['HTTP_REFERER'];
+    $volta=explode("&",$volta);
+    echo "<script>window.location='$volta[0]&obj=Alterar dados&type=erro'</script>";
+}
 //echo $sql;
 
 
@@ -77,7 +92,12 @@ mysqli_query($link, $sql);
 '".$verso."')";*/
 $sql =	"INSERT into Documentacao(id_cliente, foto, doc_frente,doc_verso) values('".$id_cliente."',
 'localhost/LAPS/img/".$nome_correto."','localhost/LAPS/img/".$nome_correto_df."'".",'localhost/LAPS/img/".$nome_correto_dv."')";
-mysqli_query($link, $sql);
+if (! mysqli_query($link, $sql))
+{
+	$volta = $_SERVER['HTTP_REFERER'];
+    $volta=explode("&",$volta);
+    echo "<script>window.location='$volta[0]&obj=Alterar dados&type=erro'</script>";
+}
 
 //echo 'INSERT: '.$sql;
 
@@ -92,4 +112,6 @@ $upload = move_uploaded_file($file_tmp_dv,'../img/'.$nome_correto_dv);
 //echo "<img src='../img/$nome_correto_dv' border='1'><br><br>";
 
 
-?><SCRIPT language="JavaScript">window.location.href="http://localhost/LAPS/index.php?obj=Cadastro&type=sucesso";</SCRIPT>
+$volta = $_SERVER['HTTP_REFERER'];
+$volta=explode("&",$volta);
+echo "<script>window.location='$volta[0]&obj=Cadastro&type=sucesso'</script>";

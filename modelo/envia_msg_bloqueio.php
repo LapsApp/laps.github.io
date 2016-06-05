@@ -59,6 +59,7 @@ $msg = '
 <td width="500">
 <p align="Justify"><b>Prezado(a) usuário! </b>
 <p align="Justify">Sua conta foi bloqueada com sucesso.<br><br>
+<p align="Justify">O MOTIVO DO BLOQUEIO FOI: '.$obs.'</td>
 </table>
 <p align="Justify">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online.
 <br><br>
