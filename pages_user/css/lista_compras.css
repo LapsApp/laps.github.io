@@ -1,0 +1,12 @@
+table{
+    font-size: 11px;
+}
+th, td {
+    line-height: 3;
+}
+th{
+    background: #F0F0F0;
+}
+tr:hover {
+    background: #F0F0F0;
+}
