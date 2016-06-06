@@ -9,7 +9,8 @@ if (isset($_POST["bloqueia"])) {$bloqueia = $_POST['bloqueia'];}
 //if (isset($_POST["ativa"])) {$ativa = $_POST['ativa
 $obs = $_POST['obs'];
 
-
+print_r($obs);
+print_r($bloqueia);
 
 if (isset($bloqueia))
 {
