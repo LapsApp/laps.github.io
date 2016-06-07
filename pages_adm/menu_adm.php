@@ -48,7 +48,7 @@ include 'partes/head.php';
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="listar_cadastros.php">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="listar_cadastros.php?id=<?php echo $id_cliente; ?>">
                             <div class="info-box blue-bg">
                                 <div class="count">
                                     <?php
@@ -71,7 +71,7 @@ include 'partes/head.php';
                             </div></a><!--/.info-box-->
                     </div><!--/.col-->
 
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="listar_solicitacao.php">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="listar_solicitacao.php?id=<?php echo $id_cliente; ?>">
                             <div class="info-box brown-bg">
                                 <div class="count">
                                     <?php
@@ -94,18 +94,18 @@ include 'partes/head.php';
                             </div></a><!--/.info-box-->
                     </div><!--/.col-->
 
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="menu_adm.php?id=<?php echo $id_cliente; ?>">
                             <div class="info-box dark-bg">
                                 <div class="count">4.362</div>
                                 <div class="title">OUTRO</div>
-                            </div><!--/.info-box-->
+                            </div></a><!--/.info-box-->
                     </div><!--/.col-->
 
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="menu_adm.php?id=<?php echo $id_cliente; ?>">
                             <div class="info-box green-bg">
                                 <div class="count">1.426</div>
                                 <div class="title">OUTRO</div>
-                            </div><!--/.info-box-->
+                            </div></a><!--/.info-box-->
                     </div><!--/.col-->
                 </div><!--/.row-->
             </section>

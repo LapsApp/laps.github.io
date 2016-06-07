@@ -127,8 +127,9 @@ if (!$link) {
                                         </div>
 
                                         <div class='form-group'>
-                                            <div class='col-lg-offset-2 col-lg-10'><br>
-                                                <button class='btn btn-primary' type='submit'>Salvar</button>
+                                            <div class='col-lg-offset-1 col-lg-10'><br>
+                                                <button class='btn btn-warning' type='submit'>SALVAR</button>
+                                                <button class="btn btn-primary" type="button" onclick="window.location = './cadastro.php?id=<?php echo $id_cliente?>';">VOLTAR</button>
                                             </div>
                                         </div>
                                     </form>

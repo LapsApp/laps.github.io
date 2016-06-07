@@ -22,7 +22,7 @@ $id_cliente = $_GET['id'];
             <section class="wrapper">
                 <div class="row">
                     <div class="col-lg-10">
-                        <h3 class="page-header"><i class="fa fa-files-o"></i> CADASTRO INICIAL</h3>
+                        <h3 class="page-header"><i class="fa fa-files-o"></i> FINALIZE SEU CADASTRO</h3>
                         <ol class="breadcrumb">
                             <li><i class="fa fa-files-o"></i>CADASTRO INICIAL</li>
                         </ol>
@@ -37,7 +37,7 @@ $id_cliente = $_GET['id'];
                             </header>
                             <div class="panel-body">
                                 <div class="form">
-                                    <form class="form-validate form-horizontal" method="post" action="modelo/salva_finaliza_cadastro.php" enctype="multipart/form-data">
+                                    <form class="form-validate form-horizontal" method="post" action="../modelo/salva_finaliza_cadastro.php" enctype="multipart/form-data">
                                         <div class="form-group"><br>
                                             <label for="ccomment" class="control-label col-lg-2">Foto</label>
                                             <div class="col-lg-4">

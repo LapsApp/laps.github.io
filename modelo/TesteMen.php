@@ -3,7 +3,7 @@ include('funcoesJS.php');
 if (!empty($_GET['obj']) && !empty($_GET['type'])) {
     ?>
 
-    <link rel='stylesheet' href='../js/jAlert/src/jAlert-v3.css'>
+    <link   href='../js/jAlert/src/jAlert-v3.css' rel='stylesheet'>
     <script src='../js/jAlert/vendor/jquery-1.11.3.min.js'></script>
     <script src='../js/jAlert/src/jAlert-v3.js'></script>
     <script src='../js/jAlert/src/jAlert-functions.js'></script>

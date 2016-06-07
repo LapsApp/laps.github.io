@@ -5,8 +5,6 @@ $email = $_POST['email'];
 $status = $_POST['status'];
 $obs = $_POST['obs'];
 $nome = $_POST['nome'];
-$volta = $_POST['volta'];
-echo $volta;
 date_default_timezone_set('America/Sao_Paulo');
 $date = date('Y-m-d');
 $link = mysqli_connect("localhost", "root", "", "laps");
@@ -16,7 +14,6 @@ if (!$link) {
 
 
 $sql = "UPDATE CONTA set  status = " . $status . ", comentario = '" . $obs . "' where id_conta =" . $id_conta;
-echo $sql;
 //mysqli_query($link, $sql);
 if (mysqli_query($link, $sql)) { //echo "inserido";
 }
@@ -102,16 +99,14 @@ $msg = '<html>
 </body>
 </html>';
 if (smtpmailer($mail, $from, 'LAPS', 'LAPS - ' . $tipo, $msg)) {
-    //$volta = $_SERVER['HTTP_REFERER'];
-    echo $volta;
-    //echo "<script>window.location='$volta&obj=Alteracao&type=sucesso'</script>";
+    $volta = $_SERVER['HTTP_REFERER'];
+    echo "<script>window.location='$volta&obj=Alteracao&type=sucesso'</script>";
 } else {
-    //$volta = $_SERVER['HTTP_REFERER'];
-    //echo "<script>window.location='$volta&obj=Alteracao&type=erro'</script>";
+    $volta = $_SERVER['HTTP_REFERER'];
+    echo "<script>window.location='$volta&obj=Alteracao&type=erro'</script>";
 }
 if (!empty($error)) {
-    //$volta = $_SERVER['HTTP_REFERER'];
-    //echo "<script>window.location='$volta&obj=Alteracao&type=erro'</script>";
+    $volta = $_SERVER['HTTP_REFERER'];
+    echo "<script>window.location='$volta&obj=Alteracao&type=erro'</script>";
 }
-print_r($volta);
 ?>

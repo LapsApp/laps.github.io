@@ -81,7 +81,7 @@ if (!$link) {
                                         if ($desabilitar) {
                                             echo "
 									<div>
-										<button class='btn btn-default' type='button' id='btnAlterar'>Alterar Dados</button>
+										<button class='btn btn-primary' type='button' id='btnAlterar'>Alterar Dados</button>
 									</div>
 									";
                                         }

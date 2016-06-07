@@ -70,7 +70,7 @@ if (!$link) {
                                                 <table id="demo" style="width: 100%;">
                                                     <thead>
                                                         <tr>
-                                                            <th>Compra</th>
+                                                            <th>Loja</th>
                                                             <th>Categoria</th>
                                                             <th>Data</th>
                                                             <th>Valor</th>
@@ -78,7 +78,6 @@ if (!$link) {
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        header('Content-Type: text/html; charset=iso-8859-1');
                                                         //$id_cliente = 22; // remover depois de criar o link, GET no inicio da pagina
                                                         $r_cli = mysqli_query($link, "SELECT car.id_cartao FROM cartao car INNER JOIN conta cc ON cc.id_conta = car.id_conta where cc.id_cliente = " . $id_cliente . ";");
                                                         $data_cli = mysqli_fetch_assoc($r_cli);

@@ -5,7 +5,18 @@ $paginaTitulo = 'Muda Status Conta';
 include 'partes/head.php';
 ?>
 
-<body style="color: #000;">
+<script>
+    function onloadText() {
+        document.getElementById("subject").value;
+        if (document.getElementById("subject").value != '') {
+            document.getElementById("subject").value = '';
+        }
+    }
+
+    onloadText();
+</script>
+
+<body style="color: #000;" onload="onloadText()">
     <!-- container section start -->
     <section id="container" class="">
         <!--header start-->
@@ -61,8 +72,6 @@ include 'partes/head.php';
                                             <div class="col-lg-12">
 
                                                 <?php
-                                                $volta = $_SERVER['HTTP_REFERER'];
-                                                echo $volta;
                                                 $link = mysqli_connect("localhost", "root", "", "laps");
                                                 if (!$link) {
                                                     die('Não foi possível conectar: ' . mysql_error());
@@ -101,7 +110,7 @@ include 'partes/head.php';
                                                                 <div class="form-group ">
                                                                     <label for="cname" class="control-label col-lg-2">MOTIVO PARA BLOQUEIO <span class="required">*</span></label>
                                                                     <div class="col-lg-4">
-                                                                        <textarea class="form-control" id="subject" name="obs" required >
+                                                                        <textarea class="form-control" id="subject" name="obs" required>
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
@@ -137,15 +146,19 @@ include 'partes/head.php';
                                                                 <div class="form-group ">
                                                                     <label for="cname" class="control-label col-lg-2">MOTIVO PARA DESBLOQUEIO <span class="required">*</span></label>
                                                                     <div class="col-lg-4">
-
-                                                                        <textarea class="form-control" id="subject" name="obs" required >
+                                                                        <textarea class="form-control" id="subject" 
+                                                                                  name="obs" 
+                                                                                  required
+                                                                                  onfocus="if (this.value !== '')
+                                                                                              this.value = '';"  
+                                                                                  >
                                                                         </textarea>
-
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="col-lg-offset-2 col-lg-10">
-                                                                        <button class="btn btn-primary" type="submit">DESBLOQUEAR CONTA</button>
+                                                                        <button class="btn btn-warning" type="submit">DESBLOQUEAR CONTA</button>
+                                                                        <button class="btn btn-primary" type="button" onclick="window.location.href = '../pages_adm/listar_contas.php?id=<?php echo $id_conta; ?>'">VOLTAR</button>
                                                                     </div>
                                                                 </div>
                                                             </form>

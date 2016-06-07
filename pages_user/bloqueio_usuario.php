@@ -20,7 +20,17 @@ include 'partes/header.php';
     }
 </style>
 
-<body style="color: #000;">
+<script>
+    function onloadText() {
+        document.getElementById("subject").value;
+        if (document.getElementById("subject").value != '') {
+            document.getElementById("subject").value = '';
+        }
+    }
+
+    onloadText();
+</script>
+<body style="color: #000;" onload="onloadText()">
     <!-- container section start -->
     <section id="container" class="">
         <!--header start-->
@@ -102,23 +112,23 @@ include 'partes/header.php';
                                                 </table>
                                             </div>
                                         </div>
-                                      <?php									  
-										if($status == 0){
-											echo "
+                                        <?php
+                                        if ($status == 0) {
+                                            echo "
 											
 											<div class='form-group '>
 												<table width='70%'>
 												<tr>
 												<td align='left' style='padding: 10px;'>
-													<label for='cname' class='control-label col-lg-4'>MOTIVO PARA BLOQUEIO </label>
+													<label for='cname' class='control-label col-lg-4'>MOTIVO PARA BLOQUEIO* </label>
 													<div class='col-lg-7'>
-													   <textarea class='form-control' id='subject' name='obs'>
+													   <textarea class='form-control' id='subject' name='obs' required>
 													   </textarea>
 													</div>
 												</td>
 												<td align='left'>
 												<div>							
-													<button class='btn btn-primary' name='bloqueia' value='".$id_conta."' type='submit'>Bloquear</button>													
+													<button class='btn btn-danger' name='bloqueia' value='".$id_conta."' type='submit'>Bloquear</button>													
 												</div>
 												</td>
 												</tr>
@@ -126,12 +136,9 @@ include 'partes/header.php';
                                              </div>
 											 
 
-											 ";												 
-													
-											 										 
-										}
-									   
-											 ?>
+											 ";
+                                        }
+                                        ?>
                                     </form>
                                 </div>
                             </div>
@@ -145,8 +152,8 @@ include 'partes/header.php';
     </section>
     <!-- container section end -->
 
-    <?php
-    include ('../modelo/TesteMen.php');
-    include 'partes/footer.php';
-    ?>
+<?php
+include ('../modelo/TesteMen.php');
+include 'partes/footer.php';
+?>
 

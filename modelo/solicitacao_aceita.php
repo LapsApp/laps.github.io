@@ -66,7 +66,7 @@ Complete seu cadastro, acesse:
 </td>
 </tr>
 </table>
-<p align="center"><a href="http://localhost/laps/cadastro_default.php?id=' . $aceita . '"><b>LAPSAPP.GITHUB.IO</b></a><br><br>
+<p align="center"><a href="http://localhost/laps/trunk/pages_user/cadastro_default.php?id=' . $aceita . '"><b>LAPSAPP.GITHUB.IO</b></a><br><br>
 <p align="Justify">A Equipe LAPS realizará todos os procedimentos para que a validação de sua solicitação de participação ocorra em apenas alguns dias.<br><br>
 <p align="Justify">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online.
 <br><br>

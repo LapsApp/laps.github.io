@@ -55,21 +55,24 @@ include 'partes/header.php';
                             <div class="panel-body">
                                 <div class="form">
                                     <form class="form-validate form-horizontal" method="post" action="../modelo/envia_msg.php?id=<?php echo $id_cliente; ?>">
-                                        <div class="form-group ">
+                                        <div class="form-group">
                                             <label for="cname" class="control-label col-lg-2">Assunto<span class="required">*</span></label>
                                             <div class="col-lg-8">
                                                 <input class="form-control" id="subject" name="assunto" type="mail" style="text-transform:uppercase" minlength="5" maxlength="20" required />
                                             </div>
                                         </div>
 
-                                        <div class="form-group ">
+                                        <div class="form-group">
                                             <label for="cname" class="control-label col-lg-2">Mensagem<span class="required">*</span></label>
-                                            <textarea rows="4" cols="110" id="subject" name="mensagem" minlength="5" maxlength="320" required /></textarea>
+                                            <div class="col-lg-8">
+                                                <textarea class="form-control" rows="4"  id="subject" name="mensagem" minlength="5" maxlength="320" required /></textarea>
+                                            </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <div class="col-lg-offset-5 col-lg-10">
+                                            <div class="col-lg-offset-2 col-lg-10">
                                                 <button class="btn btn-primary" type="submit">ENVIAR MENSAGEM</button>
+                                                <button class="btn btn-danger" type="button" onclick="window.location = './suporte.php?id=<?php echo $id_cliente ?>';">CANCELAR</button>
                                                 <br><br>
                                             </div>
                                         </div>

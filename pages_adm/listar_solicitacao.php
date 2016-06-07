@@ -69,19 +69,16 @@ include 'partes/head.php';
                             </header>
                             <div class="panel-body">
                                 <div class="form">
-                                    <form class="form-validate form-horizontal" id="" method="post" action="modelo/analise_pre_cadastro.php">
+                                    <form class="form-validate form-horizontal" id="" method="post" action="../modelo/analise_pre_cadastro.php">
                                         <div class="form-group ">
                                             <div class="col-lg-10">
-
                                                 <?php
                                                 $link = mysqli_connect("localhost", "root", "", "laps");
                                                 if (!$link) {
                                                     die('Não foi possível conectar: ' . mysql_error());
                                                 }
-
                                                 $sql = "SELECT id_cliente, nome, cpf, email, convite, cadastro, dt_solicitacao FROM Cliente WHERE cadastro='1' ORDER BY convite desc, dt_solicitacao";
                                                 $result = $link->query($sql);
-
 
                                                 echo "<table align='center' rules=rows width=1000><tr>
       <th><h4><b> *** </b></h4></th>
@@ -125,12 +122,10 @@ include 'partes/head.php';
                                                     echo "0 results";
                                                 }
                                                 ?>
-
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-
                             </div>
                         </section>
                     </div>
