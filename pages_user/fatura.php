@@ -90,7 +90,7 @@ include 'partes/header.php';
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -147,19 +147,21 @@ include 'partes/header.php';
                                                             die('Não foi possível conectar: ' . mysql_error());
                                                         }
                                                         $id_cliente = $_GET['id'];
-                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
+                                    join lojas l on l.id_loja = cp.id_loja
                                     WHERE cp.data BETWEEN '2016/03/15' AND '2016/04/14' AND ct.id_cliente = " . $id_cliente;
 
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -180,7 +182,7 @@ include 'partes/header.php';
                                                                 }
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
-                                                                echo "<tr><td>" . $i . "</td>
+                                                                echo "<tr><td>" . $row["nome"] . "</td>
                                           <td>" . $row["data"] . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
@@ -230,7 +232,7 @@ include 'partes/header.php';
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -288,19 +290,21 @@ include 'partes/header.php';
                                                             die('Não foi possível conectar: ' . mysql_error());
                                                         }
                                                         $id_cliente = $_GET['id'];
-                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
+                                    join lojas l on l.id_loja = cp.id_loja
                                     WHERE cp.data BETWEEN '2016/05/15' AND '2016/06/14' AND ct.id_cliente = " . $id_cliente;
 
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -321,7 +325,7 @@ include 'partes/header.php';
                                                                 }
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
-                                                                echo "<tr><td>" . $i . "</td>
+                                                                echo "<tr><td>" . $row["nome"] . "</td>
                                           <td>" . $row["data"] . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
@@ -357,19 +361,21 @@ include 'partes/header.php';
                                                             die('Não foi possível conectar: ' . mysql_error());
                                                         }
                                                         $id_cliente = $_GET['id'];
-                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
+                                    join lojas l on l.id_loja = cp.id_loja
                                     WHERE cp.data BETWEEN '2016/06/15' AND '2016/07/14' AND ct.id_cliente = " . $id_cliente;
 
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -390,7 +396,7 @@ include 'partes/header.php';
                                                                 }
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
-                                                                echo "<tr><td>" . $i . "</td>
+                                                                echo "<tr><td>" . $row["nome"] . "</td>
                                           <td>" . $row["data"] . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
@@ -425,19 +431,21 @@ include 'partes/header.php';
                                                             die('Não foi possível conectar: ' . mysql_error());
                                                         }
                                                         $id_cliente = $_GET['id'];
-                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
+                                    join lojas l on l.id_loja = cp.id_loja
                                     WHERE cp.data BETWEEN '2016/07/15' AND '2016/08/14' AND ct.id_cliente = " . $id_cliente;
 
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -458,7 +466,7 @@ include 'partes/header.php';
                                                                 }
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
-                                                                echo "<tr><td>" . $i . "</td>
+                                                                echo "<tr><td>" . $row["nome"] . "</td>
                                           <td>" . $row["data"] . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
@@ -493,19 +501,21 @@ include 'partes/header.php';
                                                             die('Não foi possível conectar: ' . mysql_error());
                                                         }
                                                         $id_cliente = $_GET['id'];
-                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
+                                    join lojas l on l.id_loja = cp.id_loja
                                     WHERE cp.data BETWEEN '2016/08/15' AND '2016/09/14' AND ct.id_cliente = " . $id_cliente;
 
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -526,7 +536,7 @@ include 'partes/header.php';
                                                                 }
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
-                                                                echo "<tr><td>" . $i . "</td>
+                                                                echo "<tr><td>" . $row["nome"] . "</td>
                                           <td>" . $row["data"] . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
@@ -561,19 +571,21 @@ include 'partes/header.php';
                                                             die('Não foi possível conectar: ' . mysql_error());
                                                         }
                                                         $id_cliente = $_GET['id'];
-                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
+                                    join lojas l on l.id_loja = cp.id_loja
                                     WHERE cp.data BETWEEN '2016/09/15' AND '2016/10/14' AND ct.id_cliente = " . $id_cliente;
 
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -594,7 +606,7 @@ include 'partes/header.php';
                                                                 }
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
-                                                                echo "<tr><td>" . $i . "</td>
+                                                                echo "<tr><td>" . $row["nome"]. "</td>
                                           <td>" . $row["data"] . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
@@ -628,19 +640,21 @@ include 'partes/header.php';
                                                             die('Não foi possível conectar: ' . mysql_error());
                                                         }
                                                         $id_cliente = $_GET['id'];
-                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
+                                    join lojas l on l.id_loja = cp.id_loja
                                     WHERE cp.data BETWEEN '2016/10/15' AND '2016/11/14' AND ct.id_cliente = " . $id_cliente;
 
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -661,7 +675,7 @@ include 'partes/header.php';
                                                                 }
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
-                                                                echo "<tr><td>" . $i . "</td>
+                                                                echo "<tr><td>" . $row["nome"] . "</td>
                                           <td>" . $row["data"] . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
@@ -695,19 +709,21 @@ include 'partes/header.php';
                                                             die('Não foi possível conectar: ' . mysql_error());
                                                         }
                                                         $id_cliente = $_GET['id'];
-                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
+                                    join lojas l on l.id_loja = cp.id_loja
                                     WHERE cp.data BETWEEN '2016/11/15' AND '2016/12/14' AND ct.id_cliente = " . $id_cliente;
 
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -728,7 +744,7 @@ include 'partes/header.php';
                                                                 }
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
-                                                                echo "<tr><td>" . $i . "</td>
+                                                                echo "<tr><td>" . $row["nome"] . "</td>
                                           <td>" . $row["data"] . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
@@ -762,19 +778,21 @@ include 'partes/header.php';
                                                             die('Não foi possível conectar: ' . mysql_error());
                                                         }
                                                         $id_cliente = $_GET['id'];
-                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
+                                    join lojas l on l.id_loja = cp.id_loja
                                     WHERE cp.data BETWEEN '2016/12/15' AND '2017/01/14' AND ct.id_cliente = " . $id_cliente;
 
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -795,7 +813,7 @@ include 'partes/header.php';
                                                                 }
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
-                                                                echo "<tr><td>" . $i . "</td>
+                                                                echo "<tr><td>" . $row["nome"] . "</td>
                                           <td>" . $row["data"] . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
@@ -829,19 +847,21 @@ include 'partes/header.php';
                                                             die('Não foi possível conectar: ' . mysql_error());
                                                         }
                                                         $id_cliente = $_GET['id'];
-                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, cp.categoria, cp.data, cp.pago,
+                                                        $sql = "SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
                                     EXTRACT(YEAR FROM cp.data) AS ano,
                                     EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
+                                    join lojas l on l.id_loja = cp.id_loja   
                                     WHERE cp.data BETWEEN '2017/01/15' AND '2017/02/14' AND ct.id_cliente = " . $id_cliente;
 
                                                         $result = $link->query($sql);
 
                                                         echo "<table align='center' rules=rows width=600><tr>                                    
-                                    <th><h4><b> *** </b></h4></th>
+                                    <th><h4><b> Nome Loja </b></h4></th>
                                     <th><h4><b> DATA DA COMPRA </b></h4></th>
                                     <th><h4><b> CATEGORIA </b></h4></th>
                                     <th><h4><b> PARCELA </b></h4></th>
@@ -865,7 +885,7 @@ include 'partes/header.php';
 
 
                                                                 $valor = number_format($row["valor"] * $row["quantidade"], 2, '.', '');
-                                                                echo "<tr><td>" . $i . "</td>
+                                                                echo "<tr><td>" . $row["nome"] . "</td>
                                           <td>" . $row["data"] . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "/" . $row["parcelas"] . "</td>                                          
