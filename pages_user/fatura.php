@@ -14,7 +14,7 @@ include 'partes/header.php';
                 <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
             </div>
 
-            <!--logo start-->
+            <!--logo startt-->
             <a href="../pages_user/menu_usuario.php?id=<?php echo $id_cliente; ?>" class="logo">L<span class="lite">APS</span></a>
             <!--logo end-->
 

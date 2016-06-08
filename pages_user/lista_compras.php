@@ -15,7 +15,7 @@ if (!$link) {
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <link href="../css/lista_compras.css" rel="stylesheet" />
     <script src="../js/tablefilter/tablefilter.js"></script>  
-    <!-- container section start -->
+    <!-- container section startt -->
     <section id="container" class="">
         <!--header start-->
         <header class="header dark-bg">
