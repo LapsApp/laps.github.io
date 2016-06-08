@@ -13,7 +13,7 @@ if (!$link) {
 
 <body style="color: #000;">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <link href="css/lista_compras.css" rel="stylesheet" />
+    <link href="../css/lista_compras.css" rel="stylesheet" />
     <script src="../js/tablefilter/tablefilter.js"></script>  
     <!-- container section start -->
     <section id="container" class="">
@@ -78,6 +78,8 @@ if (!$link) {
                                                     </thead>
                                                     <tbody>
                                                         <?php
+                                                        mysqli_query($link, 'SET NAMES utf8');
+														ini_set ('default_charset', 'UTF8');
                                                         //$id_cliente = 22; // remover depois de criar o link, GET no inicio da pagina
                                                         $r_cli = mysqli_query($link, "SELECT car.id_cartao FROM cartao car INNER JOIN conta cc ON cc.id_conta = car.id_conta where cc.id_cliente = " . $id_cliente . ";");
                                                         $data_cli = mysqli_fetch_assoc($r_cli);
@@ -166,5 +168,6 @@ if (!$link) {
 
     <?php
     include ('../modelo/TesteMen.php');
-    include 'partes/footer.php';
+    include ('../modelo/funcoesJS.php');
+    include ('partes/footer.php');
     ?>
