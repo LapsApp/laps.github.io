@@ -1,4 +1,4 @@
-<!--sidebar start-->
+﻿<!--sidebar start-->
 <aside>
     <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li>
-                <a class="" href="../pages_user/bloqueio_usuario.php?id=<?php echo $id_cliente; ?>">
+                <a class="" href="../bloqueioUsuario.php?id=<?php echo $id_cliente; ?>">
                     <i class="icon_blocked"></i>
                     <span>BLOQUEIO</span>
                 </a>
