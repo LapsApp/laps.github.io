@@ -22,13 +22,19 @@ include 'partes/header.php';
                                     $calcado=0;
                                     $vestuario=0;
                                     $eletrodomestico=0;
+                                    $departamento=0;
 
-                                    $sql = "SELECT  cp.valor, cp.quantidade, cp.categoria, cp.data
+
+                                    $sql ="SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
+                                    EXTRACT(YEAR FROM cp.data) AS ano,
+                                    EXTRACT(MONTH FROM cp.data) AS mes,
+                                    EXTRACT(DAY FROM cp.data) AS dia,
+                                    l.nome
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
-                                    WHERE cp.data BETWEEN '$dt_inicial' AND '$dt_final' AND ct.id_cliente = '$id_cliente'";
-                                   
+                                    join lojas l on l.id_loja = cp.id_loja
+                                    WHERE cp.data BETWEEN '$dt_inicial' AND '$dt_final' AND ct.id_cliente = " . $id_cliente;
                                     $result = $link->query($sql);
 
                                     
@@ -41,9 +47,10 @@ include 'partes/header.php';
                                           $livraria=30;
                                           $esporte=40;
                                           $lazer=50;
-                                          $calcado=60;
-                                          $vestuario=70;
-                                          $eletrodomestico=80;                              
+                                          $calcado=40;
+                                          $vestuario=30;
+                                          $eletrodomestico=20; 
+                                          $departamento=10;                             
 
                                        } 
                                          
@@ -57,7 +64,7 @@ include 'partes/header.php';
           ['CATEGORIAS', 'GASTOS'],
           ['ALIMENTAÇÃO', ".$alimentacao."], ['TECNOLOGIA', ".$tecnologia."], ['LIVRARIA', ".$livraria."],
           ['ESPORTE', ".$esporte."], ['LAZER', ".$lazer."], ['CALÇADOS', ".$calcado."],
-          ['VESTUÁRIO', ".$vestuario."], ['ELETRODOMÉSTICO', ".$eletrodomestico."]       
+          ['VESTUÁRIO', ".$vestuario."], ['ELETRODOMÉSTICO', ".$eletrodomestico."], ['DEPARTAMENTO', ".$departamento."]        
         ]);       
 
         var options = {
@@ -73,7 +80,8 @@ include 'partes/header.php';
             4: { color: '#689DEA', offset: 0.1 },
             5: { color: '#B58F2A', offset: 0.1 },
             6: { color: '#EA5BEA', offset: 0.1 },
-            7: { color: '#6F6F6F', offset: 0.1 },
+            7: { color: '#B5B5B5', offset: 0.1 },
+            8: { color: '#6F6F6F', offset: 0.1 },
           }
           
           
@@ -85,8 +93,7 @@ include 'partes/header.php';
       ?>
 
   }
-    </script>
-  
+</script>  
 <body style="color: #000;">
     <!-- container section start -->
     <section id="container" class="">

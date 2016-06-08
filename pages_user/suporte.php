@@ -1,5 +1,5 @@
 
-<?php
+<?php header('Content-Type: text/html; charset=iso-8859-1');
 $id_cliente = $_GET['id'];
 $paginaTitulo = 'Suporte';
 include 'partes/header.php';
@@ -66,6 +66,7 @@ include 'partes/header.php';
                                         <div class="col-lg-10">
                                             <?php
                                             $link = mysqli_connect("localhost", "root", "", "laps");
+                                            
                                             if (!$link) {
                                                 die('Não foi possível conectar: ' . mysql_error());
                                             }
