@@ -58,13 +58,12 @@
       </header>      
       <!--header end-->
 
-        <!--sidebar start-->
-      <aside>
-         <?php
-			include("./aside_usuario_menu.php");
-		 ?>
-      </aside>
-      <!--sidebar end-->
+ <!--sidebar start-->
+        <?php 
+      include ("./partes/nav.php");
+    ?>
+        <!--sidebar end-->
+        
 
       <!--main content start-->
       <section id="main-content">
