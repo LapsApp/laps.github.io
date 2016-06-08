@@ -38,7 +38,11 @@ CREATE TABLE `loja` (
 --
 
 INSERT INTO `loja` (`id_loja`, `nome`, `endereco`, `categoria`) VALUES
-(1, 'Loja Online', 'R. Luís José, 21 - Boa Vista, Vila Velha - ES, 29102-920', 'Departamento');
+(1, 'Loja Online', 'R. Luís José, 21 - Boa Vista, Vila Velha - ES, 29102-920', 'Departamento'),
+(2, 'Casas Bahia', 'R. Maranhão, 5550 - Centro, Vila Velha - ES, 29100-000', 'Decoracao'),
+(3, 'Subway', 'R. Piaui, 5550 - Glória, Vila Velha - ES, 29100-000', 'Restaurante'),
+(4, 'Perim', 'R. José, 21 - Itapua, Vila Velha - ES, 29102-920', 'Alimentacao'),
+(5, 'Bella Donna', 'Av. Luciano das Neves, 2.418, Vila Velha – ES, 29.107-900', 'Vestuario');
 
 -- --------------------------------------------------------
 

@@ -121,7 +121,8 @@ if (!$link) {
                         <?php
                         header('Content-Type: text/html; charset=iso-8859-1');
                         $result = mysqli_query($link, "SELECT id_prod,nome,valor,addcar FROM produto where addcar != 0;");
-
+                        
+                        
                         $total = 0;
 
                         while ($data = mysqli_fetch_assoc($result)) {
@@ -167,6 +168,19 @@ if (!$link) {
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
+                                </select>
+                                <?php
+                                   // header('Content-Type: text/html; charset=iso-8859-1');
+                                    $result = mysqli_query($link, "SELECT id_prod,nome,valor,addcar FROM produto where addcar != 0;");
+                                    
+                                    $query = mysqli_query($link,"SELECT id_loja,nome FROM loja");
+                                    $loja = mysqli_fetch_assoc($query);
+                                 ?>
+                                <br>LOJA<select name="loja_id" required>
+                                    <option>SELECIONE UMA LOJA</option>
+                                    <?php while($loja = mysqli_fetch_assoc($query)) { ?>
+                                    <option value="<?php echo $loja['id_loja'] ?>"><?php echo $loja['nome'] ?></option>
+                                    <?php } ?>
                                 </select>
                                 </br>
                             </td>

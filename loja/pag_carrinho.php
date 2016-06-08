@@ -34,6 +34,10 @@ if (isset($_POST["num_parcelas"])) {
     $num_parcelas = $_POST['num_parcelas'];
 }
 
+if (isset($_POST["loja_id"])) {
+    $loja_id = $_POST['loja_id'];
+}
+
 $r = "SELECT id_cartao FROM cartao WHERE numero = " . $num_cartao . " AND validade = '" . $validade . "' AND nome_cliente = '" . $nome . "' AND codigo = " . $codigo . ";";
 
 $result0 = mysqli_query($link_laps, $r);
@@ -79,26 +83,46 @@ if ($data3['status'] == 1) {
     echo "<script>window.location='$volta?cat=GERAL&obj=compra. Conta bloqueada.&type=erro'</script>";
 }
 
+// VERIFICA SE JOJA EXISTE
+$result4 = mysqli_query($link, "SELECT id_loja,nome,endereco,categoria FROM loja WHERE id_loja = " . $_POST["loja_id"] . ";");
+$data4 = mysqli_fetch_assoc($result4);
+
+$r2 = "SELECT id_loja,nome,endereco,categoria FROM lojas WHERE id_loja = " . $_POST["loja_id"] . ";";
+$result5 = mysqli_query($link_laps, $r2) or die(mysqli_error());
+$data5 = mysqli_fetch_assoc($result5);
+
+if(empty($data5)){
+    $result6 = mysqli_query($link_laps, "SELECT MAX(id_loja)+1 as max FROM lojas");
+    $max_idloja = mysqli_fetch_assoc($result6);
+
+    if ($max_idloja['max'] == NULL) {
+        $max_idloja['max'] = 1;
+    }
+    $insert = '';
+    $insert = "INSERT INTO lojas(id_loja,nome,endereco,categoria) values(" . $max_idloja['max'] . "," .$data4['nome']."','" . $data4['endereco'] . "','".$data4['categoria']."');"; 
+    mysqli_query($link_laps, $insert);
+    $id_loja = $data4['id_loja'];
+    echo " id_loja: ".$id_loja;
+    echo "Insert: " . $insert;
+}else{
+    $id_loja = $data4['id_loja'];
+    echo " id_loja: ".$id_loja;
+}
+
 $compras_ok = 0;
 if ($controle) {
     while ($data = mysqli_fetch_assoc($result)) {
 
         if ($num_parcelas == 1) {
-            $insert = "INSERT INTO compras(id_compra,id_cartao,valor,quantidade,parcelas,id_loja) values(" . $data2['max'] . "," . $_POST["num_cartao"] . "," . str_replace(",", ".", $data["valor"]) . "," . $data['addcar'] . ",'" . $num_parcelas . "','" . $data['id_loja'] . "');";
+            $insert = "INSERT INTO compras(id_compra,id_cartao,valor,quantidade,parcelas,id_loja) values(" . $data2['max'] . "," . $_POST["num_cartao"] . "," . str_replace(",", ".", $data["valor"]) . "," . $data['addcar'] . ",'" . $num_parcelas . "','" . $id_loja . "');";
             echo $insert . "</br>";
             mysqli_query($link_laps, $insert);
             $insert = '';
             $compras_ok = 1;
         } else {
-
-
             for ($i = 1; $i <= $num_parcelas; $i++) {
-
-
                 // na compra sera inserido um registro para cada parcela, mantendo o valor unitario e quantidade, a conta sera feita ao mostrar valor total
                 // que sera preciso considerar: valor*quantidade/parcela										 
-
-
                 $result2 = mysqli_query($link_laps, "SELECT MAX(id_compra)+1 as max FROM compras");
                 $data2 = mysqli_fetch_assoc($result2);
 
@@ -146,6 +170,7 @@ if ($controle) {
 
         $volta = 'lojaonline.php';
         echo "<script>window.location='$volta?obj=na compra&type=sucesso&cat=GERAL'</script>";
+        echo 'ok';
     }
 }
 ?>
