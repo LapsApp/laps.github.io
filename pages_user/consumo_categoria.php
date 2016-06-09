@@ -12,8 +12,8 @@ include 'partes/header.php';
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
                                     $id_cliente = $_GET['id'];
-                                    $dt_inicial="2016/01/01";
-                                    $dt_final="2017/12/31";
+                                    $dt_inicial="2016/06/01";
+                                    $dt_final="2016/06/30";
                                     $alimentacao=0;
                                     $tecnologia=0;
                                     $livraria=0;
@@ -25,32 +25,51 @@ include 'partes/header.php';
                                     $departamento=0;
 
 
-                                    $sql ="SELECT  cp.id_compra, cp.id_cartao,SUBSTRING(cp.parcelas,1,1) as n_parcelas,SUBSTRING(cp.parcelas,3,1) as t_parcelas,cp.parcelas, cp.valor, cp.quantidade, l.categoria, cp.data, cp.pago,
-                                    EXTRACT(YEAR FROM cp.data) AS ano,
-                                    EXTRACT(MONTH FROM cp.data) AS mes,
-                                    EXTRACT(DAY FROM cp.data) AS dia,
-                                    l.nome
+                                    $sql ="SELECT  cp.id_compra,l.categoria,l.id_loja, COUNT(l.categoria) as numero_de_categ,cp.valor,cp.quantidade,cp.parcelas,ROUND(SUM(cp.valor*cp.quantidade/IFNULL(SUBSTRING(cp.parcelas,3,1),cp.parcelas) )) val_parcela
                                     FROM compras cp
                                     join cartao c on cp.id_cartao = c.id_cartao
                                     join conta ct on ct.id_conta = c.id_conta
                                     join lojas l on l.id_loja = cp.id_loja
-                                    WHERE cp.data BETWEEN '$dt_inicial' AND '$dt_final' AND ct.id_cliente = " . $id_cliente;
+                                    WHERE cp.data BETWEEN '$dt_inicial' AND '$dt_final' 
+                                    AND ct.id_cliente = " . $id_cliente . "
+									group by l.categoria";
                                     $result = $link->query($sql);
 
                                     
                                     if ($result->num_rows > 0) { 
-                                       while($row = $result->fetch_assoc()) {     
-                                          
+                                       while($row = $result->fetch_assoc()) {    
 
-                                          $alimentacao=10;
-                                          $tecnologia=20;
-                                          $livraria=30;
-                                          $esporte=40;
-                                          $lazer=50;
-                                          $calcado=40;
-                                          $vestuario=30;
-                                          $eletrodomestico=20; 
-                                          $departamento=10;                             
+										if($row["val_parcela"] == NULL){
+                                    
+											$row["val_parcela"] = round($row["valor"]*$row["quantidade"]/$row["parcelas"]);
+                                        }
+									   
+                                          
+										if($row['id_loja'] == 1){
+										   $departamento = $row["val_parcela"]; 
+										}
+									    
+										if($row['id_loja'] == 2){
+										   $esporte = $row["val_parcela"]; 
+										}
+										
+										if($row['id_loja'] == 3){
+										   $restaurante = $row["val_parcela"]; 
+										}
+										
+										if($row['id_loja'] == 4){
+										   $alimentacao = $row["val_parcela"]; 
+										}
+										
+                                          //$alimentacao=0;
+                                          $tecnologia=0;
+                                          $livraria=0;
+                                         // $esporte=0;
+                                          $lazer=0;
+                                          $calcado=0;
+                                          $vestuario=0;
+                                          $eletrodomestico=0; 
+                                          //$departamento=0;                             
 
                                        } 
                                          
