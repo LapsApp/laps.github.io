@@ -337,20 +337,23 @@ include 'partes/header.php';
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             } else {
-                                                                echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>";
+                                                                echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>
+<br><button class='btn btn-success btn-lg' type='submit' onclick='window.location=\"boleto_cef.php?id=$id_cliente&mes=04&valorfatura=$valorfm\"'/>
+<b>GERAR BOLETO</b></button>";
                                                             }
                                                         } else {
 
                                                             echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
                                                         }
                                                         ?></p>
+
                                                 </div>
 
-                                                <input type="radio" name="tabs" class="tabs" id="tab5" checked>
+                                                <input type="radio" name="tabs" class="tabs" id="tab5">
                                                 <label for="tab5"><b>MAI</b></label>
                                                 <div>
                                                     <p><?php
@@ -408,21 +411,24 @@ include 'partes/header.php';
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             } else {
-                                                                echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>";
+                                                                echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>
+<br><button class='btn btn-success btn-lg' type='submit' onclick='window.location=\"boleto_cef.php?id=$id_cliente&mes=05&valorfatura=$valorfm\"'/>
+<b>GERAR BOLETO</b></button>";
                                                             }
                                                         } else {
 
                                                             echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
                                                         }
                                                         ?></p>
+                                                        
                                                 </div>
 
 
-                                                <input type="radio" name="tabs" class="tabs" id="tab6">
+                                                <input type="radio" name="tabs" class="tabs" id="tab6" checked>
                                                 <label for="tab6"><b>JUN</b></label>
                                                 <div>
                                                     <p><?php
@@ -480,9 +486,13 @@ include 'partes/header.php';
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
+                                                            } else {
+                                                                echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>
+<br><button class='btn btn-success btn-lg' type='submit' onclick='window.location=\"boleto_cef.php?id=$id_cliente&mes=06&valorfatura=$valorfm\"'/>
+<b>GERAR BOLETO</b></button>";
                                                             }
                                                         } else {
 
@@ -554,7 +564,7 @@ include 'partes/header.php';
                                                             echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
-                                                            }
+                                                            } 
                                                         } else {
 
                                                             echo "</tr></table><br><br>NENHUMA FATURA PARA ESSE MÊS";
@@ -1051,6 +1061,7 @@ include 'partes/header.php';
                                                         ?></p>
                                                 </div>
                                             </div>
+                                            <br><br><br><br><br><br>
                                         </td>
                                     </tr>
                                 </table>

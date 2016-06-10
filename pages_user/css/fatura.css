@@ -42,7 +42,7 @@ input.tabs + label + div {
   background: #eee;
   top: 40px;
   left: 0;
-  height: 300px;
+  height: 400px;
   padding: 10px;
   z-index: -1;
   transition: opacity ease-in-out .3s;
