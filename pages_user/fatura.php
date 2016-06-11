@@ -342,7 +342,7 @@ include 'partes/header.php';
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             } else {
                                                                 echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>
-<br><button class='btn btn-success btn-lg' type='submit' onclick='window.location=\"boleto_cef.php?id=$id_cliente&mes=04&valorfatura=$valorfm\"'/>
+<br><button class='btn btn-success btn-lg' type='submit' onclick='window.open(\"boleto_cef.php?id=$id_cliente&mes=04&valorfatura=$valorfm\")'/>
 <b>GERAR BOLETO</b></button>";
                                                             }
                                                         } else {
@@ -416,7 +416,7 @@ include 'partes/header.php';
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             } else {
                                                                 echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>
-<br><button class='btn btn-success btn-lg' type='submit' onclick='window.location=\"boleto_cef.php?id=$id_cliente&mes=05&valorfatura=$valorfm\"'/>
+<br><button class='btn btn-success btn-lg' type='submit' onclick='window.open(\"boleto_cef.php?id=$id_cliente&mes=05&valorfatura=$valorfm\")'/>
 <b>GERAR BOLETO</b></button>";
                                                             }
                                                         } else {
@@ -491,7 +491,7 @@ include 'partes/header.php';
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             } else {
                                                                 echo "<h4 align='center' style='color: red'><b>FATURA PENDENTE</b></h4>
-<br><button class='btn btn-success btn-lg' type='submit' onclick='window.location=\"boleto_cef.php?id=$id_cliente&mes=06&valorfatura=$valorfm\"'/>
+<br><button class='btn btn-success btn-lg' type='submit' onclick='window.open(\"boleto_cef.php?id=$id_cliente&mes=06&valorfatura=$valorfm\")'/>
 <b>GERAR BOLETO</b></button>";
                                                             }
                                                         } else {
