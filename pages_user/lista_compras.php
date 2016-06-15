@@ -87,7 +87,7 @@ if (!$link) {
                                                         $result = mysqli_query($link, "SELECT DISTINCT id_compra FROM compras where id_cartao = " . $data_cli['id_cartao'] . ";");
                                                         $total = 0;
                                                         while ($data = mysqli_fetch_assoc($result)) {
-                                                            $result2 = mysqli_query($link, "SELECT sum(c.quantidade*c.valor) valor_compra,DATE_FORMAT(c.data,'%d/%m/%Y %H:%i:%S') data,l.categoria, l.nome, l.endereco FROM compras c
+                                                            $result2 = mysqli_query($link, "SELECT sum(c.quantidade*c.valor) valor_compra,DATE_FORMAT(c.data,'%d/%m/%Y %H:%i:%S') data,l.categoria, l.nome, l.endereco, l.id_loja FROM compras c
                                                             join lojas l on l.id_loja = c.id_loja where id_compra = " . $data['id_compra'] . ";");
                                                             $data2 = mysqli_fetch_assoc($result2);
                                                             //$result3=mysqli_query($link,"SELECT data,categoria FROM `compras` where id_compra = ".$data['id_compra'].";");
@@ -95,8 +95,12 @@ if (!$link) {
                                                             //$subtotal = ($data['quantidade'])*str_replace(",",".",$data["valor"]);
                                                             ?>
                                                             <tr>
-                                                                <td style="line-height: 1;"><?php echo $data2["nome"] . "
-                                                            <br> <small>" . $data2["endereco"] . "</small>" ?></td>
+                                                                <td style="line-height: 1;">
+                                                                    <?php echo $data2["nome"].' - <a href ="lista_empresa.php?loja='.$data2["id_loja"].'" target="_blank"> <small>  Detalhar </small></a>';
+                                                                        echo "<br><small>".$data2["endereco"]."</small>";
+                                                                    ?>
+
+                                                                </td>
                                                                 <td><?php echo $data2["categoria"] ?></td>
                                                                 <td><?php echo $data2["data"] ?></td>
                                                                 <td><?php echo number_format($data2["valor_compra"], 2, ',', '.'); ?></td>
