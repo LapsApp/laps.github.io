@@ -10,10 +10,20 @@ if (isset($entrar)) {
 
     if ($result->num_rows <= 0) {
         $volta = $_SERVER['HTTP_REFERER'];
-        echo "<script>window.location='$volta?obj=Login&type=erro';</script>";
+		$volta=explode("?",$volta);
+        echo "<script>window.location='$volta[0]?obj=Login&type=erro';</script>";
         die();
     } else {
         while ($row = $result->fetch_assoc()) {
+			//Atualiza a sessão para 1 - Logado
+			$sqlSessao = "UPDATE cliente set sessao = 1 where id_cliente = ".$row["id_cliente"];
+			if (! mysqli_query($connect, $sqlSessao))
+				{
+					$volta = $_SERVER['HTTP_REFERER'];
+					$volta=explode("?",$volta);
+					echo "<script>window.location='$volta[0]?obj=Login&type=erro'</script>";
+				}
+			
             if ($row["tipo"] == 1) {
                 setcookie("login", $login);
                 header("Location:../pages_adm/menu_adm.php?id=" . $row["id_cliente"]);

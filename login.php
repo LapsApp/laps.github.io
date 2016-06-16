@@ -54,8 +54,8 @@
         <script src="js/custom.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <?php
-        include ('modelo/funcoesJS.php');
-        include ('modelo/TesteMen.php');
+        include ('modelo/funcoesJS_index.php');
+        include ('modelo/TesteMen_index.php');
         ?>
     </body>
 </html>

@@ -6,7 +6,7 @@
             <li class="active">
                 <a class="" href="../pages_user/menu_usuario.php?id=<?php echo $id_cliente; ?>">
                     <i class="icon_house_alt"></i>
-                    <span>INICÍO</span>
+                    <span>INICIO</span>
                 </a>
             </li>
             <li>
@@ -51,6 +51,12 @@
                     <span>BLOQUEIO</span>
                 </a>
             </li>
+			<li>
+                <a class="" href="../modelo/logout.php?id=<?php echo $id_cliente; ?>">
+                    <i class="icon_lock-open"></i>
+                    <span>LOGOUT</span>
+                </a>
+            </li>
             <!--<li class="">
                <a class="">
                   <i class="icon_table"></i>
@@ -68,3 +74,19 @@
     </div>
 </aside>
 <!--sidebar end-->
+<?php
+	if(! isset($link))
+	{
+		$link = mysqli_connect("localhost", "root", "", "laps");
+		if (!$link) {
+			die('Não foi possível conectar: ' . mysql_error());
+		}
+	}
+
+	$cliente = mysqli_query($link, "SELECT c.id_cliente, sessao  FROM cliente c where c.id_cliente = " . $id_cliente . ";");
+    $d_cliente = mysqli_fetch_assoc($cliente);
+		if($d_cliente['sessao'] == 0)
+		{
+			echo "<script>window.location='../login.php?obj=sessao&type=erro'</script>";
+		}
+ ?>

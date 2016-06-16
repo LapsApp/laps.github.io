@@ -11,12 +11,12 @@
     <meta charset="utf-8">
       <link rel="shortcut icon" href="img/favicon.png">
       <title>LAPS</title>
-      <link href="css/bootstrap.min.css" rel="stylesheet">
-      <link href="css/bootstrap-theme.css" rel="stylesheet">
-      <link href="css/elegant-icons-style.css" rel="stylesheet" />
-      <link href="css/font-awesome.min.css" rel="stylesheet" />
-      <link href="css/style.css" rel="stylesheet">
-      <link href="css/style-responsive.css" rel="stylesheet" />
+      <link href="../css/bootstrap.min.css" rel="stylesheet">
+      <link href="../css/bootstrap-theme.css" rel="stylesheet">
+      <link href="../css/elegant-icons-style.css" rel="stylesheet" />
+      <link href="../css/font-awesome.min.css" rel="stylesheet" />
+      <link href="../css/style.css" rel="stylesheet">
+      <link href="../css/style-responsive.css" rel="stylesheet" />
       <style>
          th, td {
          line-height: 3;
@@ -86,7 +86,7 @@
                           </header>
                           <div class="panel-body">
                               <div class="form">
-                                   <form class="form-validate form-horizontal" id="feedback_form" method="post" action="modelo/analise_bloqueioUsuario.php">
+                                   <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../modelo/analise_bloqueioUsuario.php" enctype="multipart/form-data">
                                        <div class="form-group ">
                                     <div class="col-lg-10">
 
@@ -121,36 +121,10 @@
                                   
                                           </div>
                                       </div>
-										<?php									  
-										if($status == 0){
-											echo "
-											
-											<div class='form-group '>
-												<table width='70%'>
-												<tr>
-												<td align='left' style='padding: 10px;'>
-													<label for='cname' class='control-label col-lg-4'>MOTIVO PARA BLOQUEIO </label>
-													<div class='col-lg-7'>
-													   <textarea class='form-control' id='subject' name='obs'>
-													   </textarea>
-													</div>
-												</td>
-												<td align='left'>
-												<div>							
-													<button class='btn btn-primary' name='bloqueia' value='".$id_conta."' type='submit'>Bloquear</button>													
+										<div class='form-group'>							
+													<button class='btn btn-warning' name='bloqueia' value='".$id_conta." type='submit'>Bloquear</button>													
 												</div>
-												</td>
-												</tr>
-												</table>
-                                             </div>
 											 
-
-											 ";												 
-													
-											 										 
-										}
-									   
-											 ?>
                                   </form>
                               </div>
 
@@ -167,14 +141,14 @@
   <!-- container section end -->
 
     <!-- javascripts -->
-    <script src="js/jquery.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/jquery.scrollTo.min.js"></script>
-      <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-      <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-      <script src="js/form-validation-script.js"></script>
-      <script src="js/scripts.js"></script>
-      <script src="tablefilter/tablefilter.js"></script>
+    <script src="../js/jquery.js"></script>
+      <script src="../js/bootstrap.min.js"></script>
+      <script src="../js/jquery.scrollTo.min.js"></script>
+      <script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
+      <script type="../text/javascript" src="js/jquery.validate.min.js"></script>
+      <script src="../js/form-validation-script.js"></script>
+      <script src="../js/scripts.js"></script>
+      <script src="../tablefilter/tablefilter.js"></script>
 
 <?php
       include ('../modelo/funcoesJS.php');

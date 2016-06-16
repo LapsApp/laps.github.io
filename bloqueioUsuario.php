@@ -1,35 +1,13 @@
-﻿<!DOCTYPE html>
-<?php
+﻿<?php
    $link = mysqli_connect("localhost", "root", "", "laps");
    if (!$link) {
           die('Não foi possível conectar: ' . mysql_error());
       }
-      $id_cliente = $_GET['id']; 
-   ?>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-      <link rel="shortcut icon" href="img/favicon.png">
-      <title>LAPS</title>
-      <link href="css/bootstrap.min.css" rel="stylesheet">
-      <link href="css/bootstrap-theme.css" rel="stylesheet">
-      <link href="css/elegant-icons-style.css" rel="stylesheet" />
-      <link href="css/font-awesome.min.css" rel="stylesheet" />
-      <link href="css/style.css" rel="stylesheet">
-      <link href="css/style-responsive.css" rel="stylesheet" />
-      <style>
-         th, td {
-         line-height: 3;
-         }
-         th{
-         background: #F0F0F0;
-         }
-         tr:hover {
-         background: #F0F0F0;
-         }
-      </style>
-  </head>
+      $id_cliente = $_GET['id'];
+	  include 'pages_user/partes/header.php';
 
+   ?>
+</br>
   <body style="color: #000;">
   <!-- container section start -->
   <section id="container" class="">
@@ -40,30 +18,25 @@
             </div>
 
             <!--logo start-->
-            <a href="index.php" class="logo">L<span class="lite">APS </span></a>
+            <a href="pages_user/menu_usuario.php?id=<?php echo $id_cliente; ?>" class="logo">L<span class="lite">APS </span></a>
             <!--logo end-->
 
-            <div class="nav search-row" id="top_menu">
-                <!--  search form start -->
-                <ul class="nav top-menu">                    
+            <div class="nav search-row" id="top_menu"><!--  search form start -->
+                <ul class="nav top-menu">
                     <li>
                         <form class="navbar-form">
                             <input class="form-control" placeholder="Search" type="text">
                         </form>
-                    </li>                    
-                </ul>
-                <!--  search form end -->                
+                    </li>
+                </ul><!--  search form end -->
             </div>
-
-      </header>      
+        </header>
       <!--header end-->
 
         <!--sidebar start-->
-      <aside>
          <?php
 			include("./aside_usuario_menu.php");
 		 ?>
-      </aside>
       <!--sidebar end-->
 
       <!--main content start-->
@@ -178,9 +151,9 @@
       <script src="tablefilter/tablefilter.js"></script>
 
 <?php
-      include ('modelo/funcoesJS_antigo.php');
-      include ('modelo/TesteMen_antigo.php');
+      include ('modelo/funcoesJS_index.php');
+      include ('modelo/TesteMen_index.php');
+	  include ('pages_user/partes/footer.php');
    ?>
 
-  </body>
-</html>
+
