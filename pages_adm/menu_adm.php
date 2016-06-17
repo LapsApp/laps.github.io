@@ -2,6 +2,13 @@
 $id_cliente = $_GET['id'];
 $paginaTitulo = 'Menu Administrador';
 include 'partes/head.php';
+
+$link = mysqli_connect("localhost", "root", "", "laps");
+if (!$link) {
+	die('Não foi possível conectar: ' . mysql_error());
+}
+$result = mysqli_query($link, "SELECT nome FROM cliente c WHERE c.id_cliente = " . $id_cliente);
+$data = mysqli_fetch_assoc($result);
 ?>
 
 <body style="color: #000;">
@@ -39,7 +46,7 @@ include 'partes/head.php';
                 <!--overview start-->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3 class="page-header"><i class="fa fa-laptop"></i>MENU ADMINISTRADOR</h3>
+                        <h3 class="page-header"><i class="fa fa-laptop"></i> BEM VINDO, <font color="#000033" size="3"><b><?php echo $data['nome'] ?> </b></font>!</h3>
                         <ol class="breadcrumb">
                             <li><i class="fa fa-home"></i><a href="../pages_adm/menu_adm.php?id=<?php echo $id_cliente; ?>">INICIO</a></li>
                             <li><i class="fa fa-laptop"></i>MENU</li>
