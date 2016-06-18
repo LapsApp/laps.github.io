@@ -1,5 +1,6 @@
 <?php
 $id_loja = $_GET['loja'];
+$id_cliente = $_GET['cliente'];
 $paginaTitulo = 'Lista de Loja';
 include 'partes/header.php';
 $link = mysqli_connect("localhost", "root", "", "laps");

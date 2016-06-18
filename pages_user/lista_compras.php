@@ -96,7 +96,7 @@ if (!$link) {
                                                             ?>
                                                             <tr>
                                                                 <td style="line-height: 1;">
-                                                                    <?php echo $data2["nome"].' - <a href ="lista_empresa.php?loja='.$data2["id_loja"].'" target="_blank"> <small>  Detalhar </small></a>';
+                                                                    <?php echo $data2["nome"].' - <a href ="lista_empresa.php?loja='.$data2["id_loja"].'&cliente='.$id_cliente.'" target="_blank"> <small>  Detalhar </small></a>';
                                                                         echo "<br><small>".$data2["endereco"]."</small>";
                                                                     ?>
 
