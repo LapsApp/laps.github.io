@@ -15,8 +15,8 @@ if (isset($bloqueia))
 {
 	$cli_b=mysqli_query($link,"SELECT c.id_cliente, c.email FROM cliente c INNER JOIN conta cc ON cc.id_cliente = c.id_cliente where cc.id_conta = ".$bloqueia.";");
    $data_cli_b=mysqli_fetch_assoc($cli_b);
-         $mail = $data_cli_b["email"]; 
-		include("./envia_msg_bloqueio_antigo.php");		 
+         $mail = $data_cli_b["email"];
+		include("envia_msg_bloqueio_antigo.php");		 
 if (isset($falhou) == false)
 {
 	$up =	"UPDATE conta set status = 1".", comentario = '".$obs."' where id_conta = ".$bloqueia;

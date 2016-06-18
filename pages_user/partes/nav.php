@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li>
-                <a class="" href="../bloqueioUsuario.php?id=<?php echo $id_cliente; ?>">
+                <a class="" href="../pages_user/bloqueio.php?id=<?php echo $id_cliente; ?>">
                     <i class="icon_blocked"></i>
                     <span>BLOQUEIO</span>
                 </a>
