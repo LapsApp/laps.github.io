@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="">
-                <a class="" href="consumo_categoria.php?id=<?php echo $id_cliente; ?>">
+                <a class="" href="consumo_categoria_data.php?id=<?php echo $id_cliente; ?>">
                     <i class="icon_piechart"></i>
                     <span>CONSUMO POR<br>CATEGORIAS</span>
                 </a>

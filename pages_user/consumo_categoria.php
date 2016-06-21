@@ -1,19 +1,35 @@
 <?php
-$id_cliente = $_GET['id'];
+//$id_cliente = $_GET['id'];
+
+if (isset($_POST['id_cliente'])) {
+$id_cliente = $_POST['id_cliente'];
+
+$val_dt_ini = $_POST['dt_inicial'];
+$val_dt_fim = $_POST['dt_final'];
+
+if(strtotime($val_dt_ini) > strtotime($val_dt_fim)){
+   $volta = $_SERVER['HTTP_REFERER'];
+   echo "<script>window.location='./consumo_categoria_data.php?id=".$id_cliente."&obj=Data (Dt Fim Maior que Inicio)&type=erro'</script>";
+}
+
+//echo "ID: ".$id_cliente."- DATA: ".$val_dt_ini." - ".$val_dt_fim."<br><br>";
+}
+
 $paginaTitulo = 'Consumo Categoria';
 include 'partes/header.php';
 ?>
  <script src="js/loader.js"></script>
    <script >
-      function gerar(){
+   window.onload = gerar;
+     function gerar(){
    <?php
                                     $link = mysqli_connect("localhost", "root", "", "laps");
                                     if (!$link) {
                                        die('Não foi possível conectar: ' . mysql_error());
                                     }
-                                    $id_cliente = $_GET['id'];
-                                    $dt_inicial="2016/06/01";
-                                    $dt_final="2016/06/30";
+                                    $id_cliente = $_POST['id_cliente'];
+                                    $dt_inicial= $val_dt_ini;
+                                    $dt_final= $val_dt_fim;
                                     $alimentacao=0;
                                     $tecnologia=0;
                                     $livraria=0;
@@ -33,6 +49,8 @@ include 'partes/header.php';
                                     WHERE cp.data BETWEEN '$dt_inicial' AND '$dt_final' 
                                     AND ct.id_cliente = " . $id_cliente . "
 									group by l.categoria";
+									
+									
                                     $result = $link->query($sql);
 
                                     
@@ -112,6 +130,7 @@ include 'partes/header.php';
       ?>
 
   }
+ 
 </script>  
 <body style="color: #000;">
     <!-- container section start -->
@@ -165,15 +184,7 @@ include 'partes/header.php';
                             </header>
                             <div class="panel-body">
                                 <table width="1100" border="0" align="center"> 
-                                    <tr>
-                                        <td align="center">
-                                            <b>PERÍODO</b><br><br>
-                                            DATA INÍCIAL: <input id="dt_inicial" type="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            DATA FINAL: <input id="dt_final" id="piechart" type="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <button class='btn btn-primary' name='gerar' onclick="gerar()">GERAR GRÁFICO DE CONSUMO</button><br><br>
-                                        </td>
-                                    </tr>
-
+                                    
                                     <tr>
                                         <td align="center">
                                             <b>CONSUMO POR CATEGORIAS</b>
