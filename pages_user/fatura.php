@@ -131,7 +131,7 @@ include 'partes/header.php';
 
         var options = {
           title: '',
-		    legend: 'none',
+            legend: 'none',
           legend: {position: 'top', maxLines: 3},
           pieHole: 0.5,
           slices: {
@@ -256,17 +256,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"] . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.'). "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             } else {
@@ -327,17 +327,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"] . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             } else {
@@ -401,17 +401,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"]  . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             } else {
@@ -476,17 +476,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"] . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             } else {
@@ -551,17 +551,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"] . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             } 
@@ -621,17 +621,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"] . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             }
@@ -691,17 +691,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"] . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             }
@@ -761,17 +761,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"]. "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             }
@@ -830,17 +830,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"] . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             }
@@ -899,17 +899,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"] . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             }
@@ -968,17 +968,17 @@ include 'partes/header.php';
                                                                 $valor = number_format($row["valor"] * $row["quantidade"] / $t_parcela, 2, '.', '');
 
                                                                 echo "<tr><td>" . $row["nome"] . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             }
@@ -1040,17 +1040,17 @@ include 'partes/header.php';
 
                                                                 $valor = number_format($row["valor"] * $row["quantidade"], 2, '.', '');
                                                                 echo "<tr><td>" . $row["nome"] . "</td>
-                                          <td>" . $row["data"] . "</td>  
+                                          <td>" . date('d/m/Y H:i:s', strtotime($row["data"])) . "</td>  
                                           <td>" . $row["categoria"] . "</td>
                                           <td align='center'>" . $parcela . "/" . $row["parcelas"] . "</td>                                          
-                                          <td align='right'>R$" . $valor . "</td>";
+                                          <td align='right'>R$" . number_format($valor,2,',','.') . "</td>";
                                                                 $i++;
                                                                 $valorfm = $valorfm + $valor;
                                                                 if ($row["pago"] == 1) {
                                                                     $pgto = 1;
                                                                 }
                                                             } $valorfm = number_format($valorfm, 2, '.', '');
-                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . $valorfm . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
+                                                            echo "</tr></table><h4 align='right'><b> VALOR TOTAL = R$" . number_format($valorfm,2,',','.') . "                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h4><br><br>";
                                                             if ($pgto == 1) {
                                                                 echo "<h4 align='center' style='color: green'><b>FATURA PAGA</b></h4>";
                                                             }

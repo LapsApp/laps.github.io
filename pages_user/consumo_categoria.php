@@ -39,6 +39,7 @@ include 'partes/header.php';
                                     $vestuario=0;
                                     $eletrodomestico=0;
                                     $departamento=0;
+                                    $restaurante =0;
 
 
                                     $sql ="SELECT  cp.id_compra,l.categoria,l.id_loja, COUNT(l.categoria) as numero_de_categ,cp.valor,cp.quantidade,cp.parcelas,ROUND(SUM(cp.valor*cp.quantidade/IFNULL(SUBSTRING(cp.parcelas,3,1),cp.parcelas) )) val_parcela
@@ -48,44 +49,49 @@ include 'partes/header.php';
                                     join lojas l on l.id_loja = cp.id_loja
                                     WHERE cp.data BETWEEN '$dt_inicial' AND '$dt_final' 
                                     AND ct.id_cliente = " . $id_cliente . "
-									group by l.categoria";
-									
-									
+                                    group by l.categoria";
+                                    
+                                    
                                     $result = $link->query($sql);
 
                                     
                                     if ($result->num_rows > 0) { 
                                        while($row = $result->fetch_assoc()) {    
 
-										if($row["val_parcela"] == NULL){
+                                        if($row["val_parcela"] == NULL){
                                     
-											$row["val_parcela"] = round($row["valor"]*$row["quantidade"]/$row["parcelas"]);
+                                            $row["val_parcela"] = round($row["valor"]*$row["quantidade"]/$row["parcelas"]);
                                         }
-									   
+                                       
                                           
-										if($row['id_loja'] == 1){
-										   $departamento = $row["val_parcela"]; 
-										}
-									    
-										if($row['id_loja'] == 2){
-										   $esporte = $row["val_parcela"]; 
-										}
-										
-										if($row['id_loja'] == 3){
-										   $restaurante = $row["val_parcela"]; 
-										}
-										
-										if($row['id_loja'] == 4){
-										   $alimentacao = $row["val_parcela"]; 
-										}
-										
+                                        if($row['id_loja'] == 1){
+                                           $departamento = $row["val_parcela"]; 
+                                        }
+                                        
+                                        if($row['id_loja'] == 2){
+                                           $esporte = $row["val_parcela"]; 
+                                        }
+                                        
+                                        if($row['id_loja'] == 3){
+                                           $restaurante = $row["val_parcela"]; 
+                                        }
+                                        
+                                        if($row['id_loja'] == 4){
+                                           $alimentacao = $row["val_parcela"]; 
+                                        }
+                                        
+                                        if($row['id_loja'] == 5){
+                                           $vestuario = $row["val_parcela"]; 
+                                        }
+                                        
                                           //$alimentacao=0;
                                           $tecnologia=0;
                                           $livraria=0;
                                          // $esporte=0;
+                                         //$restaurante = 0;
                                           $lazer=0;
                                           $calcado=0;
-                                          $vestuario=0;
+                                         // $vestuario=0;
                                           $eletrodomestico=0; 
                                           //$departamento=0;                             
 
@@ -100,7 +106,7 @@ include 'partes/header.php';
         var data = google.visualization.arrayToDataTable([
           ['CATEGORIAS', 'GASTOS'],
           ['ALIMENTAÇÃO', ".$alimentacao."], ['TECNOLOGIA', ".$tecnologia."], ['LIVRARIA', ".$livraria."],
-          ['ESPORTE', ".$esporte."], ['LAZER', ".$lazer."], ['CALÇADOS', ".$calcado."],
+          ['ESPORTE', ".$esporte."],['RESTAURANTE', ".$restaurante."], ['LAZER', ".$lazer."], ['CALÇADOS', ".$calcado."],
           ['VESTUÁRIO', ".$vestuario."], ['ELETRODOMÉSTICO', ".$eletrodomestico."], ['DEPARTAMENTO', ".$departamento."]        
         ]);       
 
@@ -119,6 +125,7 @@ include 'partes/header.php';
             6: { color: '#EA5BEA', offset: 0.1 },
             7: { color: '#B5B5B5', offset: 0.1 },
             8: { color: '#6F6F6F', offset: 0.1 },
+            9: { color: '#FF1493', offset: 0.1 },
           }
           
           
