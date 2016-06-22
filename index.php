@@ -67,7 +67,7 @@ if (!empty($_GET['convite'])) {
                             <p class="tm-white">Com o LAPS você poderá acompanhar em tempo real suas compras, visualizar seu limite disponível, gerar
                                 boletos de sua fatura, realizar bloqueios e desbloqueios do seu cartão, tudo online!
                             </p>
-                            <img src="img/software-img.png" class="img-responsive" alt="home img">
+                            <img src="images/web.png" class="img-responsive" alt="home img" width="700" >
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -83,7 +83,7 @@ if (!empty($_GET['convite'])) {
                     <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
                        <!-- <i class="fa fa-laptop"></i> -->
                         <img src="img/responsive.png" height="100px" width="100px">
-                        <h3 class="text-uppercase">RESPONSIVE LAYOUT</h3>
+                        <h3 class="text-uppercase">LAYOUT RESPONSIVO</h3>
                         <p>Nossa página possui um design responsivo que possibilita você acessar sua conta de qualquer dispositivo
                             com a mesma facilidade de sempre!
                         </p>
@@ -92,8 +92,7 @@ if (!empty($_GET['convite'])) {
                        <!-- <i class="fa fa-twitter"></i> -->
                         <img src="img/security.png" height="100px" width="100px">
                         <h3 class="text-uppercase">SEGURANÇA</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                        <p>Toda comodidade com segurança! Você pode realizar o bloqueio do seu cartão a qualquer momento.
                         </p>
                     </div>
                     <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
@@ -114,21 +113,26 @@ if (!empty($_GET['convite'])) {
         <section id="feature">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 wow fadeInLeft" data-wow-delay="0.6s">
-                        <h2 class="text-uppercase">Our Software Features</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.
+                    <div class="col-md-5 wow fadeInLeft" data-wow-delay="0.6s">
+                        <h2 class="text-uppercase">Suas Compras em sua mão a qualquer momento!</h2>
+                        <p>
+                            <i class="fa fa-dollar"></i>Consulta de Limite Disponível 
                         </p>
                         <p>
-                            <span><i class="fa fa-mobile"></i></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            <i class="fa fa-search"></i>Consulta das compras realizadas com o LAPS
                         </p>
                         <p>
-                            <i class="fa fa-code"></i>Quis autem velis reprehenderit et quis voluptate velit esse quam.
+                            <i class="fa fa-file"></i>Consulta de Faturas anteriores e posteriores
+                        </p>
+                        <p>
+                            <i class="fa fa-pie-chart"></i>Detalhamento dos gastos por categoria
+                        </p>
+                        <p>
+                            <i class="fa fa-users"></i>Envio de convites para seus Amigos
                         </p>
                     </div>
-                    <div class="col-md-6 wow fadeInRight" data-wow-delay="0.6s">
-                        <img src="img/software-img.png" class="img-responsive" alt="feature img">
+                    <div class="col-md-7 wow fadeInRight" data-wow-delay="0.6s">
+                        <img src="images/resp.png" class="img-responsive" alt="feature img">
                     </div>
                 </div>
             </div>
@@ -140,17 +144,13 @@ if (!empty($_GET['convite'])) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="img/software-img.png" class="img-responsive" alt="feature img">
+                        <img src="images/web.png" class="img-responsive" alt="feature img">
                     </div>
                     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <h2 class="text-uppercase">More of Your Software</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.
+                        <h2 class="text-uppercase">Cadastre e faça parte da equipe LAPS!!</h2>
+                        <p>Para se cadastrar basta solicitar informando seu dados que realizaremos a ánalise do seu cadastro para entrão vpcê se juntar a nós!
                         </p>
-                        <p><span><i class="fa fa-mobile"></i></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                        <p><i class="fa fa-code"></i>Quis autem velis reprehenderit et quis voluptate velit esse quam.
+                        <p><span><i class="fa fa-mobile"></i></span>Sem Burocracia: Você enviará seus dados aqui mesmo pelo LAPS!
                         </p>
                     </div>
                 </div>
@@ -165,6 +165,11 @@ if (!empty($_GET['convite'])) {
                     <div class="col-md-12 wow bounceIn">
                         <h2 class="text-uppercase">Quem Somos</h2>
                     </div>
+                    <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
+                        <p>Somos uma equipe da disciplina de Laboratório de Análise e Projeto de Sistemas Do Curso de Sistemas de informação da Universidade Vila Velha.
+                        Esse projeto tem como objetivo colocar em prática nosso aprendizado durante o curso utilizando técnicas equivalentes as utilizadas no mercado de trabalho</p>
+                    </div>
+
                     <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
                         <img src="img/alais.png" height="100px" width="100px">
                         <h3 class="text-uppercase">Alais Salino</h3>
