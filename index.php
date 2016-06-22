@@ -207,7 +207,7 @@ if (!empty($_GET['convite'])) {
                         <h3>Qualidade: Utilização padrão MPS.BR Nível G</h3>
                         <h3>Versionamento: Programação com versionamento utilizando a ferramenta TortaiseSVN</h3>
                         <h3>Metodologia Ágil: Scrum. Para o melhpr andamento do projeto fei utilizado a metodologia Scrum.</h3>
-                        <h3>Histórico de desenvolvimento: <a href="galeria.php"> Clique aqui!</a> e veja como o LAPS foi desenvolvido!</h3>
+                        <h3>Histórico de desenvolvimento: <a href="fotos.php"> Clique aqui!</a> e veja como o LAPS foi desenvolvido!</h3>
                     </div>
                     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                         <img src="images/mpsbr.png" >
