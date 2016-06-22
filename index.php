@@ -166,10 +166,9 @@ if (!empty($_GET['convite'])) {
                         <h2 class="text-uppercase">Quem Somos</h2>
                     </div>
                     <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
-                        <p>Somos uma equipe da disciplina de Laboratório de Análise e Projeto de Sistemas Do Curso de Sistemas de informação da Universidade Vila Velha.
-                        Esse projeto tem como objetivo colocar em prática nosso aprendizado durante o curso utilizando técnicas equivalentes as utilizadas no mercado de trabalho</p>
+                        <h3>Somos uma equipe da disciplina de Laboratório de Análise e Projeto de Sistemas Do Curso de Sistemas de informação da Universidade Vila Velha.<br>
+                        Esse projeto tem como objetivo colocar em prática nosso aprendizado durante o curso utilizando técnicas equivalentes as utilizadas no mercado de trabalho</h3>
                     </div>
-
                     <div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
                         <img src="img/alais.png" height="100px" width="100px">
                         <h3 class="text-uppercase">Alais Salino</h3>
@@ -197,6 +196,21 @@ if (!empty($_GET['convite'])) {
                     <div class="col-md-12 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
                         <img src="img/rodrigo.png" height="100px" width="100px">
                         <h3 class="text-uppercase">Rodrigo Ribeiro</h3>
+                    </div>
+                </div>
+                </br>
+                <div class="row">
+                    <div class="col-md-12 wow bounceIn">
+                        <h2 class="text-uppercase">Metodologias</h2>
+                    </div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <h3>Qualidade: Utilização padrão MPS.BR Nível G</h3>
+                        <h3>Versionamento: Programação com versionamento utilizando a ferramenta TortaiseSVN</h3>
+                        <h3>Metodologia Ágil: Scrum. Para o melhpr andamento do projeto fei utilizado a metodologia Scrum.</h3>
+                        <h3>Histórico de desenvolvimento: <a href="galeria.php"> Clique aqui!</a> e veja como o LAPS foi desenvolvido!</h3>
+                    </div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <img src="images/mpsbr.png" >
                     </div>
                 </div>
             </div>
