@@ -32,17 +32,17 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav text-uppercase">
-                         <a href="#home">Início</a> 
-                         <a href="#r">Reuniões</a> 
-                         <a href="#ap">Apresentações</a> 
-                         <a href="#ad">Auditorias</a> 
-                         <a href="#ot">Outros</a> 
+                         <li><a href="#home">Início</a> </li>
+                        <li> <a href="#r">Reuniões</a> </li>
+                         <li><a href="#ap">Apresentações</a></li> 
+                         <li><a href="#ad">Auditorias</a> </li>
+                        <li> <a href="#ot">Outros</a> </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right text-uppercase">
-                         <a href="#" onclick="window.location = 'index.php';"> 
+                        <li> <a href="#" onclick="window.location = 'index.php';"> 
                                 <div class="btn btn-block  btn-primary"> <i class="fa fa-sign-in"></i> Voltar </div>
                             </a>
-                         
+                         </li>
                     </ul>
                 </div>
             </div>
