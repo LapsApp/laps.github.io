@@ -54,7 +54,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 wow bounceIn">
-                            <h2 class="text-uppercase">Histórico do Projeto <br> Processo de Deselvolvimento do LAPS!  </h2>
+                            <h2 class="text-uppercase">Histórico do Projeto <br> Processo de Desenvolvimento do LAPS!  </h2>
                         </div>
                     </div>
                 </div>
