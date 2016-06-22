@@ -12,56 +12,127 @@
 
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-12 wow bounceIn">
-                        <h2 class="text-uppercase">Histórico do Projeto</h2>
-                    </div>
-                    <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
-                        <h3>Processo de Deselvolvimento do LAPS! <br> <li>Reuniões: Scrum Planning</li></h3>
-                    </div>
-                    <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                        <img src="fotos/r2.jpg">
-                    </div>
-                    <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                        <img src="fotos/r3.jpg">
-                    </div>
-                    <br>
-                    <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                        <img src="fotos/r4.jpg">
-                    </div>
-                    <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                        <img src="fotos/r5.jpg">
-                    </div>
-                    <br>
-                    <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
-                        <h3><li>Apresentações de Sprint</li></h3>
-                    </div>
-                    <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                        <img src="fotos/ap1.jpg">
-                    </div>
-                    <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                        <img src="fotos/ap2.jpg">
-                    </div>
-                    <br>
-                    <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                        <img src="fotos/ap3.jpg">
-                    </div>
-                    <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                        <img src="fotos/ap4.jpg">
-                    </div>
-                    <br> <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
-                        <h3><li>Auditorias</li></h3>
-                    </div>
-                    <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                        <img src="fotos/ap1.jpg">
-                    </div>
-                    <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                        <img src="fotos/ap2.jpg">
-                    </div>
-                    <br>
-                </div>
+     <!-- start preloader -->
+        <div class="preloader">
+            <div class="sk-spinner sk-spinner-rotating-plane"></div>
         </div>
+        <!-- end preloader -->
+        <!-- start navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top templatemo-nav" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon icon-bar"></span>
+                        <span class="icon icon-bar"></span>
+                        <span class="icon icon-bar"></span>
+                    </button>
+                    <h2 class="brand brand-name navbar-left">
+                        <a href="#home" ><img class="img-responsive2" src="img/laps.png" width="20px">LAPS</a>
+                    </h2>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav text-uppercase">
+                         <a href="#home">Início</a> 
+                         <a href="#r">Reuniões</a> 
+                         <a href="#ap">Apresentações</a> 
+                         <a href="#ad">Auditorias</a> 
+                         <a href="#ot">Outros</a> 
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right text-uppercase">
+                         <a href="#" onclick="window.location = 'index.php';"> 
+                                <div class="btn btn-block  btn-primary"> <i class="fa fa-sign-in"></i> Voltar </div>
+                            </a>
+                         
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- end navigation -->
+        <!-- start home -->
+        <section id="home">
+            <div class="overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 wow bounceIn">
+                            <h2 class="text-uppercase">Histórico do Projeto <br> Processo de Deselvolvimento do LAPS!  </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="r">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
+                            <h3>Reuniões</h3>
+                        </div>
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/r2.jpg">
+                        </div>
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/r3.jpg">
+                        </div>
+                         
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/r4.jpg">
+                        </div>
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/r5.jpg">
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section id="ap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
+                            <h3>Apresentações de Sprint</h3>
+                        </div>
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/ap1.jpg">
+                        </div>
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/ap2.jpg">
+                        </div>
+                         
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/ap3.jpg">
+                        </div>
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/ap4.jpg">
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section id="ad">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
+                            <h3> Auditorias </h3>
+                        </div>
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/a1.jpg">
+                        </div>
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/a2.jpg">
+                        </div>
+                </div>
+            </div>
+        </section>
+        <!-- end feature2 -->
+
+        <!-- start footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <p>Copyright © 2016 LAPS - UVV</p>
+                </div>
+            </div>
+        </footer>
+        <!-- end footer -->
 
        
 
