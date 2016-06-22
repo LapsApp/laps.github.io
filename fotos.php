@@ -127,14 +127,24 @@
         <section id="ot">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="col-md-8 wow fadeInUp" data-wow-delay="0.6s">
                             <h3> Outros: Documentos</h3>
                         </div>
-                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                            <img src="fotos/doc1.jpg">
+                        <div class="col-md-8 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/doc1.png">  
+                            <h3 class="text-uppercase">MPS.BR</h3>
                         </div>
-                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
-                            <img src="fotos/doc2.jpg">
+                        <div class="col-md-8 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/doc2.png">
+                        <h3 class="text-uppercase">Relatório MPS.BR</h3>
+                        </div>
+                        <div class="col-md-8 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/doc3.jpg">
+                        <h3 class="text-uppercase">Diagrama de EAP do MPS.BR</h3>
+                        </div>
+                        <div class="col-md-8 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/doc5.png">
+                        <h3 class="text-uppercase">Relatório de Produtividade</h3>
                         </div>
                 </div>
             </div>
