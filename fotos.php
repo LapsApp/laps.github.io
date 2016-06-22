@@ -124,6 +124,22 @@
         </section>
         <!-- end feature2 -->
 
+        <section id="ot">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 wow fadeInUp" data-wow-delay="0.6s">
+                            <h3> Outros: Documentos</h3>
+                        </div>
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/doc1.jpg">
+                        </div>
+                        <div class="col-md-6 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+                            <img src="fotos/doc2.jpg">
+                        </div>
+                </div>
+            </div>
+        </section>
+
         <!-- start footer -->
         <footer>
             <div class="container">
