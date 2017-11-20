@@ -5,13 +5,13 @@
       }
       $id_cliente = $_GET['id'];
 	  include 'pages_user/partes/header.php';
-
    ?>
 </br>
+
   <body style="color: #000;">
-  <!-- container section start -->
+  
   <section id="container" class="">
-      <!--header start-->
+  
       <header class="header dark-bg">
             <div class="toggle-nav">
                 <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
@@ -97,8 +97,7 @@
                                       </div>
 										<?php									  
 										if($status == 0){
-											echo "
-											
+											echo "											
 											<div class='form-group '>
 												<table width='70%'>
 												<tr>
