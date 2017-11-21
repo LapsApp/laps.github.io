@@ -1,9 +1,9 @@
 <?php
-if (!empty($_GET['convite'])) {
-    $convida = 1;
-} else {
-    $convida = 0;
-}
+    if (!empty($_GET['convite'])) {
+        $convida = 1;
+    } else {
+        $convida = 0;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -282,8 +282,9 @@ if (!empty($_GET['convite'])) {
         <!-- end footer -->
 
         <?php
-        include ('modelo/funcoesJS_index.php');
-        include ('modelo/alert_index.php');
+            include ('modelo/funcoesJS_index.php');
+            include ('modelo/alert_index.php');
         ?>
+    
     </body>
 </html>
