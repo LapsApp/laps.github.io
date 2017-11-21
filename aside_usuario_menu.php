@@ -1,4 +1,5 @@
 <!--sidebar start-->
+
 <aside>
 	<div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
@@ -68,6 +69,7 @@
          </div>
 </aside>
 <!--sidebar end-->
+
 <?php
 	if(! isset($link))
 	{
