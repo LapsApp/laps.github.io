@@ -1,0 +1,377 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: 22-Jun-2016 às 01:41
+-- Versão do servidor: 10.1.10-MariaDB
+-- PHP Version: 7.0.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `laps`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cartao`
+--
+
+CREATE TABLE `cartao` (
+  `id_cartao` int(11) NOT NULL,
+  `numero` int(16) NOT NULL,
+  `validade` varchar(7) NOT NULL,
+  `criacao` date NOT NULL,
+  `codigo` int(3) NOT NULL,
+  `nome_cliente` varchar(45) NOT NULL,
+  `bandeira` varchar(15) NOT NULL,
+  `id_conta` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `cartao`
+--
+
+INSERT INTO `cartao` (`id_cartao`, `numero`, `validade`, `criacao`, `codigo`, `nome_cliente`, `bandeira`, `id_conta`) VALUES
+(1, 2147483647, '04/2018', '2016-04-06', 314, 'menino feliz', 'UVV', 3),
+(33, 2147483647, '04/2018', '2016-04-11', 634, 'FELIPE DE OLIVEIRA VOGEL PENNA', 'UVV', 5),
+(34, 2147483647, '06/2018', '2016-06-16', 653, 'Myriana Almeida', 'UVV', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cliente`
+--
+
+CREATE TABLE `cliente` (
+  `id_cliente` int(11) NOT NULL,
+  `nome` varchar(45) DEFAULT NULL,
+  `id_endereco` int(10) DEFAULT NULL,
+  `cpf` varchar(11) DEFAULT NULL,
+  `rg` int(10) DEFAULT NULL,
+  `id_doc` int(10) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `cel` int(9) DEFAULT NULL,
+  `convite` int(1) DEFAULT '0',
+  `cadastro` int(11) NOT NULL DEFAULT '0',
+  `senha` varchar(8) DEFAULT NULL,
+  `tipo` int(11) NOT NULL DEFAULT '0',
+  `dt_solicitacao` date NOT NULL,
+  `sessao` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `cliente`
+--
+
+INSERT INTO `cliente` (`id_cliente`, `nome`, `id_endereco`, `cpf`, `rg`, `id_doc`, `email`, `cel`, `convite`, `cadastro`, `senha`, `tipo`, `dt_solicitacao`, `sessao`) VALUES
+(1, 'FELIPE VOGEL', NULL, '11111111111', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 4, 'senha1', 1, '2016-03-23', 1),
+(2, 'CONVITE 1', NULL, '11111111111', NULL, NULL, 'alaiscs@gmail.com', NULL, 1, 2, '123', 0, '2016-03-24', 0),
+(3, 'CONVITE 2', NULL, '22222222222', NULL, NULL, 'alaiscs@gmail.com', NULL, 1, 2, NULL, 0, '2016-03-24', 0),
+(4, 'CONVITE 3', NULL, '33333333333', NULL, NULL, 'alaiscs@gmail.com', NULL, 1, 1, NULL, 0, '2016-03-25', 0),
+(5, 'TESTE1', NULL, '11111111111', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 3, NULL, 0, '2016-03-25', 0),
+(6, 'usuario', NULL, '22222222222', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 4, 'senha2', 0, '2016-03-26', 0),
+(7, 'TESTE3', NULL, '33333333333', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 1, NULL, 0, '2016-03-24', 0),
+(8, 'CONVITE4', NULL, '44444444444', NULL, NULL, 'alaiscs@gmail.com', NULL, 1, 0, NULL, 0, '2016-03-26', 0),
+(9, 'CONVITE5', NULL, '55555555555', NULL, NULL, 'alaiscs@gmail.com', NULL, 1, 3, NULL, 0, '2016-03-24', 0),
+(10, 'TESTE4', NULL, '44444444444', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 1, NULL, 0, '2016-03-24', 0),
+(11, 'CONVITE6', NULL, '66666666666', NULL, NULL, 'alaiscs@gmail.com', NULL, 1, 4, NULL, 0, '2016-03-25', 0),
+(12, 'TESTE2', NULL, '22222222222', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 0, NULL, 0, '2016-04-01', 0),
+(13, 'CONVITE7', NULL, '77777777777', NULL, NULL, 'alaiscs@gmail.com', NULL, 1, 0, NULL, 0, '2016-04-02', 0),
+(14, 'TESTE5', NULL, '55555555555', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 0, NULL, 0, '2016-03-30', 0),
+(15, 'TESTE6', NULL, '66666666666', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 0, NULL, 0, '2016-04-03', 0),
+(17, 'TESTE7', NULL, '77777777777', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 2, NULL, 0, '2016-04-04', 0),
+(18, 'CONVITE8', NULL, '88888888888', NULL, NULL, 'alaiscs@gmail.com', NULL, 1, 0, NULL, 0, '2016-04-04', 0),
+(19, 'menino feliz', NULL, '22222222222', 2292522, NULL, 'alaiscs@gmail.com', 992322726, 0, 0, '123456', 0, '2016-04-05', 0),
+(20, 'testecpf', NULL, '12909437701', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 2, NULL, 0, '2016-04-05', 0),
+(22, 'FELIPE DE OLIVEIRA VOGEL PENNA', NULL, '12312312312', 2227465, NULL, 'alaiscs@gmail.com', 999148998, 0, 4, '12345678', 0, '2016-04-11', 1),
+(23, 'Myriana Almeida', NULL, '12345678900', 12345, NULL, 'mymiuus@yahoo.com.br', 999999999, 0, 4, '123456', 0, '2016-06-15', 0),
+(25, 'Alais Casimira Salino', NULL, '12345678900', 32156491, NULL, 'alaiscs@gmail.com', 998044027, 0, 3, 'alais', 0, '2016-06-07', 0),
+(26, 'Alais Casimira Salino', NULL, '12345678900', NULL, NULL, 'alaiscs@gmail.com', NULL, 0, 1, NULL, 0, '2016-06-07', 0),
+(28, 'Myriana Almeida', NULL, '12345678900', NULL, NULL, 'mymiuus@yahoo.com.br', NULL, 0, 1, NULL, 0, '2016-06-15', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `compras`
+--
+
+CREATE TABLE `compras` (
+  `id_compra` int(11) NOT NULL,
+  `id_cartao` int(11) NOT NULL,
+  `parcelas` varchar(20) NOT NULL,
+  `valor` varchar(20) NOT NULL,
+  `quantidade` int(10) NOT NULL,
+  `pago` int(11) NOT NULL DEFAULT '0',
+  `id_loja` int(11) NOT NULL,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `compras`
+--
+
+INSERT INTO `compras` (`id_compra`, `id_cartao`, `parcelas`, `valor`, `quantidade`, `pago`, `id_loja`, `data`) VALUES
+(1, 33, '1/2', '45.50', 2, 0, 1, '2016-05-24 02:04:07'),
+(2, 33, '2/2', '45.50', 2, 0, 2, '2016-06-24 02:04:07'),
+(3, 33, '1', '200.00', 1, 0, 3, '2016-04-24 12:54:07'),
+(4, 33, '1/3', '399.00', 1, 0, 1, '2016-05-24 23:22:08'),
+(5, 33, '2/3', '45.00', 1, 0, 2, '2016-06-24 23:22:08'),
+(6, 33, '3/3', '399.00', 1, 0, 3, '2016-07-24 23:22:08'),
+(7, 33, '1', '149.99', 1, 0, 3, '2016-03-24 23:47:41'),
+(8, 33, '1', '39.99', 1, 0, 1, '2016-06-06 21:38:25'),
+(9, 33, '1/3', '39.99', 1, 0, 2, '2016-06-06 21:39:11'),
+(10, 33, '2/3', '39.99', 1, 0, 1, '2016-07-06 21:39:11'),
+(11, 33, '3/3', '39.99', 1, 0, 3, '2016-08-06 21:39:11'),
+(12, 33, '1/3', '149.99', 1, 0, 1, '2016-06-06 21:39:11'),
+(13, 33, '2/3', '149.99', 1, 0, 2, '2016-07-06 21:39:11'),
+(14, 33, '3/3', '149.99', 1, 0, 1, '2016-08-06 21:39:11');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `conta`
+--
+
+CREATE TABLE `conta` (
+  `id_conta` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `limite` varchar(20) NOT NULL,
+  `renda` varchar(20) NOT NULL,
+  `limitetotal` varchar(20) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
+  `comentario` varchar(200) DEFAULT NULL,
+  `limite_anterior` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `conta`
+--
+
+INSERT INTO `conta` (`id_conta`, `id_cliente`, `limite`, `renda`, `limitetotal`, `status`, `comentario`, `limite_anterior`) VALUES
+(2, 19, '0.00', '10000.00', '0.00', 0, NULL, '0.00'),
+(3, 19, '0.00', '10000.00', '0.00', 0, NULL, '0.00'),
+(5, 22, '19071.05', '3000.00', '5000.00', 0, '                                                                        ', '0.00'),
+(6, 24, '', '5000', '', 0, NULL, '0.00'),
+(7, 25, '', '5000', '', 0, 'qwert', '0.00'),
+(8, 25, '', '5000', '', 0, 'dfghjk', '0.00'),
+(9, 23, '2000', '10000', '', 0, '', '0.00');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `documentacao`
+--
+
+CREATE TABLE `documentacao` (
+  `id_doc` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `foto` varchar(50) NOT NULL,
+  `doc_frente` varchar(50) NOT NULL,
+  `doc_verso` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `documentacao`
+--
+
+INSERT INTO `documentacao` (`id_doc`, `id_cliente`, `foto`, `doc_frente`, `doc_verso`) VALUES
+(1, 0, '../img/3x4_001.bmp', '', ''),
+(2, 19, 'localhost/LAPS/img/IMG-20150213-WA0001.jpg', 'localhost/LAPS/img/4.png', 'localhost/LAPS/img/2.png'),
+(3, 19, 'localhost/LAPS/img/IMG-20150213-WA0001.jpg', 'localhost/LAPS/img/4.png', 'localhost/LAPS/img/2.png'),
+(4, 21, 'localhost/LAPS/img/0002.jpg', 'localhost/LAPS/img/00001.jpg', 'localhost/LAPS/img/00002.jpg'),
+(5, 22, 'localhost/LAPS/img/0002.jpg', 'localhost/LAPS/img/00001.jpg', 'localhost/LAPS/img/00002.jpg'),
+(6, 24, 'localhost/LAPS/img/brainstorm.jpg', 'localhost/LAPS/img/brainstorm.jpg', 'localhost/LAPS/img/brainstorm.jpg'),
+(7, 25, 'localhost/LAPS/trunk/img/brainstorm.jpg', 'localhost/LAPS/img/brainstorm.jpg', 'localhost/LAPS/trunk/img/brainstorm.jpg'),
+(8, 25, '../img/Chrysanthemum.jpg', '../img/Desert.jpg', '../img/Hydrangeas.jpg'),
+(9, 27, 'localhost/LAPS/img/identidade.jpg', 'localhost/LAPS/img/identidade_frente.jpg', 'localhost/LAPS/img/identidade_verso.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `endereco`
+--
+
+CREATE TABLE `endereco` (
+  `id_cliente` int(11) NOT NULL,
+  `rua` varchar(45) DEFAULT NULL,
+  `num` int(10) DEFAULT NULL,
+  `complemento` varchar(45) DEFAULT NULL,
+  `cep` int(10) DEFAULT NULL,
+  `cidade` varchar(15) DEFAULT NULL,
+  `estado` varchar(2) DEFAULT NULL,
+  `bairro` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `endereco`
+--
+
+INSERT INTO `endereco` (`id_cliente`, `rua`, `num`, `complemento`, `cep`, `cidade`, `estado`, `bairro`) VALUES
+(19, 'Avenida Resplendor, ', 112, 'comp', 29101620, 'Vila Velha', 'Es', 'MaruÃ­pe'),
+(21, 'Rua Jaime Duarte', 599, '403', 29101620, 'Vila Velha', 'ES', 'Itapoa'),
+(22, 'Rua Jaime Duarte', 599, '403', 29101620, 'Vila Velha', 'ES', 'Itapoa'),
+(24, 'Rua JosÃ© do Carmo NÂº', 4027, 'MMMM', 29126552, 'Vila Velha', 'Es', 'MM'),
+(25, 'M', 4027, 'MMM', 29100000, 'MMMM', 'ES', 'MM'),
+(27, 'Rua X', 100, 'casa', 29100100, 'Vila Velha', 'ES', 'Centro');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `lojas`
+--
+
+CREATE TABLE `lojas` (
+  `id_loja` int(11) NOT NULL,
+  `nome` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `endereco` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `categoria` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Extraindo dados da tabela `lojas`
+--
+
+INSERT INTO `lojas` (`id_loja`, `nome`, `endereco`, `categoria`, `latitude`, `longitude`) VALUES
+(1, 'Loja Online', 'R. Luís José, 21 - Boa Vista, Vila Velha - ES, 29102-920', 'Departamento', -20.354092, -40.299091),
+(2, 'Centauro', 'Rua Jairo de Matos, 353, Praia da Costa - Vila Velha', 'Esportes', -20.341143, -40.288941),
+(3, 'Perim', 'Rua Deolindo PErim, 350 Itapoa, Vila Velha', 'Alimentacao', -20.355381, -40.294822);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `suporte`
+--
+
+CREATE TABLE `suporte` (
+  `id_msg` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `assunto` varchar(50) NOT NULL,
+  `dt_msg` date NOT NULL,
+  `mensagem` varchar(320) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `suporte`
+--
+
+INSERT INTO `suporte` (`id_msg`, `id_cliente`, `assunto`, `dt_msg`, `mensagem`) VALUES
+(1, 22, 'TESTE DE SUPORTE', '2016-04-30', 'asdasd asda sada sd sad as dasdasd asdasdasd asdasd asdasdsa dsds a sd asd as asd sad asd asda sd asdasdasdasd asdasdas asd sdsd asd asdasdas sdas d asd asd sa asdsda sdddsdasd asdasd as asdasda'),
+(2, 22, 'LIMITE DO CARTÃO', '2016-04-29', 'qwe qweqw eqwe q weqw eqw eq weq we qwe qweqw eqwe qqwew eq we q we qweqqwe qwe qwe qwewe wew qwe qwewe qweqweqwe wewe qwe weqweqwe qweqweq'),
+(3, 22, 'SEGUNDA VIA', '2016-05-01', 'jkl jkl jkl jkljkljkl jkl k jkl jkl jkljljkljkl jkl jkljkl jkljkl jljklkljkljkl jkljkljkljkl jkjkjkl jkl jkljkjklj jkljkljkljkljkljkljklj'),
+(4, 22, 'ROUBO DO CARTÃO', '2016-05-02', 'bvcvbcbv bvcbv v cbv cvbcb cvbc bc bvcb vcb vvbcb vcvb cbv cbvbv cb cb cbv cbvcbc bvcbvcbvcbvc vbc vbc bv bvc bvcbv cbvc bvc bc bbv cb cbcbv cvb cbv cvb cbv cbc bv cbc bv bc bc bvcbv cbvcb vcbv c bc bvc bvvb cvb bv cbv cbv vb cv cb cbv cvb cbvc bv bvcc c bvc vbc bvc bvc bcbv bvb cbv bv cvb cvb cvbc bvc bvb ccvb c vbcbv'),
+(5, 22, 'teste', '2016-06-02', 'sadfghjkl'),
+(6, 22, 'teste', '2016-06-02', 'sadfghjkl'),
+(7, 22, 'teste55', '2016-06-02', 'asdfghjklÃ§'),
+(8, 22, 'sdfghjkl', '2016-06-02', 'dcfvgbhjmk,l.Ã§;/'),
+(9, 22, 'sdfghjkl', '2016-06-02', 'dcfvgbhjmk,l.Ã§;/'),
+(10, 22, 'teste', '2016-06-03', 'asdfghjklçç'),
+(11, 22, 'zxcvbn', '2016-06-03', 'zxcvbnm,'),
+(12, 22, 'edfghjkl', '2016-06-03', 'sdfghjklç'),
+(13, 22, 'sdfghjklç;/', '2016-06-03', 'zxcvbnm,.;/'),
+(14, 22, 'zxcvbnm,', '2016-06-03', 'zxcvbnm,'),
+(15, 22, 'sadfghj', '2016-06-03', 'dfghj'),
+(16, 22, 'xcdfg', '2016-06-03', 'sxdcfgh'),
+(17, 22, 'asdfgh', '2016-06-06', 'sdfghj');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cartao`
+--
+ALTER TABLE `cartao`
+  ADD PRIMARY KEY (`id_cartao`);
+
+--
+-- Indexes for table `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`id_cliente`);
+
+--
+-- Indexes for table `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`id_compra`);
+
+--
+-- Indexes for table `conta`
+--
+ALTER TABLE `conta`
+  ADD PRIMARY KEY (`id_conta`);
+
+--
+-- Indexes for table `documentacao`
+--
+ALTER TABLE `documentacao`
+  ADD PRIMARY KEY (`id_doc`);
+
+--
+-- Indexes for table `endereco`
+--
+ALTER TABLE `endereco`
+  ADD PRIMARY KEY (`id_cliente`);
+
+--
+-- Indexes for table `lojas`
+--
+ALTER TABLE `lojas`
+  ADD PRIMARY KEY (`id_loja`),
+  ADD UNIQUE KEY `nome` (`nome`);
+
+--
+-- Indexes for table `suporte`
+--
+ALTER TABLE `suporte`
+  ADD PRIMARY KEY (`id_msg`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cartao`
+--
+ALTER TABLE `cartao`
+  MODIFY `id_cartao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT for table `conta`
+--
+ALTER TABLE `conta`
+  MODIFY `id_conta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `documentacao`
+--
+ALTER TABLE `documentacao`
+  MODIFY `id_doc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `lojas`
+--
+ALTER TABLE `lojas`
+  MODIFY `id_loja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `suporte`
+--
+ALTER TABLE `suporte`
+  MODIFY `id_msg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
